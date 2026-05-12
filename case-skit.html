@@ -1,0 +1,295 @@
+---
+currentNav: Work
+permalink: /case-skit.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Skit! — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<link rel="stylesheet" href="styles/case-study.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   Skit! — page-specific accents
+   ───────────────────────────────────────────────────────────── */
+
+/* Hero banner: hold the wide kids photo */
+.cs-banner.cs-banner-skit {
+  aspect-ratio: 16/9;
+  background: var(--paper-2);
+  overflow: hidden;
+  padding: 0;
+}
+.cs-banner-skit img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 112%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Selected screens · gallery grid */
+.skit-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+}
+.skit-gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+}
+@media (max-width: 800px) {
+  .skit-gallery { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .skit-gallery { grid-template-columns: 1fr; }
+}
+
+/* Highlights · 3-up callouts */
+.buzz-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+  align-items: stretch;
+}
+.buzz-card {
+  padding: 28px 26px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.buzz-card .label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent);
+}
+.buzz-card h4 {
+  font-family: var(--serif); font-size: 22px;
+  line-height: 1.15; color: var(--ink); letter-spacing: -0.01em;
+}
+.buzz-card p {
+  font-size: 14px; line-height: 1.55; color: var(--ink-2);
+}
+@media (max-width: 800px) {
+  .buzz-grid { grid-template-columns: 1fr; }
+}
+
+/* Awards strip · holds both badge sets, neutral dark warm-gray bg
+   keeps white logos legible while still letting darker logos read */
+.awards-strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  align-items: center;
+  justify-items: center;
+  padding: 40px 32px;
+  background: #a89c88;
+  border: 1px solid #8a7f6e;
+  border-radius: 10px;
+  margin-top: 24px;
+}
+.awards-strip img {
+  display: block;
+  max-width: 220px;
+  width: 100%;
+  height: auto;
+}
+@media (max-width: 600px) {
+  .awards-strip { grid-template-columns: 1fr; gap: 24px; padding: 32px 24px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- reading progress bar -->
+<div class="read-progress"><div class="bar"></div></div>
+
+{% include "lightbox.html" %}
+
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="cs-hero shell" data-screen-label="Case · Skit · Hero">
+  <div class="cs-hero-meta">
+    <span class="crumb"><a href="index.html">Work</a> / Skit!</span>
+  </div>
+
+  <div class="cs-hero-grid">
+    <div>
+      <h1>Where kids make their own <em>shows.</em></h1>
+      <p class="deck">
+        Skit! was a creative app for kids: pick characters, set the scene, add music and animation,
+        and end up with a skit you made yourself. I led design on Skit 2.0 across iOS, Android, and
+        web at Storytime Studios.
+      </p>
+    </div>
+
+    <div class="cs-facts">
+      <div class="fact"><span class="k">Role</span><span class="v">Design Director</span></div>
+      <div class="fact"><span class="k">Company</span><span class="v">Storytime Studios</span></div>
+      <div class="fact"><span class="k">Platform</span><span class="v">iOS · Android · Web</span></div>
+      <div class="fact"><span class="k">Status</span><span class="v"><span class="accent">●</span> Shipped · 2015</span></div>
+    </div>
+  </div>
+
+  <!-- Hero banner: kids photo -->
+  <div class="cs-banner cs-banner-skit">
+    <img src="assets/fig/skit/kids-hero.jpg" alt="Kids playing and creating with Skit!" />
+  </div>
+</section>
+
+<!-- ─────────── BODY ─────────── -->
+<section class="shell" style="padding-bottom:120px">
+  <div class="cs-body">
+
+    <!-- Sticky TOC -->
+    <aside class="cs-toc">
+      <div class="toc-label">In this case</div>
+      <a href="#product"  data-toc="product"><span class="toc-num">01</span>The product</a>
+      <a href="#role"     data-toc="role"><span class="toc-num">02</span>What I designed</a>
+      <a href="#screens"  data-toc="screens"><span class="toc-num">03</span>Selected screens</a>
+      <a href="#buzz"     data-toc="buzz"><span class="toc-num">04</span>The buzz</a>
+    </aside>
+
+    <!-- Content -->
+    <div class="cs-content">
+
+      <!-- 01 PRODUCT -->
+      <article class="cs-section" id="product">
+        <span class="num">01 · The product</span>
+        <h2>A creative platform built for <em>storytelling.</em></h2>
+        <p class="body">
+          Skit! gave kids the pieces to make their own animated skits. They picked characters,
+          dropped props into scenes, layered in music and animation, and ended up with something
+          they'd made themselves. The 2.0 release was a full rebuild: refreshed visual system,
+          tighter creation flow, new features designed to keep kids coming back to make more.
+        </p>
+
+        <figure class="cs-figure">
+          <img src="assets/fig/skit/feature.png" alt="Skit! feature graphic showing the core creation experience" class="cs-figure-img zoomable" />
+          <figcaption>
+            <span class="fig-text">The pieces of a skit: characters, scenes, music, animation. Picked, placed, and shared.</span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- 02 WHAT I DESIGNED -->
+      <article class="cs-section" id="role">
+        <span class="num">02 · What I designed</span>
+        <h2>Design Director on <em>Skit 2.0.</em></h2>
+        <p class="body">
+          As Design Director at Storytime, I led design across mobile, tablet, and web for the 2.0
+          release. The work covered both the surface and the systems underneath:
+        </p>
+
+        <ul class="cs-list">
+          <li><strong>Product design.</strong> Personas, user flows, wireframes, mockups, and the design system for Skit 2.0.</li>
+          <li><strong>Feature design.</strong> Achievements, weekly challenges, magic touch, and the supporting interactions that pulled kids back into the loop.</li>
+          <li><strong>Content production.</strong> Characters, objects, text, music, and animation, set up and integrated into the app.</li>
+          <li><strong>In-app economy.</strong> Micro-transactions and the balance work that kept the economy fair across kid and parent expectations.</li>
+          <li><strong>Visual QA.</strong> Making sure every element met the bar before publish.</li>
+          <li><strong>Storytelling.</strong> Presentation videos for stakeholders and investors.</li>
+        </ul>
+
+        <figure class="cs-figure cs-figure-mobile">
+          <img src="assets/fig/skit/kid-invite.png" alt="Skit! kid invite screen — friendly onboarding moment" class="cs-figure-img zoomable" />
+          <figcaption>
+            <span class="fig-text">An invite moment from the app. The 2.0 visual system leaned warm and approachable, with type and color tuned for kids and the parents looking over their shoulders.</span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- 03 SELECTED SCREENS -->
+      <article class="cs-section" id="screens">
+        <span class="num">03 · Selected screens</span>
+        <h2>The app in <em>real life.</em></h2>
+        <p class="body">
+          Skit! lived on iPads in classrooms and bedrooms, on phones in backseats, and on the web
+          for parents and teachers checking in. A handful of moments from real-world use.
+        </p>
+
+        <div class="skit-gallery" data-lightbox-group="screens">
+          <img src="assets/fig/skit/kids-01.jpg" alt="Skit! moment · kid creating on tablet" class="zoomable" />
+          <img src="assets/fig/skit/kids-02.jpg" alt="Skit! moment · group of kids exploring the app" class="zoomable" />
+          <img src="assets/fig/skit/kids-03.jpg" alt="Skit! moment · kid sharing a finished skit" class="zoomable" />
+          <img src="assets/fig/skit/kids-04.jpg" alt="Skit! moment · creation in progress" class="zoomable" />
+          <img src="assets/fig/skit/kids-05.jpg" alt="Skit! moment · finished animation playing back" class="zoomable" />
+          <img src="assets/fig/skit/web-design.png" alt="Skit! web design layout — supporting site for parents and teachers" class="zoomable" />
+        </div>
+      </article>
+
+      <!-- 04 THE BUZZ -->
+      <article class="cs-section" id="buzz">
+        <span class="num">04 · The buzz</span>
+        <h2>Built for kids. <em>Trusted by parents.</em></h2>
+        <p class="body">
+          Three commitments shaped how the team thought about everything we shipped:
+        </p>
+
+        <div class="buzz-grid">
+          <div class="buzz-card">
+            <span class="label">Privacy</span>
+            <h4>COPPA Compliant.</h4>
+            <p>We never collected a child's personal information without parental consent. Privacy was the floor, not the feature.</p>
+          </div>
+          <div class="buzz-card">
+            <span class="label">Reception</span>
+            <h4>4.5 / 5 stars.</h4>
+            <p>Skit! Kids was rated 4.5 out of 5 in the major app stores. Parents and teachers rated it as highly as the kids did.</p>
+          </div>
+          <div class="buzz-card">
+            <span class="label">Support</span>
+            <h4>Personal touch.</h4>
+            <p>Team Skit! worked together to make sure every skitter was having fun. Real humans behind the app, not a help desk script.</p>
+          </div>
+        </div>
+
+        <div class="awards-strip" data-lightbox-group="awards">
+          <img src="assets/fig/skit/awards.png" alt="Awards and recognitions Skit! Kids received" class="zoomable" />
+          <img src="assets/fig/skit/awards-press.png" alt="Press coverage and reviews of Skit! Kids" class="zoomable" />
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── NEXT CASE STUDY ─────────── -->
+<section class="next-cs shell">
+  <div class="next-grid">
+    <div>
+      <div class="next-label">Next case study</div>
+      <div class="next-num">Multi-platform · 2019</div>
+      <h2>IKON. Three surfaces, <em>one brand activation.</em></h2>
+      <p class="next-deck">
+        A six-week brand activation built on IKON, the gaming challenge platform. Co-branded
+        landing page, dedicated desktop application, Twitch extension.
+      </p>
+      <a href="case-ikon.html" class="btn btn-primary">Read IKON <span class="arrow">→</span></a>
+    </div>
+    <a href="case-ikon.html" class="next-card tex-ikon">
+      <div class="nt-labels">
+        <div class="nt-meta">Multi-platform · 2019</div>
+        <div class="nt-title">IKON. Alienware streamer platform.</div>
+      </div>
+      <div class="next-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+{% include "footer.html" %}
+
+{% include "case-scripts.html" %}
+
+</body>
+</html>

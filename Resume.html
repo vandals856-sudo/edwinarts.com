@@ -1,0 +1,324 @@
+---
+currentNav: Resume
+permalink: /Resume.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Resume — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<style>
+  .resume-hero { padding: 80px 0 40px; }
+  .resume-hero-grid {
+    display: grid; grid-template-columns: 1fr auto;
+    align-items: end; gap: 32px;
+  }
+  .resume-hero h1 { font-size: clamp(48px, 6vw, 80px); margin-bottom: 14px; }
+  .resume-hero h1 em { font-style: italic; color: var(--accent); }
+  .resume-hero .meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; color: var(--ink-3); text-transform: uppercase; }
+  .resume-actions { display: flex; gap: 12px; }
+
+  .resume-shell {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 80px;
+    padding: 80px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  .sidebar h4 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-3); font-weight: 400;
+    margin-bottom: 16px;
+  }
+  .sidebar-block { margin-bottom: 48px; }
+  .sidebar p, .sidebar a {
+    font-size: 14px; line-height: 1.7; color: var(--ink-2);
+    text-decoration: none; display: block;
+  }
+  .sidebar a:hover { color: var(--ink); }
+  .sidebar .pill-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .sidebar .pill {
+    padding: 5px 10px; border: 1px solid var(--rule); border-radius: 999px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+    color: var(--ink-2);
+  }
+
+  .main-column h3 {
+    font-size: 13px; font-family: var(--mono); letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-3); font-weight: 400;
+    margin-bottom: 28px; padding-bottom: 14px; border-bottom: 1px solid var(--rule);
+  }
+  .main-column h3:not(:first-child) { margin-top: 64px; }
+
+  .role { padding: 24px 0; border-top: 1px solid var(--rule); }
+  .role:first-of-type { border-top: 0; padding-top: 0; }
+  .role-head {
+    display: grid; grid-template-columns: 1fr auto;
+    gap: 32px; align-items: baseline; margin-bottom: 14px;
+  }
+  .role-title {
+    font-family: var(--serif); font-size: 26px;
+    line-height: 1.15;
+    color: var(--ink);
+  }
+  .role-title em { font-style: italic; color: var(--accent); }
+  .role-dates {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-3); white-space: nowrap;
+  }
+  .role-company {
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 14px;
+  }
+  .role ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .role li {
+    font-size: 15px; line-height: 1.6; color: var(--ink-2);
+    padding-left: 22px; position: relative;
+  }
+  .role li::before {
+    content: "—"; position: absolute; left: 0; top: 0; color: var(--ink-3);
+  }
+  .role-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .role-tags .tag { font-size: 10px; padding: 4px 9px; }
+
+  @media print {
+    .nav, .footer, .resume-actions { display: none !important; }
+  }
+</style>
+</head>
+<body data-screen-label="Resume">
+
+{% include "nav.html" %}
+
+<section class="resume-hero shell">
+  <div class="resume-hero-grid">
+    <div>
+      <div class="eyebrow" style="margin-bottom:14px">Resume · Updated October 2026</div>
+      <h1>Edwin Rodriguez<span style="color:var(--accent)">.</span></h1>
+      <p class="lede" style="margin-top:8px">Principal Product Design Lead · Senior UX Designer · 10+ yrs · Los Angeles, CA</p>
+    </div>
+    <div class="resume-actions">
+      <a href="#" class="btn btn-primary" onclick="window.print();return false">Download PDF <span class="arrow">↓</span></a>
+      <a href="Contact.html" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section class="shell">
+  <div class="resume-shell">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-block">
+        <h4>Contact</h4>
+        <a href="mailto:erod@edwinarts.com">erod@edwinarts.com</a>
+        <p>Los Angeles, CA<br>Remote-friendly</p>
+      </div>
+
+      <div class="sidebar-block">
+        <h4>Links</h4>
+        <a href="#">LinkedIn</a>
+        <a href="#">Behance</a>
+        <a href="index.html">edwinarts.com</a>
+      </div>
+
+      <div class="sidebar-block">
+        <h4>Disciplines</h4>
+        <div class="pill-row">
+          <span class="pill">UX Strategy</span>
+          <span class="pill">Interaction Design</span>
+          <span class="pill">Visual Design</span>
+          <span class="pill">Design Systems</span>
+          <span class="pill">Prototyping</span>
+          <span class="pill">Usability Testing</span>
+          <span class="pill">A/B Testing</span>
+          <span class="pill">Accessibility</span>
+        </div>
+      </div>
+
+      <div class="sidebar-block">
+        <h4>Tools</h4>
+        <div class="pill-row">
+          <span class="pill">Figma</span>
+          <span class="pill">Figma Make</span>
+          <span class="pill">Adobe CS</span>
+          <span class="pill">UserTesting</span>
+          <span class="pill">Optimizely</span>
+          <span class="pill">Heap</span>
+          <span class="pill">Contentful</span>
+          <span class="pill">Jira</span>
+          <span class="pill">Asana</span>
+        </div>
+      </div>
+
+      <div class="sidebar-block">
+        <h4>Recognition</h4>
+        <p>Emmy Nomination — E! Live 360 for AT&amp;T (2018)</p>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-column">
+
+      <h3>Summary</h3>
+
+      <p style="font-size:16px;line-height:1.7;color:var(--ink-2);max-width:720px;margin-bottom:8px">
+        Senior UX Designer and Principal Product Design Lead with 10+ years of experience designing end-to-end digital products across e-commerce, mobile, and web platforms. At Ruggable, drove measurable conversion and retention improvements through research-backed, high-fidelity design — earning consistent top-performer ratings and two promotions over five years. Strong in product thinking, interaction design, design systems, and cross-functional collaboration. Known for translating ambiguous briefs into intuitive experiences that ship and perform.
+      </p>
+
+      <h3>Experience</h3>
+
+      <div class="role">
+        <div class="role-head">
+          <div class="role-title">Principal Product Design Lead</div>
+          <div class="role-dates">Aug 2023 — Mar 2026</div>
+        </div>
+        <div class="role-company">Ruggable · Los Angeles, CA (Remote)</div>
+        <ul>
+          <li>Redesigned the Order Tracker experience, resulting in a 28% drop in pre-ship WISMO support tickets and a 100% reduction in post-ship inquiries — directly improving CX efficiency and customer satisfaction.</li>
+          <li>Redesigned the PDP drawer with illustrated size options and an interactive size guide, driving a 9% YoY increase in desktop conversion rate and an 8% YoY improvement in add-to-cart rate.</li>
+          <li>Designed Designable from scratch — an AI-powered rug visualization tool that achieved a 14% conversion rate, outperforming the existing Rug Quiz and surpassing baseline non-tool sessions.</li>
+          <li>Built a Visual Site Map for the eCommerce team using AI prompting, turning a small internal request into a widely-used cross-functional planning tool praised by leadership.</li>
+          <li>Owned company-wide Figma access, design system maintenance, and onboarding of new employees into internal tools; contributed to DSM-to-Contentful documentation adopted across teams.</li>
+          <li>Collaborated closely with a User Researcher to build and prototype user test assets, ensuring design decisions were validated before development began.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">E-commerce</span><span class="tag">AI</span><span class="tag">Design Systems</span><span class="tag">CX</span>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-head">
+          <div class="role-title">Senior UX Product Designer</div>
+          <div class="role-dates">Aug 2021 — Aug 2023</div>
+        </div>
+        <div class="role-company">Ruggable · Los Angeles, CA (Remote)</div>
+        <ul>
+          <li>Led UX for the Marvel and Star Wars Mandalorian landing pages — the Marvel launch was the first time Creative took direction from UX rather than the other way around.</li>
+          <li>Designed and launched Visual Filters for the PLP — a feature that improved both aesthetics and usability through micro-animations — later extended to multiple page types across the site.</li>
+          <li>Led the atomic design system build in Figma from the ground up, enabling teams to assemble and publish full pages in Contentful within hours, with no developer dependency for standard layouts.</li>
+          <li>Acted as team lead during manager's parental leave, managing priorities, stakeholder communication, and junior designer mentorship.</li>
+          <li>Contributed to BFCM campaign assets, Rug Quiz UX improvements, gift card experience design (including follow-up emails and Phase II proposals), and multiple A/B test iterations on PDP and cart flows.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">Brand LP</span><span class="tag">PLP</span><span class="tag">Systems</span><span class="tag">Mentorship</span>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-head">
+          <div class="role-title">UX Product Designer</div>
+          <div class="role-dates">Mar 2020 — Aug 2021</div>
+        </div>
+        <div class="role-company">Ruggable · Los Angeles, CA (Remote)</div>
+        <ul>
+          <li>Established the foundation of the design system, defining components, naming conventions, and UI variants — becoming a core part of the team's design-to-development workflow.</li>
+          <li>Redesigned the AR asset pipeline and led an internal tutorial, enabling the full UX team to independently texture and publish AR assets.</li>
+          <li>Owned UX/UI across web, mobile, and CMS-driven experiences while collaborating closely with Product, Engineering, and Brand teams.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">Foundations</span><span class="tag">AR</span><span class="tag">CMS</span>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-head">
+          <div class="role-title">UX / UI Designer</div>
+          <div class="role-dates">Mar 2019 — Oct 2019</div>
+        </div>
+        <div class="role-company">Quarterback (Ikon) · Santa Monica, CA</div>
+        <ul>
+          <li>Led end-to-end redesign of a multi-platform product (Windows + mobile) — defined UX flows, visual design language, and component structure from scratch.</li>
+          <li>Streamlined design-to-development handoff process, reducing review cycles and improving team efficiency across a fast-moving cross-functional team.</li>
+          <li>Delivered landing pages, promotional sites, and marketing materials alongside core product work.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">Multi-platform</span><span class="tag">Product</span>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-head">
+          <div class="role-title">UX / UI Designer <em>(Contract)</em></div>
+          <div class="role-dates">Dec 2018 — Feb 2019</div>
+        </div>
+        <div class="role-company">The Agency — Salesforce · Beverly Hills, CA</div>
+        <ul>
+          <li>Overhauled design, UX, and interaction patterns for a Salesforce desktop product while preserving key workflows to minimize disruption for existing users.</li>
+          <li>Improved content hierarchy, navigational clarity, and readability to increase productivity and surface key functionality.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">Enterprise</span><span class="tag">CRM</span>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-head">
+          <div class="role-title">Digital Product Designer</div>
+          <div class="role-dates">Jun 2016 — Oct 2018</div>
+        </div>
+        <div class="role-company">NBCUniversal — E! News · Universal City, CA</div>
+        <ul>
+          <li>Owned UX/UI across web, mobile web, and iOS/Android app platforms for a major media brand with a global audience.</li>
+          <li>Led a full multi-platform site rebrand from wireframes through final launch, including a net-new iOS app designed from early concept to release.</li>
+          <li>Designed the Emmy-nominated E! Live 360 interactive experience for AT&amp;T, and revamped design across Apple News, Google AMP, and newsletter templates.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">Editorial</span><span class="tag">iOS</span><span class="tag">Brand</span>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-head">
+          <div class="role-title">Design Director</div>
+          <div class="role-dates">Apr 2014 — Jun 2016</div>
+        </div>
+        <div class="role-company">Storytime Studios · Sagamore Beach, MA</div>
+        <ul>
+          <li>Led UX and product design for Skit! 2.0 — defined personas, user journeys, core feature set, achievements, challenges, and monetization systems (micro-transactions).</li>
+          <li>Created investor-facing prototypes, presentation decks, and oversaw content implementation across characters, animations, and assets.</li>
+        </ul>
+        <div class="role-tags">
+          <span class="tag">Product</span><span class="tag">Mobile</span>
+        </div>
+      </div>
+
+      <div class="role">
+        <div class="role-head">
+          <div class="role-title">Earlier roles</div>
+          <div class="role-dates">2007 — 2013</div>
+        </div>
+        <div class="role-company">Marquee Production · Trilogy Studios / DreamWorks / MTV · Electronic Arts</div>
+        <ul>
+          <li>Lead Game Designer at Marquee Production (2012–2013).</li>
+          <li>Technical Designer at Trilogy Studios / DreamWorks / MTV (2008–2011).</li>
+          <li>Designer at Electronic Arts on <em>Medal of Honor: Airborne</em> (2007).</li>
+        </ul>
+      </div>
+
+      <h3>Education</h3>
+
+      <div class="role">
+        <div class="role-head">
+          <div class="role-title">Game Art &amp; Design</div>
+          <div class="role-dates"></div>
+        </div>
+        <div class="role-company">The Art Institute of California · Los Angeles</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+{% include "footer.html" %}
+
+</body>
+</html>

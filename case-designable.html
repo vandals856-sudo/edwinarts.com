@@ -1,0 +1,559 @@
+---
+currentNav: Work
+permalink: /case-designable.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Designable — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<link rel="stylesheet" href="styles/case-study.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   Designable — page-specific accents
+   ───────────────────────────────────────────────────────────── */
+
+/* Hero banner: desktop LP screenshot with mobile LP overlay */
+.cs-banner.cs-banner-dz {
+  aspect-ratio: 16/10;
+  background: linear-gradient(180deg, #ebe5d7 0%, #d8c9b0 100%);
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+.cs-banner-dz .banner-desktop {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+}
+.cs-banner-dz .banner-mobile {
+  position: absolute;
+  top: 32px; right: 32px;
+  width: 16%; max-width: 220px;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  box-shadow:
+    0 28px 56px -18px rgba(26,24,20,0.32),
+    0 10px 22px -8px rgba(26,24,20,0.18);
+}
+
+/* Chat/form panel: opened-panel screenshot, centered */
+.dz-panel-figure {
+  display: flex; justify-content: center;
+  margin: 32px 0;
+}
+.dz-panel-figure .dz-panel {
+  width: 100%; max-width: 380px;
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--paper);
+  box-shadow:
+    0 24px 48px -16px rgba(26,24,20,0.22),
+    0 8px 18px -6px rgba(26,24,20,0.12);
+}
+.dz-panel-figure .dz-panel img {
+  display: block;
+  width: 100%; height: auto;
+}
+
+/* v1/v2/v3 simplification grid */
+.dz-versions {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 32px 0 12px;
+  align-items: end;
+}
+.dz-versions .dz-version {
+  display: flex; flex-direction: column;
+  gap: 12px;
+}
+.dz-versions .dz-version-label {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent);
+}
+.dz-versions .dz-version img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--paper-2);
+}
+@media (max-width: 700px) {
+  .dz-versions { grid-template-columns: 1fr; }
+}
+
+/* Shipped flow — four phone screenshots in sequence */
+.dz-mobile-strip {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 32px 0 0;
+}
+.dz-mobile-strip .dz-phone {
+  aspect-ratio: 9/19;
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  overflow: hidden;
+  position: relative;
+}
+.dz-mobile-strip .dz-phone img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
+  display: block;
+}
+.dz-mobile-strip .dz-cap {
+  position: absolute;
+  top: 10px; left: 10px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink);
+  background: rgba(244,240,232,0.92);
+  padding: 4px 8px; border-radius: 999px;
+  z-index: 2;
+}
+@media (max-width: 900px) {
+  .dz-mobile-strip { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .dz-mobile-strip { grid-template-columns: 1fr; }
+}
+
+/* Iteration ladder */
+.iter-list {
+  list-style: none; padding: 0; margin: 32px 0;
+  border-top: 1px solid var(--rule);
+}
+.iter-list li {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: 80px 1fr;
+  gap: 24px; align-items: baseline;
+}
+.iter-list .v {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent);
+}
+.iter-list .what {
+  font-family: var(--serif); font-size: 20px; line-height: 1.3;
+  color: var(--ink); letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.iter-list .why {
+  font-size: 14px; line-height: 1.55; color: var(--ink-2);
+}
+@media (max-width: 600px) {
+  .iter-list li { grid-template-columns: 1fr; gap: 6px; }
+}
+
+/* Tech stack pill row — light touch on the system underneath */
+.stack-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 16px 0 32px;
+}
+.stack-row .pill {
+  padding: 6px 12px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  color: var(--ink-2);
+}
+</style>
+</head>
+<body>
+
+<div class="read-progress"><div class="bar"></div></div>
+
+{% include "lightbox.html" %}
+
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="cs-hero shell" data-screen-label="Case · Designable · Hero">
+  <div class="cs-hero-meta">
+    <span class="crumb"><a href="/">Work</a> / Designable</span>
+  </div>
+
+  <div class="cs-hero-grid">
+    <div>
+      <h1>Started as a chatbot. <em>Shipped as a photo upload.</em></h1>
+      <p class="deck">
+        Designable is Ruggable's AI rug recommender. The team started thinking it was a chat
+        experience, then a form. Through three production versions and a steady habit of cutting
+        things, the version that shipped is just a photo upload. The customer drops a picture
+        of their room, the AI does the rest, and a curated set of rug picks comes back in
+        seconds. There's a retry button for a fresh take on the same image. I led UX from
+        ideation through ship.
+      </p>
+    </div>
+
+    <div class="cs-facts">
+      <div class="fact"><span class="k">Role</span><span class="v">Principal UX Designer · Lead</span></div>
+      <div class="fact"><span class="k">Company</span><span class="v">Ruggable</span></div>
+      <div class="fact"><span class="k">Platform</span><span class="v">Web</span></div>
+      <div class="fact"><span class="k">Status</span><span class="v"><span class="accent">●</span> Shipped · 2024</span></div>
+    </div>
+  </div>
+
+  <!-- Hero banner: Designable landing page, desktop + mobile -->
+  <div class="cs-banner cs-banner-dz" data-lightbox-group="dz-lp">
+    <img src="assets/fig/designable/desktop-lp.png" alt="Designable landing page — desktop" class="banner-desktop zoomable" />
+    <img src="assets/fig/designable/mobile-lp.png" alt="Designable landing page — mobile" class="banner-mobile zoomable" />
+  </div>
+
+  <!-- Headline metrics from '24 EOY review -->
+  <div class="cs-impact">
+    <div class="stat">
+      <span class="num">14<span class="unit">%</span></span>
+      <span class="label">Conversion rate<br>on Designable sessions</span>
+    </div>
+    <div class="stat">
+      <span class="num">&gt;<span class="unit">Quiz</span></span>
+      <span class="label">Beats the existing<br>Rug Quiz</span>
+    </div>
+    <div class="stat muted">
+      <span class="num">3<span class="unit">x</span></span>
+      <span class="label">Production versions<br>shipped to date</span>
+    </div>
+    <div class="stat muted">
+      <span class="num">2024<span class="unit"></span></span>
+      <span class="label">Launched without<br>full marketing push</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── BODY ─────────── -->
+<section class="shell" style="padding-bottom:120px">
+  <div class="cs-body">
+
+    <!-- Sticky TOC -->
+    <aside class="cs-toc">
+      <div class="toc-label">In this case</div>
+      <a href="#problem"     data-toc="problem"><span class="toc-num">01</span>The problem</a>
+      <a href="#chatbot"     data-toc="chatbot"><span class="toc-num">02</span>The chatbot premise</a>
+      <a href="#pivot"       data-toc="pivot"><span class="toc-num">03</span>The form pivot</a>
+      <a href="#page"        data-toc="page"><span class="toc-num">04</span>Out of the widget</a>
+      <a href="#iterations"  data-toc="iterations"><span class="toc-num">05</span>The cuts</a>
+      <a href="#shipped"     data-toc="shipped"><span class="toc-num">06</span>What shipped</a>
+      <a href="#reflection"  data-toc="reflection"><span class="toc-num">07</span>Reflection</a>
+    </aside>
+
+    <!-- Content -->
+    <div class="cs-content">
+
+      <!-- 01 PROBLEM -->
+      <article class="cs-section" id="problem">
+        <span class="num">01 · The problem</span>
+        <h2>Choosing a rug is <em>a confidence problem.</em></h2>
+        <p class="body">
+          Ruggable customers buy a rug they're going to see every day. The rug isn't the
+          decision, the room is. "Will this work in my space" is the question they actually
+          want answered, and the existing Rug Quiz wasn't getting them there. People completed
+          it, got a list back, then bounced to PDPs and second-guessed their way out of the
+          purchase.
+        </p>
+        <p class="body">
+          The PM team framed it directly in the project brief: customers want to feel confident
+          they made the right choice on something they'll see every day. The product needed to
+          do what the catalog couldn't. Read the room (literally), narrow the field, and hand
+          back a small set of picks the customer believed in.
+        </p>
+
+        <div class="callout">
+          <span class="label">What we wanted but didn't ship</span>
+          <div class="content">
+            Rendering the recommended rug into the customer's uploaded photo. The team was clear
+            we'd pursue it eventually; it would close the visual loop and answer "will it look
+            right" directly. Budget, timeline, and the conversion case to justify the build
+            weren't there for this round, so the visualization stayed in the backlog and we
+            shipped without it.
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 THE CHATBOT PREMISE -->
+      <article class="cs-section" id="chatbot">
+        <span class="num">02 · The chatbot premise</span>
+        <h2>The team's first instinct was <em>chat.</em></h2>
+        <p class="body">
+          The initial framing came in as: "friendly interior designer in a chat window."
+          Recognizable shape, low cognitive cost, conversational. Open the box, type a
+          question, get advice back. Generative AI was good enough by mid-2023 to make the
+          premise plausible and a chatbot UI didn't need a new mental model.
+        </p>
+
+        <figure class="cs-figure">
+          <div class="dz-panel-figure">
+            <div class="dz-panel">
+              <img src="assets/fig/designable/chatbot-open.png" alt="Chatbot panel, open state" class="zoomable" />
+            </div>
+          </div>
+          <figcaption>
+            <span class="fig-text">The chatbot panel, open. A "designer in a chat window" framing: free-form prompt, conversational back-and-forth.</span>
+          </figcaption>
+        </figure>
+
+        <p class="body">
+          Working through ideation, I built a few low-fi flows for the
+          chatbot version. Each one ran into the same problem: the conversation didn't
+          actually shorten the path to a recommendation. People didn't know what to type, the
+          model didn't know what to ask back, and the back-and-forth was stretching out a
+          decision the customer wanted to land on quickly. A chat window is a good shape for
+          exploration. It's a bad shape for a five-minute purchase.
+        </p>
+      </article>
+
+      <!-- 03 THE PIVOT -->
+      <article class="cs-section" id="pivot">
+        <span class="num">03 · The form pivot</span>
+        <h2>Trade the chat for <em>structured inputs.</em></h2>
+        <p class="body">
+          The pivot, after a couple of ideation rounds, was treating the interaction as a
+          structured form with AI behind the curtain, not a free-form chat with AI as the
+          partner. The first form had a photo upload, a tag list of style and color options,
+          and an open text box for whatever the customer wanted to add. The model still did the
+          heavy lifting on reading the room, matching aesthetic, and narrowing the catalog. It
+          just stopped asking the customer to drive.
+        </p>
+
+        <figure class="cs-figure">
+          <div class="dz-panel-figure">
+            <div class="dz-panel">
+              <img src="assets/fig/designable/chatbot-form.png" alt="Form variant of the panel, structured inputs" class="zoomable" />
+            </div>
+          </div>
+          <figcaption>
+            <span class="fig-text">The form variant of the panel. Structured inputs and a photo upload replaced the chat window.</span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- 04 OUT OF THE WIDGET -->
+      <article class="cs-section" id="page">
+        <span class="num">04 · Out of the widget</span>
+        <h2>Off the launcher. <em>Onto its own page.</em></h2>
+        <p class="body">
+          Before the next round of cuts, Designable moved out of a launcher panel docked to
+          other pages and onto its own dedicated URL. Up to that point, customers reached the
+          tool by clicking a launcher on the landing page or a PDP, and the experience always
+          lived inside a panel attached to whatever page was underneath it. Putting it on its
+          own page changed what the tool could do.
+        </p>
+        <p class="body">
+          The biggest unlock was sharing. With a real URL, a customer could send a friend a
+          link to the tool, or a link to their results for a second opinion. It also gave the
+          experience room to design for itself instead of around the page below it. Full-bleed
+          upload state, generous results layout, and a retry button that didn't feel cramped.
+        </p>
+      </article>
+
+      <!-- 05 THE CUTS (was iterations) -->
+      <article class="cs-section" id="iterations">
+        <span class="num">05 · The cuts</span>
+        <h2>Each version <em>removed something.</em></h2>
+        <p class="body">
+          The form pivot wasn't the end of the story. It was the start. Across three production
+          versions, the consistent direction was: cut more, ask less, trust the model with the
+          photo and let it work. The version that shipped is barely a form at all. Each round,
+          we found that what we thought was helpful structure was actually noise the model
+          didn't need and the customer didn't want to fill out.
+        </p>
+
+        <ol class="iter-list">
+          <li>
+            <span class="v">v1 · MVP</span>
+            <div>
+              <div class="what">The widget. The most stuff.</div>
+              <div class="why">A launcher panel with three inputs: photo upload, a tag list of style and color options, and an optional description text box for the customer's ideal room. Internal release first, then live. The point was to get real usage data, not to ship every idea on the whiteboard. Real usage proved the most-stuff version was the most fragile.</div>
+            </div>
+          </li>
+          <li>
+            <span class="v">v2 · Cut the text. Tags became opt-in.</span>
+            <div>
+              <div class="what">Drop the text box. Move tags to a second screen.</div>
+              <div class="why">Early data and user testing flagged the freeform text box as the noisiest input. People didn't know what to type, and what they typed pulled the model in directions the catalog couldn't follow. We pulled the text out, used the move to a dedicated page to give the upload more room, and turned tags into an optional second step (the customer hits "Add tags" if they want to nudge the result; otherwise the photo runs as-is). Results split into <em>Your Matches</em> and <em>You May Also Like</em>.</div>
+            </div>
+          </li>
+          <li>
+            <span class="v">v3 · Cut the form</span>
+            <div>
+              <div class="what">Just the photo. Plus a retry button.</div>
+              <div class="why">The tags went next. Testing kept showing customers who skipped the optional tags got recommendations roughly as good as customers who used them, and the act of asking was costing more attention than the inputs were earning. We cut everything except the photo upload, added a retry button so the customer could roll for a fresh set of picks on the same image, and let the model do the rest. Eng upgraded the model alongside (Will Congbalay leading, Thomas Huynh on iteration), and the landing page got "how it works" image previews so customers knew what to expect from a one-step experience.</div>
+            </div>
+          </li>
+        </ol>
+
+        <figure class="cs-figure">
+          <div class="dz-versions" data-lightbox-group="dz-versions">
+            <div class="dz-version">
+              <div class="dz-version-label">v1 · MVP (widget)</div>
+              <img src="assets/fig/designable/v1.png" alt="Designable v1 — launcher panel with photo, tag list, and optional description" class="zoomable" />
+            </div>
+            <div class="dz-version">
+              <div class="dz-version-label">v2 · Tags became opt-in</div>
+              <img src="assets/fig/designable/v2-tags-removed-addtags.png" alt="Designable v2 — tags moved to an opt-in second screen with categorized tabs" class="zoomable" />
+            </div>
+            <div class="dz-version">
+              <div class="dz-version-label">v3 · Just the photo</div>
+              <img src="assets/fig/designable/v3.png" alt="Designable v3 — photo upload only" class="zoomable" />
+            </div>
+          </div>
+          <figcaption>
+            <span class="fig-text">Three production versions, side by side. Each one cut something the previous version asked the customer to fill out.</span>
+          </figcaption>
+        </figure>
+
+        <h3>How we knew to keep cutting</h3>
+        <p class="body">
+          Heap analytics told us where customers were dropping off. To understand why, I set up
+          two rounds of usertesting.com studies alongside the quantitative data, with focused
+          questions for each phase:
+        </p>
+        <ul class="cs-list">
+          <li><strong>v1 study.</strong> Do users trust the rugs the AI recommends? Have participants run the tool a few times to gauge satisfaction across runs, and gather open feedback on the design.</li>
+          <li><strong>v2 study.</strong> Evaluate the impact of the v2 updates specifically (the AI's description copy and the recommended rug presentation). Measure satisfaction with the recommendations, and gather feedback to inform v3.</li>
+        </ul>
+
+        <div class="callout">
+          <span class="label">Feedback summary</span>
+          <div class="content">
+            I wrote up the qualitative themes from each study in a separate doc on our shared
+            drive. I'm pulling that doc back to fold specific quotes and the "what users said"
+            patterns into this writeup when I have access.
+          </div>
+        </div>
+      </article>
+
+      <!-- 06 WHAT SHIPPED -->
+      <article class="cs-section" id="shipped">
+        <span class="num">06 · What shipped</span>
+        <h2>Upload a photo. <em>Retry for more.</em></h2>
+        <p class="body">
+          The shipped experience is one screen. Drop a photo of your room. Wait a few seconds
+          while the model reads the space and matches against the catalog. Get a curated set of
+          rug picks with direct links to the PDPs. If the picks aren't right, hit retry, and
+          the same photo runs again for a fresh set.
+        </p>
+
+        <figure class="cs-figure">
+          <div class="dz-mobile-strip" data-lightbox-group="dz-shipped-mobile">
+            <div class="dz-phone">
+              <img src="assets/fig/designable/mobile-lp.png" alt="Designable shipped — upload state" class="zoomable" />
+              <span class="dz-cap">01 · Upload</span>
+            </div>
+            <div class="dz-phone">
+              <img src="assets/fig/designable/mobile-uploading.png" alt="Designable shipped — processing state" class="zoomable" />
+              <span class="dz-cap">02 · Processing</span>
+            </div>
+            <div class="dz-phone">
+              <img src="assets/fig/designable/mobile-results.png" alt="Designable shipped — results" class="zoomable" />
+              <span class="dz-cap">03 · Results</span>
+            </div>
+            <div class="dz-phone">
+              <img src="assets/fig/designable/mobile-results-expanded.png" alt="Designable shipped — expanded view of a pick with retry and upload-new options" class="zoomable" />
+              <span class="dz-cap">04 · Expanded</span>
+            </div>
+          </div>
+
+          <figcaption>
+            <span class="fig-text">Four beats, top to bottom. Upload, wait, results, expand any pick. The expanded view is where retry and "upload a new image" live: same photo for a fresh set, or swap photos to start over.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="cs-figure">
+          <img src="assets/fig/designable/desktop-expand-view.png" alt="Designable — expanded detail view on desktop" class="zoomable" data-lightbox-group="dz-expand" style="width:100%;border:1px solid var(--rule);border-radius:8px;display:block" />
+          <figcaption>
+            <span class="fig-text">Same flow, desktop. Expanded detail view of a recommended rug: full rug imagery, attribution back to the PDP, and a direct path to buy.</span>
+          </figcaption>
+        </figure>
+
+        <p class="body">
+          The retry button earned its place specifically. AI recommendations are
+          non-deterministic; the same photo runs return slightly different picks each time.
+          Earlier versions tried to hide that with caching and consistency tricks. v3 leaned
+          into it. Retry isn't an error recovery, it's the feature: each click is a fresh angle
+          on the same room.
+        </p>
+
+        <h3>What's under the hood</h3>
+        <p class="body">
+          My job was the experience, not the engineering, but the system constrained the UX in
+          ways worth naming. Eng (Will Congbalay leading, Thomas Huynh on iteration and bug
+          fixes) wired the flow to OpenAI's vision model for reading the uploaded photo,
+          GPT-3.5 Turbo for processing prompts, and Shopify Semantic Search for matching
+          against the live catalog. Heap captured the interaction events for later analysis.
+        </p>
+
+        <div class="stack-row">
+          <span class="pill">OpenAI · Vision</span>
+          <span class="pill">GPT-3.5 Turbo</span>
+          <span class="pill">Shopify Semantic Search</span>
+          <span class="pill">Contentful (prompt store)</span>
+          <span class="pill">Heap (analytics)</span>
+          <span class="pill">Vercel</span>
+        </div>
+      </article>
+
+      <!-- 07 REFLECTION -->
+      <article class="cs-section" id="reflection">
+        <span class="num">07 · Reflection</span>
+        <h2>What designing AI taught me.</h2>
+
+        <div class="reflect-grid">
+          <div class="reflect-card">
+            <div class="reflect-label">What worked</div>
+            <h4>Each version removed something.</h4>
+            <p>The instinct was to add: more inputs, more options, more guidance. The data kept telling us the opposite. v2 cut the text box. v3 cut the rest. The design got better as the form got smaller. The shipped version is barely a form at all, and that's the whole point.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What I'd change</div>
+            <h4>Trust the model sooner.</h4>
+            <p>The selectors stayed in v1 and v2 because we wanted to give the customer agency over the result. The data showed customers either skipped the selectors or got slightly worse recommendations when they used them. If I'd run the "just the photo" cut earlier, we'd have shipped the right version sooner.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">Open question</div>
+            <h4>Where does AI sit on the site?</h4>
+            <p>Designable is its own surface today. The next question is whether the same intelligence belongs inside the PDP, the PLP, or wherever a customer is stuck. Embedding the recommender into existing flows is a bigger UX problem than building it standalone.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What's next</div>
+            <h4>14% says it works. Now scale it.</h4>
+            <p>Designable sessions hit a 14% conversion rate and outperformed both the Rug Quiz and non-Designable sessions, with the marketing push still ahead of it. The next question is reach: how do we get more of the audience into the tool, and where else does the same intelligence belong (PDP, PLP, post-purchase). The hard part was always going to be the result. We have it.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEXT — loops back to PDP Drawer -->
+<section class="next-cs shell">
+  <div class="next-grid">
+    <div>
+      <div class="next-label">Next case study</div>
+      <div class="next-num">Ruggable · 2024 · PDP</div>
+      <h2>PDP Drawer. <em>Picking a size shouldn't feel like guessing.</em></h2>
+      <p class="next-deck">
+        Moved size and system selection into a right-side drawer to clear above-the-fold
+        clutter and open room for richer guidance. A/B-validated on Flatwoven and Tufted
+        desktop, then expanded across the catalog.
+      </p>
+      <a href="case-pdp-drawer.html" class="btn btn-primary">Read PDP Drawer <span class="arrow">→</span></a>
+    </div>
+    <a href="case-pdp-drawer.html" class="next-card case-tile-pdp">
+      <img src="assets/fig/pdp-tile.png" alt="PDP Drawer — text-only versus illustrated size selector" class="pdp-tile-img" />
+      <div class="next-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+{% include "footer.html" %}
+
+{% include "case-scripts.html" %}
+
+</body>
+</html>

@@ -1,0 +1,576 @@
+---
+currentNav: Work
+permalink: /case-e-news.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>E! News — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<link rel="stylesheet" href="styles/case-study.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   E! News — page-specific accents
+   ───────────────────────────────────────────────────────────── */
+
+/* Hero banner: edge-to-edge front-door composite */
+.cs-banner.cs-banner-enews {
+  aspect-ratio: auto;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+}
+.cs-banner-enews img {
+  display: block;
+  width: 100%; height: auto;
+}
+
+/* Web glossies — stacked column of three */
+.web-stack {
+  display: flex; flex-direction: column; gap: 32px;
+  margin: 32px 0;
+}
+.web-stack figure { margin: 0; }
+.web-stack img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--rule); border-radius: 6px;
+  box-shadow: 0 14px 28px -14px rgba(26,24,20,0.18);
+}
+.web-stack .cap {
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+
+/* Phone widget grid — 4 columns of phone-aspect screens, height-normalized */
+.phone-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin: 32px 0;
+}
+.phone-grid figure { margin: 0; }
+.phone-grid img {
+  display: block; width: 100%;
+  aspect-ratio: 9/16;
+  object-fit: cover;
+  object-position: top center;
+  border: 1px solid var(--rule); border-radius: 8px;
+  background: var(--paper-2);
+}
+.phone-grid .cap {
+  margin-top: 10px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3); text-align: center;
+}
+@media (max-width: 900px) {
+  .phone-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 480px) {
+  .phone-grid { grid-template-columns: 1fr; max-width: 320px; margin: 32px auto; }
+}
+
+/* Phone grid — 2 columns variant for taller mocks */
+.phone-grid-2 {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 32px 0;
+  max-width: 720px;
+}
+.phone-grid-2 figure { margin: 0; }
+.phone-grid-2 img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--rule); border-radius: 8px;
+}
+.phone-grid-2 .cap {
+  margin-top: 10px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3); text-align: center;
+}
+@media (max-width: 600px) {
+  .phone-grid-2 { grid-template-columns: 1fr; max-width: 320px; }
+}
+
+/* Tall section figures — full screen scrolls */
+.tall-figs {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin: 32px 0;
+  align-items: start;
+}
+.tall-figs figure {
+  margin: 0;
+  max-height: 560px;
+  overflow: hidden;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  position: relative;
+  background: var(--paper-2);
+  cursor: zoom-in;
+}
+.tall-figs figure::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 80px;
+  background: linear-gradient(180deg, transparent, var(--paper-2));
+  pointer-events: none;
+}
+.tall-figs img {
+  display: block; width: 100%; height: auto;
+  border: 0; border-radius: 0;
+}
+.tall-figs .cap {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3); text-align: center;
+}
+@media (max-width: 700px) {
+  .tall-figs { grid-template-columns: 1fr; }
+  .tall-figs figure { max-height: 480px; }
+}
+
+/* Video grids — YouTube embeds for animated interactions */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin: 32px 0;
+}
+.video-grid figure { margin: 0; }
+.video-grid .video-frame {
+  position: relative;
+  aspect-ratio: 4/3;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+.video-grid .video-frame iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+.video-grid .cap {
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+@media (max-width: 700px) {
+  .video-grid { grid-template-columns: 1fr; }
+}
+
+/* Single video figure (one-up) */
+.video-single {
+  margin: 32px 0;
+  max-width: 640px;
+}
+.video-single .video-frame {
+  position: relative;
+  aspect-ratio: 4/3;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #000;
+}
+.video-single .video-frame iframe {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  border: 0;
+}
+.video-single .cap {
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+</style>
+</head>
+<body>
+
+<!-- reading progress bar -->
+<div class="read-progress"><div class="bar"></div></div>
+
+{% include "lightbox.html" %}
+
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="cs-hero shell" data-screen-label="Case · E! News · Hero">
+  <div class="cs-hero-meta">
+    <span class="crumb"><a href="/">Work</a> / E! News</span>
+  </div>
+
+  <div class="cs-hero-grid">
+    <div>
+      <h1>Pop culture, <em>personalized.</em></h1>
+      <p class="deck">
+        E! News got a full rebrand across desktop, mobile web, and a brand-new iOS app. Same
+        editorial voice, three surfaces tuned to how people actually consumed pop culture in 2018.
+        The app shipped Emmy-nominated.
+      </p>
+    </div>
+
+    <div class="cs-facts">
+      <div class="fact"><span class="k">Role</span><span class="v">Digital Product Designer</span></div>
+      <div class="fact"><span class="k">Company</span><span class="v">NBCUniversal · E!</span></div>
+      <div class="fact"><span class="k">Platform</span><span class="v">Web · iOS · Android</span></div>
+      <div class="fact"><span class="k">Status</span><span class="v"><span class="accent">●</span> Shipped · 2018 · Emmy nom</span></div>
+    </div>
+  </div>
+
+  <!-- Hero banner: front-door composite -->
+  <div class="cs-banner cs-banner-enews">
+    <img src="assets/fig/enews/banner-frontdoor.png" alt="E! News rebrand · multi-platform front door" />
+  </div>
+</section>
+
+<!-- ─────────── BODY ─────────── -->
+<section class="shell" style="padding-bottom:120px">
+  <div class="cs-body">
+
+    <!-- Sticky TOC -->
+    <aside class="cs-toc">
+      <div class="toc-label">In this case</div>
+      <a href="#product"   data-toc="product"><span class="toc-num">01</span>The product</a>
+      <a href="#web"       data-toc="web"><span class="toc-num">02</span>Web rebrand</a>
+      <a href="#front-door" data-toc="front-door"><span class="toc-num">03</span>iOS · Front door</a>
+      <a href="#sections"  data-toc="sections"><span class="toc-num">04</span>iOS · Sections</a>
+      <a href="#motion"    data-toc="motion"><span class="toc-num">05</span>Animated interactions</a>
+    </aside>
+
+    <!-- Content -->
+    <div class="cs-content">
+
+      <!-- 01 PRODUCT -->
+      <article class="cs-section" id="product">
+        <span class="num">01 · The product</span>
+        <h2>One brand, <em>three surfaces.</em></h2>
+        <p class="body">
+          E! News covered red carpet, celebrity, and breaking pop culture for an audience that
+          checked in many times a day. The rebrand spanned eonline.com (desktop and responsive
+          mobile web) and a new iOS app, with the goal of keeping the editorial pace high while
+          pulling everything onto a unified visual system.
+        </p>
+        <p class="body">
+          The app was the bigger lift. We built it widget-first: a library of front-door modules
+          that editors could compose into the home feed each day, with each widget designed for a
+          specific kind of content (top stories, breaking news, video features, photo galleries,
+          live red carpet coverage).
+        </p>
+      </article>
+
+      <!-- 02 WEB REBRAND -->
+      <article class="cs-section" id="web">
+        <span class="num">02 · Web rebrand</span>
+        <h2>Desktop and mobile web, <em>same system.</em></h2>
+        <p class="body">
+          A responsive rebrand of eonline.com. The visual system, type scale, and content modules
+          worked from desktop down to mobile without being re-thought per breakpoint. Editorial
+          pace was the constraint: the site had to handle 100+ stories a day without feeling like
+          a wall of cards.
+        </p>
+
+        <div class="web-stack" data-lightbox-group="web">
+          <figure>
+            <img src="assets/fig/enews/web-1.jpg" alt="E! News responsive web · home feed" class="zoomable" />
+            <div class="cap">01 · Home feed</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/web-2.jpg" alt="E! News responsive web · category page" class="zoomable" />
+            <div class="cap">02 · Category page</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/web-3.jpg" alt="E! News responsive web · article detail" class="zoomable" />
+            <div class="cap">03 · Article detail</div>
+          </figure>
+        </div>
+      </article>
+
+      <!-- 03 iOS · FRONT DOOR -->
+      <article class="cs-section" id="front-door">
+        <span class="num">03 · iOS · Front door</span>
+        <h2>Front door <em>built from widgets.</em></h2>
+        <p class="body">
+          The home feed was assembled, not designed. I drew up a library of front-door widgets,
+          each tuned for a specific kind of editorial moment, and editors arranged them in order
+          for the day's mix. New content shapes (a Live 360 red carpet, a featured video, a fresh
+          breaking story) had a widget waiting for them.
+        </p>
+
+        <div class="phone-grid" data-lightbox-group="widgets">
+          <figure>
+            <img src="assets/fig/enews/widget-top4.png" alt="Front-door widget · Top 4 stories of the day" class="zoomable" />
+            <div class="cap">Top 4</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/widget-featured-story.png" alt="Front-door widget · Breaking / featured story" class="zoomable" />
+            <div class="cap">Breaking news</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/widget-large-teaser.jpg" alt="Front-door widget · Large teaser" class="zoomable" />
+            <div class="cap">Large teaser</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/widget-double-teaser.jpg" alt="Front-door widget · Double teaser" class="zoomable" />
+            <div class="cap">Double teaser</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/widget-featured-video.jpg" alt="Front-door widget · Featured video" class="zoomable" />
+            <div class="cap">Featured video</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/widget-content-grid.jpg" alt="Front-door widget · Content grid" class="zoomable" />
+            <div class="cap">Content grid</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/widget-live-360.png" alt="Front-door widget · E! Live 360 red carpet" class="zoomable" />
+            <div class="cap">E! Live 360</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/widget-ad-banners.png" alt="Front-door widget · Ad banners" class="zoomable" />
+            <div class="cap">Ad banners</div>
+          </figure>
+        </div>
+
+        <div class="callout">
+          <span class="label">Composable, not fixed</span>
+          <div class="content">
+            Treating the front door as a library of widgets meant the home feed could change
+            shape every day without engineering pulling new layouts. The same handful of widgets
+            covered breaking news, the slow-news days, red carpet weekends, and award seasons.
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 iOS · SECTIONS -->
+      <article class="cs-section" id="sections">
+        <span class="num">04 · iOS · Sections</span>
+        <h2>Beyond the front door.</h2>
+        <p class="body">
+          Past the home feed, the app split into focused sections. My News let users pick the
+          topics and shows they cared about, with the feed re-sorting around their picks. Photo
+          galleries handled article-attached photo sets with their own reading flow. Article
+          detail had its own swipe and share patterns, all designed to keep editorial pace high
+          without fighting the iOS gestures users already knew.
+        </p>
+
+        <h3>My News + other sections</h3>
+        <p class="body">
+          My News opens with a category picker on first use, then surfaces stories from those
+          topics first on subsequent visits. Shows and More are sibling sections with their own
+          content shape.
+        </p>
+        <div class="phone-grid" data-lightbox-group="sections">
+          <figure>
+            <img src="assets/fig/enews/section-mynews-fue.png" alt="My News · first-use category selection" class="zoomable" />
+            <div class="cap">My News · FUE</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/section-mynews.png" alt="My News · personalized feed" class="zoomable" />
+            <div class="cap">My News · feed</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/section-shows.png" alt="Shows landing" class="zoomable" />
+            <div class="cap">Shows</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/section-more.png" alt="More section landing" class="zoomable" />
+            <div class="cap">More</div>
+          </figure>
+        </div>
+
+        <h3>Photo galleries · in-app reading flow</h3>
+        <p class="body">
+          The app had its own gallery flow for the deeper article-attached photo sets. The
+          Arrivals Gallery on the web was a sibling to this, tuned for live red carpet rather
+          than archived editorial.
+        </p>
+        <div class="phone-grid" data-lightbox-group="gallery">
+          <figure>
+            <img src="assets/fig/enews/gallery-1.png" alt="In-app photo gallery · entry" class="zoomable" />
+            <div class="cap">01 · Entry</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/gallery-2.png" alt="In-app photo gallery · scroll state" class="zoomable" />
+            <div class="cap">02 · Scrolling</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/gallery-3.png" alt="In-app photo gallery · selection" class="zoomable" />
+            <div class="cap">03 · Selection</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/gallery-4.png" alt="In-app photo gallery · detail view with caption" class="zoomable" />
+            <div class="cap">04 · Detail view</div>
+          </figure>
+        </div>
+
+        <div class="video-single">
+          <div class="video-frame">
+            <button class="lite-yt" data-id="RXYSTsvI6Hs" aria-label="Play: Photo gallery interaction"
+              style="background-image:url(https://img.youtube.com/vi/RXYSTsvI6Hs/hqdefault.jpg)">
+              <svg class="lite-yt-play" viewBox="0 0 80 80" aria-hidden="true">
+                <circle cx="40" cy="40" r="38" fill="var(--paper)" opacity="0.95"/>
+                <path d="M32 24 L58 40 L32 56 Z" fill="var(--ink)"/>
+              </svg>
+            </button>
+          </div>
+          <div class="cap">Gallery interaction · in motion</div>
+        </div>
+
+        <h3>Article detail · the deeper read</h3>
+        <p class="body">
+          Each article had its own detail view: swipe between articles, content-aware layout for
+          photos and pull quotes, and a sharing pattern designed to feel native rather than
+          bolted on.
+        </p>
+        <div class="video-grid">
+          <figure>
+            <div class="video-frame">
+              <button class="lite-yt" data-id="oU1arePhcNg" aria-label="Play: Article swiping"
+                style="background-image:url(https://img.youtube.com/vi/oU1arePhcNg/hqdefault.jpg)">
+                <svg class="lite-yt-play" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r="38" fill="var(--paper)" opacity="0.95"/>
+                  <path d="M32 24 L58 40 L32 56 Z" fill="var(--ink)"/>
+                </svg>
+              </button>
+            </div>
+            <div class="cap">Article swiping</div>
+          </figure>
+          <figure>
+            <div class="video-frame">
+              <button class="lite-yt" data-id="lPBn_xHHKGc" aria-label="Play: Sharing options"
+                style="background-image:url(https://img.youtube.com/vi/lPBn_xHHKGc/hqdefault.jpg)">
+                <svg class="lite-yt-play" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r="38" fill="var(--paper)" opacity="0.95"/>
+                  <path d="M32 24 L58 40 L32 56 Z" fill="var(--ink)"/>
+                </svg>
+              </button>
+            </div>
+            <div class="cap">Sharing options</div>
+          </figure>
+          <figure>
+            <div class="video-frame">
+              <button class="lite-yt" data-id="N_YoZRAUuGM" aria-label="Play: Article scroll through"
+                style="background-image:url(https://img.youtube.com/vi/N_YoZRAUuGM/hqdefault.jpg)">
+                <svg class="lite-yt-play" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r="38" fill="var(--paper)" opacity="0.95"/>
+                  <path d="M32 24 L58 40 L32 56 Z" fill="var(--ink)"/>
+                </svg>
+              </button>
+            </div>
+            <div class="cap">Article scroll through</div>
+          </figure>
+        </div>
+
+        <p class="body">
+          For reference, the full article detail page and the full front door home feed both
+          have long-scroll views. Click either to expand.
+        </p>
+        <div class="tall-figs" data-lightbox-group="tall">
+          <figure>
+            <img src="assets/fig/enews/article-detail-full.png" alt="Article detail page · full long-scroll view" class="zoomable" loading="lazy" />
+            <div class="cap">Article detail · full view</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/enews/front-door-full.png" alt="Front door · full home feed long-scroll" class="zoomable" loading="lazy" />
+            <div class="cap">Front door · full home feed</div>
+          </figure>
+        </div>
+      </article>
+
+      <!-- 05 ANIMATED INTERACTIONS -->
+      <article class="cs-section" id="motion">
+        <span class="num">05 · Animated interactions</span>
+        <h2>Built in motion, <em>not just in pixels.</em></h2>
+        <p class="body">
+          Every interaction was prototyped end-to-end before engineering touched it. The
+          prototype was the spec. These four captures cover the splash, the front-door scroll,
+          and two My News reading patterns.
+        </p>
+
+        <div class="video-grid">
+          <figure>
+            <div class="video-frame">
+              <button class="lite-yt" data-id="wUkKCbXUxSE" aria-label="Play: E! News splash screen"
+                style="background-image:url(https://img.youtube.com/vi/wUkKCbXUxSE/hqdefault.jpg)">
+                <svg class="lite-yt-play" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r="38" fill="var(--paper)" opacity="0.95"/>
+                  <path d="M32 24 L58 40 L32 56 Z" fill="var(--ink)"/>
+                </svg>
+              </button>
+            </div>
+            <div class="cap">Splash screen</div>
+          </figure>
+          <figure>
+            <div class="video-frame">
+              <button class="lite-yt" data-id="wdfdQcXZWbk" aria-label="Play: E! News app front door"
+                style="background-image:url(https://img.youtube.com/vi/wdfdQcXZWbk/hqdefault.jpg)">
+                <svg class="lite-yt-play" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r="38" fill="var(--paper)" opacity="0.95"/>
+                  <path d="M32 24 L58 40 L32 56 Z" fill="var(--ink)"/>
+                </svg>
+              </button>
+            </div>
+            <div class="cap">Front door</div>
+          </figure>
+          <figure>
+            <div class="video-frame">
+              <button class="lite-yt" data-id="Y_b4F88eTTU" aria-label="Play: My News article scrolling"
+                style="background-image:url(https://img.youtube.com/vi/Y_b4F88eTTU/hqdefault.jpg)">
+                <svg class="lite-yt-play" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r="38" fill="var(--paper)" opacity="0.95"/>
+                  <path d="M32 24 L58 40 L32 56 Z" fill="var(--ink)"/>
+                </svg>
+              </button>
+            </div>
+            <div class="cap">My News · article scrolling</div>
+          </figure>
+          <figure>
+            <div class="video-frame">
+              <button class="lite-yt" data-id="vZdWA-n1KkA" aria-label="Play: My News article select"
+                style="background-image:url(https://img.youtube.com/vi/vZdWA-n1KkA/hqdefault.jpg)">
+                <svg class="lite-yt-play" viewBox="0 0 80 80" aria-hidden="true">
+                  <circle cx="40" cy="40" r="38" fill="var(--paper)" opacity="0.95"/>
+                  <path d="M32 24 L58 40 L32 56 Z" fill="var(--ink)"/>
+                </svg>
+              </button>
+            </div>
+            <div class="cap">My News · article select</div>
+          </figure>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── NEXT CASE STUDY ─────────── -->
+<section class="next-cs shell">
+  <div class="next-grid">
+    <div>
+      <div class="next-label">Next case study</div>
+      <div class="next-num">NBCU · 2018 · Emmy nom</div>
+      <h2>E! Live 360. Red carpet, <em>in real time.</em></h2>
+      <p class="next-deck">
+        The Arrivals Gallery: a live red carpet photo gallery prototype that shipped on
+        eonline.com in 2018 and is still running today.
+      </p>
+      <a href="case-e-live-360.html" class="btn btn-primary">Read E! Live 360 <span class="arrow">→</span></a>
+    </div>
+    <a href="case-e-live-360.html" class="next-card tex-emmy dark">
+      <div class="nt-labels">
+        <div class="nt-meta">NBCU · 2018 · Emmy nom</div>
+        <div class="nt-title">E! Live 360. Red carpet, in real time.</div>
+      </div>
+      <div class="next-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+{% include "footer.html" %}
+
+{% include "case-scripts.html" %}
+
+</body>
+</html>

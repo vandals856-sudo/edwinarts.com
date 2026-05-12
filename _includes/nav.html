@@ -1,0 +1,18 @@
+<input type="checkbox" id="nav-toggle" class="nav-toggle">
+<label for="nav-toggle" class="nav-overlay" aria-hidden="true"></label>
+<nav class="nav">
+  <div class="shell row nav-inner">
+    <a href="/" class="nav-mark">
+      <img src="/assets/erod-logo.svg" alt="" />
+      <span>Edwin Rodriguez<span class="dot">.</span></span>
+    </a>
+    <label for="nav-toggle" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+    <script>document.addEventListener('DOMContentLoaded',()=>{document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('nav-toggle').checked=false}))});</script>
+    <ul class="nav-links">
+      <li><a href="/#work" {% if currentNav == "Work" %}class="active"{% endif %}>Work</a></li>
+      <li><a href="/About.html" {% if currentNav == "About" %}class="active"{% endif %}>About</a></li>
+      <li><a href="/Resume.html" {% if currentNav == "Resume" %}class="active"{% endif %}>Resume</a></li>
+      <li><a href="/Contact.html" {% if currentNav == "Contact" %}class="active"{% endif %}>Contact</a></li>
+    </ul>
+  </div>
+</nav>

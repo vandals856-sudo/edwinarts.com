@@ -1,0 +1,1097 @@
+---
+currentNav: Work
+permalink: /index.html
+---
+<!DOCTYPE html><html lang="en"><head>
+
+
+<meta charset="UTF-8">
+<title>Edwin Rodriguez — Senior UX Designer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<style>
+/* page-specific layout */
+.hero { padding-block: 80px 100px; }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.hero-eyebrow { margin-bottom: 28px; }
+.hero h1 {
+  font-size: clamp(50px, 5.5vw, 95px);
+  margin-bottom: 36px;
+}
+.hero h1 em { font-style: italic; color: var(--accent); }
+.hero-support {
+  max-width: 460px;
+  color: var(--ink-2);
+  margin-bottom: 40px;
+}
+.hero-cta { display: flex; gap: 14px; align-items: center; }
+
+/* Designable hero placeholder card */
+.designable-card {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #2a2520 0%, #1a1814 100%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.04) inset,
+    0 30px 60px -20px rgba(26,24,20,0.4),
+    0 14px 28px -10px rgba(26,24,20,0.25);
+}
+.designable-card::before {
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 80% at 30% 20%, rgba(196,71,28,0.18) 0%, transparent 50%),
+    radial-gradient(80% 60% at 80% 80%, rgba(232,201,163,0.12) 0%, transparent 50%);
+}
+.designable-frame {
+  position: absolute;
+  inset: 32px;
+  background: var(--paper);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.designable-bar {
+  padding: 12px 16px;
+  display: flex; gap: 6px; align-items: center;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-2);
+}
+.designable-bar .d { width: 9px; height: 9px; border-radius: 50%; background: var(--rule); }
+.designable-bar .label {
+  margin-left: auto;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+  color: var(--ink-3); text-transform: uppercase;
+}
+.designable-room {
+  flex: 1;
+  background:
+    linear-gradient(180deg, #d8c9b0 0%, #c9b89a 60%, #a89876 100%);
+  position: relative;
+  overflow: hidden;
+}
+.designable-rug {
+  position: absolute;
+  left: 50%; bottom: 18%;
+  transform: translateX(-50%) perspective(800px) rotateX(58deg);
+  width: 70%; aspect-ratio: 5/3;
+  background:
+    linear-gradient(135deg, #c4471c 0%, #a83a16 50%, #7c2a0f 100%);
+  border-radius: 4px;
+  box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+  background-size: 8px 8px, 100% 100%;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(255,255,255,0.05) 0 4px, transparent 4px 8px),
+    linear-gradient(135deg, #c4471c 0%, #a83a16 50%, #7c2a0f 100%);
+  animation: rug-pulse 4s ease-in-out infinite;
+}
+@keyframes rug-pulse {
+  0%, 100% { filter: hue-rotate(0deg) brightness(1); }
+  50%      { filter: hue-rotate(-8deg) brightness(1.05); }
+}
+.designable-prompt {
+  padding: 14px 16px;
+  border-top: 1px solid var(--rule);
+  display: flex; align-items: center; gap: 12px;
+  background: var(--paper);
+}
+.designable-prompt .ai {
+  width: 22px; height: 22px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent) 0%, #f0a875 100%);
+  flex: 0 0 auto;
+  position: relative;
+}
+.designable-prompt .ai::after {
+  content: ""; position: absolute; inset: 5px;
+  border-radius: 50%; background: var(--paper);
+  animation: ai-spin 3s linear infinite;
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+@keyframes ai-spin { to { transform: rotate(360deg); } }
+.designable-prompt .text {
+  font-family: var(--mono); font-size: 11px; color: var(--ink-2);
+  white-space: nowrap; overflow: hidden;
+}
+.designable-prompt .text .typing {
+  border-right: 1.5px solid var(--accent);
+  animation: blink 0.9s steps(2) infinite;
+}
+@keyframes blink { 50% { border-color: transparent; } }
+
+.designable-tag {
+  position: absolute;
+  bottom: -12px; right: 24px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex; gap: 8px; align-items: center;
+}
+.designable-tag .live {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--accent);
+}
+.designable-caption {
+  position: absolute;
+  top: 28px; left: -8px;
+  transform: rotate(-90deg);
+  transform-origin: left bottom;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3);
+  white-space: nowrap;
+}
+
+/* Selected Work */
+.selected-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 32px;
+  margin-bottom: 64px;
+}
+.selected-header h2 { max-width: 720px; }
+.selected-header h2 em { font-style: italic; color: var(--accent); }
+
+.selected-list {
+  display: flex; flex-direction: column;
+}
+.work-row {
+  display: grid;
+  grid-template-columns: 1fr 1.55fr;
+  gap: 56px;
+  padding: 56px 0;
+  border-top: 1px solid var(--rule);
+  align-items: center;
+}
+.work-row:last-child { border-bottom: 1px solid var(--rule); }
+.work-row .num {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.18em;
+  color: var(--ink-3); align-self: start; padding-top: 12px;
+}
+.work-row h3 { margin-bottom: 20px; }
+.work-row .lede { color: var(--ink-2); margin-bottom: 28px; max-width: 460px; }
+.work-row .meta-line {
+  display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px;
+}
+.work-row .read-link {
+  display: inline-flex; gap: 10px; align-items: center;
+  font-family: var(--sans); font-size: 14px; font-weight: 500;
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 4px;
+  transition: gap .2s var(--ease);
+}
+.work-row .read-link:hover { gap: 16px; }
+
+/* tile variants — vary the visual treatment */
+.tile-product {
+  aspect-ratio: 4/3;
+  background: linear-gradient(180deg, #f4f0e8 0%, #e2dac6 100%);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.tile-product .device {
+  position: absolute;
+  inset: 32px 32px 0;
+  background: var(--paper);
+  border-radius: 12px 12px 0 0;
+  border: 1px solid var(--rule);
+  border-bottom: none;
+  padding: 14px 18px;
+  font-family: var(--mono); font-size: 10px; color: var(--ink-3);
+  display: flex; flex-direction: column; gap: 10px;
+}
+.tile-product .device .browser-bar {
+  display: flex; gap: 4px; padding-bottom: 10px; border-bottom: 1px solid var(--rule);
+}
+.tile-product .device .browser-bar span {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--rule);
+}
+.tile-product .ot-step {
+  display: flex; gap: 12px; align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--rule);
+}
+.tile-product .ot-step:last-child { border: none; }
+.tile-product .ot-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  flex: 0 0 auto;
+  position: relative;
+}
+.tile-product .ot-dot.done { background: var(--accent); }
+.tile-product .ot-dot.done::after {
+  content: ""; position: absolute; inset: 3px;
+  border-radius: 50%; background: var(--paper);
+}
+.tile-product .ot-text { color: var(--ink); font-size: 11px; flex: 1; }
+.tile-product .ot-text .small { color: var(--ink-3); font-size: 9px; margin-top: 2px; }
+
+/* Process tile (Designable) — diagrammatic, not a screenshot */
+.tile-process {
+  aspect-ratio: 4/3;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  padding: 32px;
+}
+.tile-process .label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(244,240,232,0.5);
+  margin-bottom: 18px;
+}
+.tile-process .nodes {
+  display: flex; gap: 8px; align-items: center; margin-bottom: 24px;
+}
+.tile-process .node {
+  padding: 8px 14px;
+  border: 1px solid rgba(244,240,232,0.25);
+  border-radius: 6px;
+  font-family: var(--mono); font-size: 11px;
+  white-space: nowrap;
+}
+.tile-process .node.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
+}
+.tile-process .arrow { color: rgba(244,240,232,0.4); font-size: 14px; }
+.tile-process .ai-blob {
+  margin-top: 8px;
+  display: flex; gap: 12px; flex-wrap: wrap;
+}
+.tile-process .blob {
+  padding: 10px 14px; border-radius: 8px;
+  background: rgba(244,240,232,0.06);
+  border: 1px solid rgba(244,240,232,0.12);
+  font-family: var(--serif); font-style: italic;
+  font-size: 14px;
+}
+.tile-process .outcome {
+  position: absolute; bottom: 28px; left: 32px; right: 32px;
+  display: flex; justify-content: space-between; align-items: end;
+  padding-top: 16px; border-top: 1px solid rgba(244,240,232,0.15);
+}
+.tile-process .outcome .big {
+  font-family: var(--serif);
+  font-size: 56px; line-height: 1;
+  color: var(--paper);
+  letter-spacing: -0.03em;
+}
+.tile-process .outcome .small {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(244,240,232,0.6);
+  text-align: right; max-width: 140px; line-height: 1.4;
+}
+
+/* Working-moment tile (PDP) — illustrative + before/after */
+.tile-illust {
+  aspect-ratio: 4/3;
+  background: var(--paper-2);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.tile-illust .half {
+  padding: 28px;
+  display: flex; flex-direction: column; gap: 14px;
+  position: relative;
+}
+.tile-illust .half + .half { border-left: 1px solid var(--rule); background: var(--paper); }
+.tile-illust .half-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.tile-illust .rug-stack {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: 10px;
+  background: var(--paper-3);
+  border-radius: 6px;
+  font-family: var(--mono); font-size: 10px; color: var(--ink-2);
+}
+.tile-illust .rug-line {
+  display: flex; justify-content: space-between; padding: 4px 6px;
+  border-bottom: 1px dashed var(--rule);
+}
+.tile-illust .rug-line:last-child { border: none; }
+.tile-illust .rug-illustrated {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+  margin-top: 4px;
+}
+.tile-illust .rug-card {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  position: relative;
+}
+.tile-illust .rug-card.s1 { background: linear-gradient(135deg, #d8c4a0, #b8a17e); }
+.tile-illust .rug-card.s2 { background: linear-gradient(135deg, #c4471c, #8a3214); }
+.tile-illust .rug-card.s3 { background: linear-gradient(135deg, #2d4a3e, #1a2e26); }
+.tile-illust .rug-card .sz {
+  position: absolute; bottom: 4px; left: 4px;
+  font-family: var(--mono); font-size: 8px; color: var(--paper);
+  background: rgba(0,0,0,0.4); padding: 2px 4px; border-radius: 2px;
+}
+.tile-illust .conv-bar {
+  margin-top: auto;
+  display: flex; align-items: end; gap: 4px; height: 40px;
+}
+.tile-illust .conv-bar .b {
+  flex: 1; background: var(--accent); border-radius: 2px 2px 0 0;
+}
+
+/* Career row */
+.career-row {
+  background: var(--paper-2);
+  padding: 56px var(--gutter);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.career-inner {
+  display: flex; align-items: center; justify-content: center;
+  max-width: 1440px; margin: 0 auto;
+}
+.career-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+.career-list .logo { display: inline-flex; align-items: center; line-height: 1; }
+.career-list .logo img { display: block; width: auto; }
+.career-list .logo-ruggable img { height: 30px; }
+.career-list .logo-agency  img { height: 44px; }
+.career-list .logo-enews   img { height: 36px; }
+.career-list .logo-ea      img { height: 28px; }
+.career-list .logo-mtv     img { height: 38px; }
+.career-list .logo-kfpw    img { height: 46px; }
+.career-list .sep {
+  color: var(--accent);
+  margin: 0 28px;
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1;
+}
+
+/* All Work grid */
+.allwork-header {
+  display: grid; grid-template-columns: 1fr auto;
+  align-items: end; gap: 32px;
+  margin-bottom: 56px;
+}
+.filter-bar { display: flex; gap: 4px; align-items: center; }
+.filter-bar button {
+  background: transparent; border: 1px solid var(--rule);
+  padding: 8px 14px; border-radius: 999px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+  color: var(--ink-2); cursor: pointer;
+  transition: all .2s var(--ease);
+}
+.filter-bar button:hover { border-color: var(--ink); color: var(--ink); }
+.filter-bar button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+.grid-9 {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: minmax(180px, auto);
+  gap: 14px;
+}
+.grid-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--paper-3);
+  color: var(--ink);
+  text-decoration: none;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 18px;
+  min-height: 180px;
+  transition: transform .35s var(--ease);
+  isolation: isolate;
+}
+.grid-tile::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--bg, var(--paper-3));
+  z-index: -1;
+  transition: transform .6s var(--ease);
+}
+.grid-tile .gt-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform .6s var(--ease);
+}
+.grid-tile:hover .gt-img { transform: scale(1.04); }
+.grid-tile:hover { transform: translateY(-3px); }
+.grid-tile:hover::before { transform: scale(1.04); }
+.grid-tile .gt-meta {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ink-3);
+  margin-bottom: 6px;
+}
+.grid-tile .gt-title {
+  font-family: var(--serif); font-size: 26px; line-height: 1.05;
+  letter-spacing: -0.015em;
+}
+.grid-tile.dark { color: var(--paper); }
+.grid-tile.dark .gt-meta { color: rgba(244,240,232,0.65); }
+.grid-tile.dark .gt-title { color: var(--paper); }
+
+.grid-tile.span-3 { grid-column: span 3; }
+.grid-tile.span-2 { grid-column: span 2; }
+.grid-tile.row-2 { grid-row: span 2; }
+
+/* placeholder texture for grid tiles */
+.tex-brandlp   { --bg: linear-gradient(135deg, #2a2520 0%, #1a1814 100%); }
+.tex-system    { --bg: linear-gradient(135deg, #1a2845 0%, #0d1525 100%); }
+.tex-grounded  { --bg: linear-gradient(135deg, #4a5c3a 0%, #2c3623 100%); }
+.tex-sitemap   { --bg: linear-gradient(135deg, #e8dfd0 0%, #c9bfa8 100%); }
+.tex-filters   { --bg: linear-gradient(135deg, #c4471c 0%, #8a3214 100%); }
+.tex-agency    { --bg: linear-gradient(135deg, #1a1814 0%, #0a0805 100%); }
+.tex-enews     { --bg: linear-gradient(135deg, #d4574a 0%, #8a2d24 100%); }
+.tex-emmy      { --bg: linear-gradient(135deg, #2c3a52 0%, #1a2540 100%); }
+.tex-ikon      { --bg: linear-gradient(135deg, #d8c9b0 0%, #a89876 100%); }
+.tex-skit      { --bg: linear-gradient(135deg, #3a3528 0%, #1f1c14 100%); }
+
+/* Tile decorations — small glyph-like elements that hint at each project */
+.grid-tile .gt-glyph {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.grid-tile .gt-meta, .grid-tile .gt-title { position: relative; z-index: 1; }
+
+/* Brand LP — three photo bands (Marvel · Star Wars · Morris) */
+.glyph-brandlp {
+  position: absolute; inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  z-index: 0;
+}
+.glyph-brandlp .blp-band {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-right: 1px solid rgba(0,0,0,0.18);
+}
+.glyph-brandlp .blp-band:last-child { border-right: none; }
+.glyph-brandlp .blp-band.starwars {
+  background-image: url('assets/fig/brandlp-starwars.jpg');
+}
+.glyph-brandlp .blp-band.marvel {
+  background-image: url('assets/fig/brandlp-marvel.jpg');
+}
+.glyph-brandlp .blp-band.morris {
+  background-image: url('assets/fig/brandlp-morris.jpg');
+}
+/* Bottom gradient so the title and meta stay readable over photos */
+.tex-brandlp::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 55%;
+  background: linear-gradient(180deg,
+    rgba(26,24,20,0) 0%,
+    rgba(26,24,20,0.55) 60%,
+    rgba(26,24,20,0.85) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Atomic system — dot grid */
+.glyph-system {
+  background-image: radial-gradient(circle, rgba(60,50,35,0.35) 1.5px, transparent 1.6px);
+  background-size: 24px 24px;
+  background-position: right 24px center;
+  width: 280px; left: auto; right: 0;
+  mask-image: linear-gradient(90deg, transparent 0%, black 30%);
+}
+
+/* Grounded — net worth chart line */
+.glyph-grounded {
+  position: absolute; bottom: 28px; left: 28px; right: 28px; height: 36%;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.glyph-grounded svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* Sitemap — node tree dots */
+.glyph-sitemap {
+  position: absolute; right: 20px; top: 20px;
+  width: 160px; height: 90px;
+}
+.glyph-sitemap svg { width: 100%; height: 100%; }
+
+/* Visual Filters — chip row (anchored top-right, smaller so they don't fight the title) */
+.grid-tile .gt-glyph.glyph-filters {
+  position: absolute;
+  inset: 18px 18px auto auto;     /* top-right corner only */
+  display: flex; gap: 4px;
+  align-items: flex-start;
+  pointer-events: none;
+  width: auto; height: auto;
+}
+.glyph-filters .chip {
+  padding: 3px 7px; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.35);
+  font-family: var(--mono); font-size: 8.5px; letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.85); text-transform: uppercase;
+  line-height: 1.4;
+  height: auto;
+  flex: 0 0 auto;
+}
+.glyph-filters .chip.active { background: rgba(255,255,255,0.92); color: #c4471c; border-color: transparent; }
+
+/* Agency — table rows */
+.glyph-agency {
+  position: absolute; right: 24px; top: 24px; bottom: 24px; width: 240px;
+  display: flex; flex-direction: column; gap: 6px; justify-content: center;
+}
+.glyph-agency .row {
+  height: 14px; background: rgba(60,50,35,0.12); border-radius: 2px;
+  display: flex; align-items: center; padding: 0 10px;
+}
+.glyph-agency .row::before {
+  content: ""; width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(60,50,35,0.4); margin-right: 8px;
+}
+
+/* E! News — news ticker (anchored top-right corner, away from the bottom meta+title) */
+.grid-tile .gt-glyph.glyph-enews {
+  position: absolute;
+  inset: 18px 18px auto auto;
+  display: flex; gap: 8px; align-items: center;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em;
+  color: rgba(244,240,232,0.7); text-transform: uppercase;
+  white-space: nowrap;
+  width: auto; height: auto;
+  pointer-events: none;
+}
+.glyph-enews .live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: #ff3b30; flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(255,59,48,0.7);
+}
+
+/* Live 360 — concentric arc (clipped to tile) */
+.glyph-live360 {
+  position: absolute; right: -40px; top: 50%; transform: translateY(-50%);
+  width: 180px; height: 180px;
+  border: 1px solid rgba(244,240,232,0.22); border-radius: 50%;
+}
+.glyph-live360::before, .glyph-live360::after {
+  content: ""; position: absolute; border-radius: 50%;
+  border: 1px solid rgba(244,240,232,0.14);
+}
+.glyph-live360::before { inset: 22px; }
+.glyph-live360::after  { inset: 44px; border-color: rgba(244,240,232,0.28); }
+
+/* IKON — angular brackets */
+.glyph-ikon {
+  position: absolute; right: 32px; top: 50%; transform: translateY(-50%);
+  font-family: var(--mono); font-size: 88px; line-height: 1;
+  color: rgba(180,160,255,0.18); letter-spacing: -0.05em; font-weight: 300;
+}
+
+/* Skit! — playful shapes */
+.glyph-skit {
+  position: absolute; right: 24px; top: 24px;
+  display: flex; gap: 8px;
+}
+.glyph-skit .shape {
+  width: 24px; height: 24px;
+  background: rgba(244,240,232,0.2);
+}
+.glyph-skit .shape.s1 { border-radius: 50%; background: rgba(255,200,80,0.5); }
+.glyph-skit .shape.s2 { transform: rotate(45deg); background: rgba(80,200,255,0.5); }
+.glyph-skit .shape.s3 { border-radius: 4px; background: rgba(255,120,180,0.5); }
+
+/* About preview */
+.about-preview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: var(--section-y) 0;
+}
+.about-photo {
+  aspect-ratio: 4/5;
+  background: #1a1814 url('assets/fig/about-photo.jpg') center/cover no-repeat;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.about-text h3 { margin-bottom: 28px; }
+.about-text .lede { margin-bottom: 32px; max-width: 480px; }
+.about-text .signoff {
+  display: inline-flex; gap: 10px; align-items: center;
+  font-size: 14px; color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 4px;
+  transition: gap .2s var(--ease);
+}
+.about-text .signoff:hover { gap: 16px; }
+
+@media (max-width: 900px) {
+  .hero-grid, .about-preview { grid-template-columns: 1fr; gap: 40px; }
+  .work-row { grid-template-columns: 1fr; gap: 24px; }
+  .grid-9 { grid-template-columns: repeat(2, 1fr); }
+  .grid-tile.span-3, .grid-tile.span-2 { grid-column: span 2; }
+  .selected-header { gap: 18px; }
+  .career-list .sep { margin: 0 14px; }
+}
+@media (max-width: 600px) {
+  .grid-9 { grid-template-columns: 1fr; }
+  .grid-tile.span-3, .grid-tile.span-2 { grid-column: span 1; }
+  .career-list .sep { margin: 0 10px; }
+  .hero-cta { flex-direction: column; align-items: stretch; }
+  .hero-cta .btn { justify-content: center; }
+  .about-preview { gap: 32px; }
+}
+
+/* ─────────── HERO FEATURE (Figma-faithful) ─────────── */
+.hero-feature {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 680/765;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow:
+    0 20px 60px -20px rgba(26,24,20,0.18),
+    0 6px 16px -8px rgba(26,24,20,0.10);
+}
+.hero-feature-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: var(--paper-2);
+}
+.hero-feature-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+.hero-feature-tag {
+  position: absolute; left: 20px; bottom: 20px;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--paper); padding: 8px 14px; border-radius: 999px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink);
+  box-shadow: 0 4px 12px rgba(26,24,20,0.10);
+}
+.hero-feature-tag .live {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  animation: pulseLive 2s ease-in-out infinite;
+}
+@keyframes pulseLive { 0%,100%{opacity:1} 50%{opacity:0.45} }
+
+/* ─────────── CASE STUDY TILES (artwork side) ─────────── */
+.case-tile {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 892/600;
+  background: var(--paper-2);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+
+/* Order Tracker — desktop screenshot with mobile widget overlay */
+.case-tile-ot { background: var(--paper); padding: 0; }
+.case-tile-ot .ot-desktop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  transform: scale(1.4);
+  transform-origin: top left;
+  transition: transform .6s var(--ease);
+}
+.case-tile-ot .ot-mobile {
+  position: absolute;
+  top: 44px;
+  right: 36px;
+  width: 30%;
+  max-width: 260px;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid var(--rule);
+  box-shadow:
+    0 28px 56px -18px rgba(26, 24, 20, 0.35),
+    0 10px 20px -8px rgba(26, 24, 20, 0.18);
+  transform: scale(1.02);
+  transform-origin: center 25%;
+  transition: transform .6s var(--ease), box-shadow .6s var(--ease);
+}
+.case-tile-ot:hover .ot-desktop { transform: scale(1); }
+.case-tile-ot:hover .ot-mobile {
+  transform: scale(0.9) translate(36px, -28px) rotate(-3deg);
+  box-shadow:
+    0 40px 72px -16px rgba(26, 24, 20, 0.42),
+    0 16px 28px -10px rgba(26, 24, 20, 0.22);
+}
+
+/* Designable — staggered 3-screen tile */
+.case-tile-designable {
+  background: linear-gradient(135deg, var(--paper-2) 0%, var(--paper-3) 100%);
+  padding: 40px 36px 36px;
+  display: flex; flex-direction: column;
+}
+.dsg-flow {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  z-index: 5;
+  margin-bottom: 28px;
+}
+.dsg-step {
+  flex: 0 0 152px;
+  position: relative;
+  padding-left: 36px;
+}
+.dsg-step .dsg-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink-3);
+  background: var(--paper);
+}
+.dsg-connector {
+  flex: 1 1 auto;
+  height: 0;
+  margin-top: 9px;
+  border-top: 1.5px dashed var(--ink-3);
+  position: relative;
+}
+.dsg-connector::after {
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 6px solid var(--ink-3);
+}
+.dsg-step .dsg-num {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em;
+  color: var(--ink); margin-bottom: 6px; font-weight: 500;
+}
+.dsg-step .dsg-label {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em;
+  color: var(--ink-2); line-height: 1.5;
+}
+.dsg-stage {
+  position: relative;
+  flex: 1;
+  width: 100%;
+}
+.dsg-screen {
+  position: absolute;
+  border-radius: 6px;
+  overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.4) inset,
+    0 22px 44px -14px rgba(26,24,20,0.22),
+    0 8px 16px -6px rgba(26,24,20,0.12);
+  transition: transform 0.4s cubic-bezier(.2,.7,.3,1);
+}
+.dsg-screen img { display: block; width: 100%; height: auto; }
+.dsg-screen-1 { width: 42%; top: 4%; left: -2%; transform: rotate(-3deg); z-index: 1; }
+.dsg-screen-2 { width: 42%; top: 30%; left: 29%; z-index: 2; }
+.dsg-screen-3 { width: 52%; top: 12%; right: -2%; transform: rotate(3deg); z-index: 3; }
+.case-tile-designable .dsg-screen { transition: transform .7s var(--ease); }
+.case-tile-designable:hover .dsg-screen-1 { transform: rotate(-7deg) translate(-30px, -14px); }
+.case-tile-designable:hover .dsg-screen-2 { transform: translateY(-16px); }
+.case-tile-designable:hover .dsg-screen-3 { transform: rotate(7deg) translate(30px, -14px); }
+
+/* PDP — single edge-to-edge before/after image */
+.case-tile-pdp { background: var(--paper-2); padding: 0; }
+.case-tile-pdp .pdp-tile-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+</style>
+</head>
+<body data-cc-id="cc-1" style="cursor: crosshair;">
+
+<!-- ─────────── NAV ─────────── -->
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="hero shell">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow hero-eyebrow">Senior UX Designer · 10+ yrs</div>
+      <h1 style="font-weight: 500">Designing software people actually <em>want</em> to use.</h1>
+      <p class="lede hero-support">
+        Turning ambiguous problems into clear, shipped product experiences.
+      </p>
+      <div class="hero-cta">
+        <a href="#work" class="btn btn-primary">See Selected Work <span class="arrow">→</span></a>
+        <a href="Resume.html" class="btn btn-ghost">Download Resume</a>
+      </div>
+    </div>
+
+    <!-- Featured hero image: Order Tracker desktop view -->
+    <div class="hero-feature">
+      <img src="assets/fig/order-tracker-hero.png" alt="Order Tracker — desktop out-for-delivery view" class="hero-feature-img" />
+    </div>
+
+    <!-- Designable hero card -->
+    <div style="position:relative;display:none">
+      <div class="designable-caption">Live preview · Designable</div>
+      <div class="designable-card">
+        <div class="designable-frame">
+          <div class="designable-bar">
+            <span class="d"></span><span class="d"></span><span class="d"></span>
+            <span class="label">designable.ruggable.com</span>
+          </div>
+          <div class="designable-room">
+            <div class="designable-rug"></div>
+          </div>
+          <div class="designable-prompt">
+            <div class="ai"></div>
+            <div class="text">generating · terracotta moroccan, 8×10<span class="typing">&nbsp;</span></div>
+          </div>
+        </div>
+        <div class="designable-tag"><span class="live"></span>AI Tool · 14% CVR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule shell">
+
+<!-- ─────────── SELECTED WORK ─────────── -->
+<section class="section shell" id="work">
+  <div class="selected-header" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;margin-bottom:64px">
+    <h2 data-cc-id="cc-4" style="margin:0;line-height:1.05">Selected Work</h2>
+    <p style="font-family:var(--sans);font-size:16px;color:var(--ink);margin:0">3 case studies focused on impact and outcomes.</p>
+  </div>
+
+  <div class="selected-list">
+
+    <!-- 01 · Order Tracker — product shot tile -->
+    <article class="work-row" style="order:1">
+      <div>
+        <div class="eyebrow" style="margin-bottom:14px;white-space:pre-line">Ruggable · 2025
+Service · Order Experience</div>
+        <h3>Order Tracker, redesigned around real customer needs</h3>
+        <p class="lede">Replaced a fragmented, email-based experience with a clear, real-time tracking flow.</p>
+        <div style="display:flex;gap:48px;align-items:baseline;margin-bottom:32px">
+          <div>
+            <span class="metric-num">28<span class="metric-pct">%</span><span class="arrow-down">↓</span></span>
+            <div class="metric-label">WISMO tickets</div>
+          </div>
+          <div>
+            <span class="metric-num" style="color:var(--ink)">100<span class="metric-pct">%</span><span class="arrow-down">↓</span></span>
+            <div class="metric-label">post-ship inquiries</div>
+          </div>
+        </div>
+        <a href="case-order-tracker.html" class="read-link">Read case study <span class="arrow">→</span></a>
+      </div>
+      <div class="case-tile case-tile-ot">
+        <img src="assets/fig/ot-tile-desktop.png" alt="Order Tracker — desktop tracking view" class="ot-desktop" />
+        <img src="assets/fig/ot-tile-mobile.png" alt="Order Tracker — mobile shipped widget" class="ot-mobile" />
+      </div>
+    </article>
+
+    <!-- 02 · Designable — staggered AI tile -->
+    <article class="work-row" style="order:3">
+      <div>
+        <div class="eyebrow" style="margin-bottom:14px;white-space:pre-line">Ruggable · 2024
+AI · Product Recommendations</div>
+        <h3>Designable, an AI tool that recommends rugs based on your space</h3>
+        <p class="lede">Started as a chatbot, then a form. Shipped as a single photo upload. Customers drop a picture of their room and get a curated set of rug picks back in seconds. Retry for a fresh take on the same image.</p>
+        <div style="display:flex;gap:48px;align-items:baseline;margin-bottom:32px">
+          <div>
+            <span class="metric-num">14<span class="metric-pct">%</span></span>
+            <div class="metric-label">CVR · beats Rug Quiz</div>
+          </div>
+        </div>
+        <a href="case-designable.html" class="read-link">Read case study <span class="arrow">→</span></a>
+      </div>
+      <div class="case-tile case-tile-designable">
+        <div class="dsg-flow">
+          <div class="dsg-step"><div class="dsg-icon"></div><div class="dsg-num">01 Upload</div><div class="dsg-label">Upload a photo of your space.</div></div>
+          <div class="dsg-connector"></div>
+          <div class="dsg-step"><div class="dsg-icon"></div><div class="dsg-num">02 Analyze</div><div class="dsg-label">Our AI analyzes your space, style and preferences.</div></div>
+          <div class="dsg-connector"></div>
+          <div class="dsg-step"><div class="dsg-icon"></div><div class="dsg-num">03 Results</div><div class="dsg-label">Get personalized rug recommendations.</div></div>
+        </div>
+        <div class="dsg-stage">
+          <div class="dsg-screen dsg-screen-1"><img src="assets/fig/designable-screen-1.png" alt="" /></div>
+          <div class="dsg-screen dsg-screen-2"><img src="assets/fig/designable-screen-2.png" alt="" /></div>
+          <div class="dsg-screen dsg-screen-3"><img src="assets/fig/designable-screen-3.png" alt="" /></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 03 · PDP Drawer — before/after tile -->
+    <article class="work-row" style="order:2">
+      <div>
+        <div class="eyebrow" style="margin-bottom:14px;white-space:pre-line">Ruggable · 2024
+PDP · Size Selection</div>
+        <h3 style="font-weight: 400">PDP Drawer, picking a size shouldn't feel like guessing</h3>
+        <p class="lede">Moved size and system selection into a right-side drawer to clear above-the-fold clutter and open room for richer guidance. Shipped on Flatwoven and Tufted desktop in August 2024, then expanded across the catalog.</p>
+        <div style="display:flex;gap:48px;align-items:baseline;margin-bottom:32px">
+          <div>
+            <span class="metric-num">+9<span class="metric-pct">%</span></span>
+            <div class="metric-label">desktop CVR YoY</div>
+          </div>
+          <div>
+            <span class="metric-num" style="color:var(--ink)">+8<span class="metric-pct">%</span></span>
+            <div class="metric-label">add-to-cart YoY</div>
+          </div>
+        </div>
+        <a href="case-pdp-drawer.html" class="read-link">Read case study <span class="arrow">→</span></a>
+      </div>
+      <div class="case-tile case-tile-pdp">
+        <img src="assets/fig/pdp-tile.png" alt="PDP Drawer — text-only versus illustrated size selector" class="pdp-tile-img" />
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ─────────── CAREER ROW ─────────── -->
+<section class="career-row">
+  <div class="career-inner">
+    <div class="career-list">
+      <span class="logo logo-ruggable"><img src="assets/fig/ruggable.svg" alt="Ruggable" /></span>
+      <span class="sep">·</span>
+      <span class="logo logo-agency"><img src="assets/fig/the-agency.svg" alt="The Agency" /></span>
+      <span class="sep">·</span>
+      <span class="logo logo-enews"><img src="assets/fig/enews.svg" alt="E! News" /></span>
+      <span class="sep">·</span>
+      <span class="logo logo-ea"><img src="assets/fig/ea-games.svg" alt="Electronic Arts" /></span>
+      <span class="sep">·</span>
+      <span class="logo logo-mtv"><img src="assets/fig/mtv.svg" alt="MTV" /></span>
+      <span class="sep">·</span>
+      <span class="logo logo-kfpw"><img src="assets/fig/kfpw.svg" alt="Kung Fu Panda World" /></span>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── ALL WORK ─────────── -->
+<section class="section shell" id="all">
+  <div class="allwork-header" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;margin-bottom:64px">
+    <div class="eyebrow">Work Index</div>
+    <h2 style="margin:0;line-height:1.05">Ten projects, <em>scan everything.</em></h2>
+  </div>
+
+  <div class="grid-9">
+
+    <!-- Row 1 — 2 wide -->
+    <a href="#" class="grid-tile span-3 tex-brandlp dark">
+      <img src="assets/fig/brandLP_tile.png" alt="" class="gt-img" />
+      <div class="gt-meta">Ruggable · 2022</div>
+      <div class="gt-title">Brand LP Framework</div>
+    </a>
+    <a href="#" class="grid-tile span-3 tex-system dark">
+      <div class="gt-meta">Systems · 2021–25</div>
+      <div class="gt-title">Atomic Design System. Built ground-up at Ruggable.</div>
+    </a>
+
+    <!-- Row 2 — 3 cards -->
+    <a href="case-grounded.html" class="grid-tile span-2 tex-grounded dark">
+      <div class="gt-meta">Self-Initiated · Design + Build · 2025–26</div>
+      <div class="gt-title">Grounded</div>
+    </a>
+    <a href="#" class="grid-tile span-2 tex-sitemap">
+      <div class="gt-meta">Internal Tool · Self-Initiated Scope</div>
+      <div class="gt-title">Visual Sitemap App</div>
+    </a>
+    <a href="#" class="grid-tile span-2 tex-filters dark">
+      <div class="gt-meta">Interaction · 2023</div>
+      <div class="gt-title">Visual Filters (PLP)</div>
+    </a>
+
+    <!-- Row 3 — 2 wide -->
+    <a href="case-the-agency.html" class="grid-tile span-3 tex-agency dark">
+      <div class="gt-meta">Salesforce · The Agency · 2018</div>
+      <div class="gt-title">The Agency CRM. Less of an eyesore.</div>
+    </a>
+    <a href="case-e-news.html" class="grid-tile span-3 tex-enews dark">
+      <div class="gt-meta">Multi-platform · 2018</div>
+      <div class="gt-title">E! News. Pop culture, personalized.</div>
+    </a>
+
+    <!-- Row 4 — 3 cards -->
+    <a href="case-e-live-360.html" class="grid-tile span-2 tex-emmy dark">
+      <div class="gt-meta">NBCU · 2018 · Emmy nom</div>
+      <div class="gt-title">E! Live 360. Red carpet, in real time.</div>
+    </a>
+    <a href="case-ikon.html" class="grid-tile span-2 tex-ikon">
+      <div class="gt-meta">Multi-platform · 2019</div>
+      <div class="gt-title">IKON. Alienware streamer platform.</div>
+    </a>
+    <a href="case-skit.html" class="grid-tile span-2 tex-skit dark">
+      <div class="gt-meta">Storytime · 2015</div>
+      <div class="gt-title">Skit! 2.0</div>
+    </a>
+  </div>
+
+  <div style="display:flex;justify-content:center;margin-top:48px">
+    <a href="index.html#work" class="btn btn-ghost">See All Work <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<!-- ─────────── ABOUT PREVIEW ─────────── -->
+<section class="shell" id="about">
+  <hr class="rule" style="margin:0">
+  <div class="about-preview">
+    <div class="about-photo"></div>
+    <div class="about-text">
+      <div class="eyebrow" style="margin-bottom:18px">About</div>
+      <h3>I'm a tinkerer. I like figuring things out, like a puzzle.</h3>
+      <p class="lede">
+        Born and raised in Southern California. Ten years in product design, most recently leading at Ruggable. Off the clock: video games, drawing, hanging out with my son, and building from directions. There's something honest about following the directions until the thing exists.
+      </p>
+      <a href="About.html" class="signoff">Read more about me <span>→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+{% include "footer.html" %}
+
+</body></html>

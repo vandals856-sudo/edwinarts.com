@@ -1,0 +1,502 @@
+---
+currentNav: Work
+permalink: /case-pdp-drawer.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PDP Drawer — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<link rel="stylesheet" href="styles/case-study.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   PDP Drawer — page-specific accents
+   ───────────────────────────────────────────────────────────── */
+
+/* Hero banner: full-bleed product visual (placeholder for now) */
+.cs-banner.cs-banner-pdp {
+  aspect-ratio: 16/9;
+  background: linear-gradient(180deg, #ebe5d7 0%, #d8c9b0 100%);
+  padding: 0;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Variants grid — clean vs. images for size, plus same for system */
+.variants-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 32px 0;
+}
+.variant {
+  padding: 20px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.variant.win { border-color: var(--accent); position: relative; }
+.variant.win::after {
+  content: "winner";
+  position: absolute; top: -10px; right: 14px;
+  background: var(--accent); color: var(--paper);
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 3px 9px; border-radius: 999px;
+}
+.variant .v-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.variant h4 {
+  font-family: var(--serif); font-size: 18px; line-height: 1.2;
+  letter-spacing: -0.01em; margin: 0;
+}
+.variant .desc { font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+
+/* Rug-type expansion grid */
+.rugtype-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  margin: 32px 0;
+}
+.rugtype {
+  padding: 16px 18px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.rugtype .name {
+  font-family: var(--serif); font-size: 17px;
+  line-height: 1.1; color: var(--ink); letter-spacing: -0.005em;
+}
+.rugtype .meta {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+@media (max-width: 800px) {
+  .rugtype-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Evolution list — the iterations after launch */
+.evo-list {
+  list-style: none; padding: 0; margin: 32px 0;
+  border-top: 1px solid var(--rule);
+}
+.evo-list li {
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid; grid-template-columns: 64px 1fr;
+  gap: 24px; align-items: baseline;
+}
+.evo-list .n {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.evo-list .what {
+  font-family: var(--serif); font-size: 20px; line-height: 1.3;
+  color: var(--ink); letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.evo-list .why {
+  font-size: 14px; line-height: 1.55; color: var(--ink-2);
+}
+@media (max-width: 600px) {
+  .evo-list li { grid-template-columns: 1fr; gap: 6px; }
+}
+</style>
+</head>
+<body>
+
+<div class="read-progress"><div class="bar"></div></div>
+
+{% include "lightbox.html" %}
+
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="cs-hero shell" data-screen-label="Case · PDP Drawer · Hero">
+  <div class="cs-hero-meta">
+    <span class="crumb"><a href="/">Work</a> / PDP Drawer</span>
+  </div>
+
+  <div class="cs-hero-grid">
+    <div>
+      <h1>Picking a size shouldn't feel like <em>guessing.</em></h1>
+      <p class="deck">
+        The Ruggable PDP was getting crowded above the fold: one size button plus four system
+        buttons, all competing for attention before customers had even started reading. We
+        hypothesized that moving size and system selection into a right-side drawer would reduce
+        the noise and open up real estate for richer guidance, images, and an embedded size
+        guide. The drawer won the desktop A/B test on Flatwoven and Tufted PDPs, then rolled out
+        across the rest of the catalog.
+      </p>
+    </div>
+
+    <div class="cs-facts">
+      <div class="fact"><span class="k">Role</span><span class="v">Principal UX Designer · Lead</span></div>
+      <div class="fact"><span class="k">Company</span><span class="v">Ruggable</span></div>
+      <div class="fact"><span class="k">Platform</span><span class="v">Web · Mobile web</span></div>
+      <div class="fact"><span class="k">Status</span><span class="v"><span class="accent">●</span> Shipped · Aug 2024</span></div>
+    </div>
+  </div>
+
+  <!-- Hero banner placeholder -->
+  <div class="cs-banner cs-banner-pdp">
+    <div class="placeholder-frame" style="aspect-ratio:auto;width:100%;height:100%;border:0;border-radius:0;">
+      <div class="ph-icon">▢ │ ▢</div>
+      <div class="ph-label">Placeholder · before/after PDP</div>
+      <div class="ph-desc">Drop the side-by-side hero comparison: original PDP (size + 4 system buttons inline) vs. drawer pattern (single size + system button, drawer revealed).</div>
+    </div>
+  </div>
+
+  <!-- Headline metrics from '24 EOY review (Flatwoven/Tufted post-rollout) -->
+  <div class="cs-impact">
+    <div class="stat">
+      <span class="num">+9<span class="unit">%</span></span>
+      <span class="label">Desktop CVR<br>(YoY, Flatwoven/Tufted)</span>
+    </div>
+    <div class="stat">
+      <span class="num">+8<span class="unit">%</span></span>
+      <span class="label">Desktop add-to-cart<br>(YoY, Flatwoven/Tufted)</span>
+    </div>
+    <div class="stat muted">
+      <span class="num">5<span class="unit">+</span></span>
+      <span class="label">Rug types<br>covered post-rollout</span>
+    </div>
+    <div class="stat muted">
+      <span class="num">Aug<span class="unit">'24</span></span>
+      <span class="label">Rollout<br>on production PDPs</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── BODY ─────────── -->
+<section class="shell" style="padding-bottom:120px">
+  <div class="cs-body">
+
+    <!-- Sticky TOC -->
+    <aside class="cs-toc">
+      <div class="toc-label">In this case</div>
+      <a href="#problem"   data-toc="problem"><span class="toc-num">01</span>The problem</a>
+      <a href="#drawer"    data-toc="drawer"><span class="toc-num">02</span>The drawer</a>
+      <a href="#variants"  data-toc="variants"><span class="toc-num">03</span>Variants</a>
+      <a href="#test"      data-toc="test"><span class="toc-num">04</span>Test &amp; result</a>
+      <a href="#expansion" data-toc="expansion"><span class="toc-num">05</span>Expansion</a>
+      <a href="#evolution" data-toc="evolution"><span class="toc-num">06</span>Evolving the drawer</a>
+      <a href="#reflection" data-toc="reflection"><span class="toc-num">07</span>Reflection</a>
+    </aside>
+
+    <!-- Content -->
+    <div class="cs-content">
+
+      <!-- 01 PROBLEM -->
+      <article class="cs-section" id="problem">
+        <span class="num">01 · The problem</span>
+        <h2>Too much choice, <em>too high up.</em></h2>
+        <p class="body">
+          On the existing PDP, the customer hit five decisions before they'd really started
+          shopping. Above the fold: one size button (a dropdown of dimensions) plus four system
+          buttons (the rug-pad combinations Ruggable sells). All five sat inline, all five had
+          equal weight, and all five had to be parsed before scrolling.
+        </p>
+        <p class="body">
+          The PM team had a hypothesis sitting in the backlog: by reducing the visible options
+          above the fold (one size button, one system button) and giving the rest of the
+          decision room to breathe in a side drawer, we could lift add-to-cart and conversion.
+          The drawer would also let us add what the inline pattern couldn't fit: images,
+          room-context guidance, and a real size guide.
+        </p>
+
+        <figure class="cs-figure">
+          <div class="placeholder-frame">
+            <div class="ph-icon">▢▢▢▢▢</div>
+            <div class="ph-label">Placeholder · original PDP above-the-fold</div>
+            <div class="ph-desc">Drop a screenshot of the original PDP showing the inline size dropdown plus the four system buttons competing for space.</div>
+          </div>
+          <figcaption>
+            <span class="fig-text">Five inline decisions stacked above the fold. Visually correct, cognitively heavy.</span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- 02 THE DRAWER -->
+      <article class="cs-section" id="drawer">
+        <span class="num">02 · The drawer</span>
+        <h2>One size button. <em>One system button.</em></h2>
+        <p class="body">
+          The pattern was simple on the surface: replace the inline controls with a single Size
+          button and a single System button. Tapping either opens a right-anchored drawer with
+          the full options inside, plus the room to do what the inline pattern couldn't:
+          illustrate sizes with images, surface a Size Guide, and explain system differences in
+          plain language instead of system codes.
+        </p>
+
+        <figure class="cs-figure">
+          <div class="placeholder-frame">
+            <div class="ph-icon">▢ ▶</div>
+            <div class="ph-label">Placeholder · drawer mechanic</div>
+            <div class="ph-desc">Drop a mockup or short animation of the drawer mechanic: button click, panel slides in from the right, options visible inside with images and copy.</div>
+          </div>
+          <figcaption>
+            <span class="fig-text">Same data, different envelope. The drawer kept the PDP quiet until the customer decided to engage with size or system.</span>
+          </figcaption>
+        </figure>
+
+        <div class="callout">
+          <span class="label">Hypothesis</span>
+          <div class="content">
+            By reducing visible options above the fold (1 size + 1 system instead of 1 size + 4
+            systems) and aiding the choice through images and additional space inside the
+            drawer, we'd see a measurable lift in add-to-cart and conversion.
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 VARIANTS -->
+      <article class="cs-section" id="variants">
+        <span class="num">03 · Variants</span>
+        <h2>Two ways to lay it out. <em>Both tested.</em></h2>
+        <p class="body">
+          We prototyped two versions of the drawer for both Size and System: a clean variant
+          showing options as labels and dimensions only, and an image variant pairing each
+          option with a visual. The PM team wanted clean evidence on which approach earned the
+          drawer real estate.
+        </p>
+
+        <h3>Size drawer</h3>
+        <div class="variants-grid">
+          <div class="variant">
+            <span class="v-label">Variant A · Clean</span>
+            <h4>Dimensions, listed.</h4>
+            <p class="desc">No images. Each size as a tappable row with dimension and use-case label. Lower visual cost, faster to scan.</p>
+            <div class="placeholder-frame" style="aspect-ratio:9/14;">
+              <div class="ph-label">Mockup · clean size drawer</div>
+            </div>
+          </div>
+          <div class="variant">
+            <span class="v-label">Variant B · Images</span>
+            <h4>Each size, illustrated.</h4>
+            <p class="desc">A visual paired with each option. More guidance for customers who couldn't translate dimensions on their own.</p>
+            <div class="placeholder-frame" style="aspect-ratio:9/14;">
+              <div class="ph-label">Mockup · image size drawer</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>System drawer</h3>
+        <div class="variants-grid">
+          <div class="variant">
+            <span class="v-label">Variant A · Clean</span>
+            <h4>Same options, just collapsed.</h4>
+            <p class="desc">Same four system options, surfaced from a single button. Removed inline clutter without changing the underlying choice.</p>
+            <div class="placeholder-frame" style="aspect-ratio:9/14;">
+              <div class="ph-label">Mockup · clean system drawer</div>
+            </div>
+          </div>
+          <div class="variant">
+            <span class="v-label">Variant B · Images</span>
+            <h4>Each system, illustrated.</h4>
+            <p class="desc">Visuals paired with each pad system to make the differences scannable at a glance.</p>
+            <div class="placeholder-frame" style="aspect-ratio:9/14;">
+              <div class="ph-label">Mockup · image system drawer</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>User testing alongside the A/B</h3>
+        <p class="body">
+          The A/B test would give us the lift. It wouldn't tell us why. To answer the "why" I set
+          up a usertesting.com study running in parallel, with three questions to answer:
+        </p>
+        <ul class="cs-list">
+          <li>Do users prefer the drawer layout over the current PDP design?</li>
+          <li>Does the extra space inside the drawer effectively showcase the chosen images and information?</li>
+          <li>Do the images inside the size and system drawers convey the intended message clearly?</li>
+        </ul>
+
+        <div class="callout">
+          <span class="label">Feedback summary</span>
+          <div class="content">
+            I summarized the qualitative themes from the usertesting.com sessions in a separate
+            doc that lived in our shared drive. I'm pulling that doc back to fold the specific
+            quotes and the "what users said" themes into this writeup when I have access.
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 TEST & RESULT -->
+      <article class="cs-section" id="test">
+        <span class="num">04 · Test &amp; result</span>
+        <h2>A drawer earned its place. <em>On desktop, first.</em></h2>
+        <p class="body">
+          The drawer pattern shipped to A/B on Flatwoven and Tufted PDPs across desktop and
+          mobile web. Desktop carried the lift cleanly. Mobile was directionally similar but
+          didn't reach the team's stat-sig threshold within the test window. The call: ship the
+          drawer on desktop for F/T, leave mobile in test, and keep watching the data.
+        </p>
+
+        <div class="callout">
+          <span class="label">Headline result · post-rollout YoY</span>
+          <div class="content">
+            Flatwoven and Tufted PDPs delivered a <strong>9% YoY lift in desktop conversion
+            rate</strong> and an <strong>8% YoY lift in desktop add-to-cart</strong> after the
+            drawer shipped in August 2024. Those numbers held over the measurement window and
+            were the basis for rolling the pattern out to the rest of the catalog.
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 EXPANSION -->
+      <article class="cs-section" id="expansion">
+        <span class="num">05 · Expansion</span>
+        <h2>Same drawer, <em>five more rug types.</em></h2>
+        <p class="body">
+          With the drawer working on Flatwoven and Tufted desktop, the next ticket asked for the
+          Size Drawer to roll out across the rest of the catalog. Different rug types carry
+          different size availability (Faux Hide, for instance, was rolling out a new 4.5×6 in
+          its animal-hide-shaped silhouette), so each template needed its own desktop and
+          mobile design that respected the available sizes without forking the pattern. Pad System
+          selection stayed inline for this round; the drawer earned its place for size, not system.
+        </p>
+
+        <div class="rugtype-grid">
+          <div class="rugtype">
+            <div class="name">Faux Hide</div>
+            <div class="meta">Plus new 4.5×6</div>
+          </div>
+          <div class="rugtype">
+            <div class="name">Shag</div>
+            <div class="meta">Standard sizes</div>
+          </div>
+          <div class="rugtype">
+            <div class="name">Plush</div>
+            <div class="meta">Standard sizes</div>
+          </div>
+          <div class="rugtype">
+            <div class="name">Re-Jute</div>
+            <div class="meta">Standard sizes</div>
+          </div>
+          <div class="rugtype">
+            <div class="name">Outdoor</div>
+            <div class="meta">Standard sizes</div>
+          </div>
+        </div>
+
+        <h3>Room Size Guide · CX collaboration</h3>
+        <p class="body">
+          Around the same time, our CX lead Emily was running a broader Size project. The team
+          had built a Room Size Guide pattern that customers could use to translate dimensions
+          into "will this fit my room." We brought it into two places: the Size Guide section
+          inside the new PDP Drawer, and the Size Guide Modal on the International PDP.
+          Stopgap, but it closed an obvious loop the drawer had opened up real estate to support.
+        </p>
+
+        <figure class="cs-figure">
+          <div class="placeholder-frame">
+            <div class="ph-icon">⊡</div>
+            <div class="ph-label">Placeholder · Room Size Guide in drawer</div>
+            <div class="ph-desc">Drop the mockup of the Room Size Guide as it appears inside the PDP Drawer Size Guide section.</div>
+          </div>
+          <figcaption>
+            <span class="fig-text">Room Size Guide, surfaced inside the drawer. The drawer made room for what the inline control couldn't.</span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- 06 EVOLVING THE DRAWER -->
+      <article class="cs-section" id="evolution">
+        <span class="num">06 · Evolving the drawer</span>
+        <h2>Once it earned the real estate, <em>what to put in it.</em></h2>
+        <p class="body">
+          With the drawer pattern shipped and expanding, the next test wave was about the
+          contents. PM and I scoped a series of moves to evolve how the drawer earned its space:
+        </p>
+
+        <ol class="evo-list">
+          <li>
+            <span class="n">01</span>
+            <div>
+              <div class="what">Recast the Size Guide.</div>
+              <div class="why">Move from a static size chart to something more useful. Room-tailored images, Small/Medium/Large labels instead of Area/Runner/Round, and best-use-case context for each size.</div>
+            </div>
+          </li>
+          <li>
+            <span class="n">02</span>
+            <div>
+              <div class="what">A recommended-system upsell.</div>
+              <div class="why">Surface a recommended pad system inside the Size Drawer so the customer doesn't have to bounce out and back to make a coordinated choice.</div>
+            </div>
+          </li>
+          <li>
+            <span class="n">03</span>
+            <div>
+              <div class="what">Show the current selection, always.</div>
+              <div class="why">Pin the current price, size, and system at the top of both drawers so the customer knows exactly what they're modifying. Reduces the "wait, what did I pick again?" round-trip.</div>
+            </div>
+          </li>
+        </ol>
+      </article>
+
+      <!-- 07 REFLECTION -->
+      <article class="cs-section" id="reflection">
+        <span class="num">07 · Reflection</span>
+        <h2>What the drawer taught us.</h2>
+
+        <div class="reflect-grid">
+          <div class="reflect-card">
+            <div class="reflect-label">What worked</div>
+            <h4>Reframing the problem from "picker" to "above-the-fold load."</h4>
+            <p>The inline picker wasn't the problem. The above-the-fold cognitive load was. Once we framed it that way, the drawer was an obvious lever, and it freed us to put more (not fewer) helpful things inside it.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What I'd change</div>
+            <h4>Lead the design from mobile.</h4>
+            <p>Desktop won cleanly, but mobile is the bigger traffic share. Designing desktop-first meant the mobile drawer was a port, not a native pattern. Next time I'd start small-screen and let desktop borrow.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">Open question</div>
+            <h4>Drawer real estate is now contested.</h4>
+            <p>Once the drawer earned its space, every team wanted in: size guide, recommended system, upsells, room imagery. Useful, but the drawer can't be all things. We need a content hierarchy for it before the inside gets as crowded as the inline picker used to be.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What's next</div>
+            <h4>Mobile lift confirmation.</h4>
+            <p>The desktop result is in. Mobile is still in test with a redesigned drawer informed by what we learned in the first round. When that result lands, the drawer pattern is fully validated across both surfaces.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- NEXT — loops back to Order Tracker -->
+<section class="next-cs shell">
+  <div class="next-grid">
+    <div>
+      <div class="next-label">Back to the start</div>
+      <div class="next-num">Ruggable · 2025 · Service</div>
+      <h2>Order Tracker, redesigned around <em>real customer needs.</em></h2>
+      <p class="next-deck">
+        Replaced a brittle status page with a clear, narrative timeline, and cut WISMO support volume in half.
+      </p>
+      <a href="case-order-tracker.html" class="btn btn-primary">Read Order Tracker <span class="arrow">→</span></a>
+    </div>
+    <a href="case-order-tracker.html" class="next-card case-tile-ot">
+      <img src="assets/fig/ot-tile-desktop.png" alt="Order Tracker — desktop tracking view" class="ot-desktop" />
+      <img src="assets/fig/ot-tile-mobile.png" alt="Order Tracker — mobile shipped widget" class="ot-mobile" />
+      <div class="next-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+{% include "footer.html" %}
+
+{% include "case-scripts.html" %}
+
+</body>
+</html>

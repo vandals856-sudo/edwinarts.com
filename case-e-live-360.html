@@ -1,0 +1,371 @@
+---
+currentNav: Work
+permalink: /case-e-live-360.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>E! Live 360 — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<link rel="stylesheet" href="styles/case-study.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   E! Live 360 — page-specific accents
+   ───────────────────────────────────────────────────────────── */
+
+/* Hero banner: edge-to-edge composite */
+.cs-banner.cs-banner-elive {
+  aspect-ratio: auto;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
+}
+.cs-banner-elive img {
+  display: block;
+  width: 100%; height: auto;
+}
+
+/* Section banner — full-width visual that opens a section */
+.section-banner {
+  display: block;
+  width: 100%; height: auto;
+  border-radius: 10px;
+  margin: 32px 0;
+}
+
+/* States gallery: 2-up of mockup screens */
+.states-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin: 32px 0;
+}
+.states-grid figure { margin: 0; }
+.states-grid img {
+  display: block;
+  width: 100%; height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+.states-grid .cap {
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+@media (max-width: 700px) {
+  .states-grid { grid-template-columns: 1fr; }
+}
+
+/* Mobile mockup centered figure (single phone) */
+.mobile-fig {
+  margin: 32px 0;
+  display: flex; justify-content: center;
+}
+.mobile-fig img {
+  display: block;
+  max-width: 320px; width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--rule);
+  box-shadow: 0 24px 48px -20px rgba(26,24,20,0.25);
+}
+
+/* iPhone shots — 2-up with mixed orientations */
+.iphone-shots {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 24px;
+  margin: 32px 0;
+  align-items: center;
+}
+.iphone-shots figure { margin: 0; }
+.iphone-shots img {
+  display: block;
+  width: 100%; height: auto;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  box-shadow: 0 18px 36px -16px rgba(26,24,20,0.25);
+}
+.iphone-shots .cap {
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3); text-align: center;
+}
+@media (max-width: 700px) {
+  .iphone-shots { grid-template-columns: 1fr; }
+}
+
+/* Still shipping callout */
+.still-shipping {
+  margin: 48px 0 16px;
+  padding: 32px 36px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  border-left: 3px solid var(--accent);
+}
+.still-shipping .label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 12px;
+}
+.still-shipping h3 {
+  font-family: var(--serif); font-size: 26px;
+  line-height: 1.15; color: var(--ink); letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.still-shipping h3 em { font-style: italic; color: var(--accent); }
+.still-shipping p {
+  font-size: 15px; line-height: 1.55; color: var(--ink-2);
+}
+.still-shipping a {
+  color: var(--ink); border-bottom: 1px solid var(--ink-3);
+}
+.still-shipping a:hover { border-bottom-color: var(--accent); }
+.still-shipping-img {
+  display: block;
+  width: 100%; height: auto;
+  margin-top: 24px;
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+}
+</style>
+</head>
+<body>
+
+<!-- reading progress bar -->
+<div class="read-progress"><div class="bar"></div></div>
+
+{% include "lightbox.html" %}
+
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="cs-hero shell" data-screen-label="Case · E! Live 360 · Hero">
+  <div class="cs-hero-meta">
+    <span class="crumb"><a href="/">Work</a> / E! Live 360</span>
+  </div>
+
+  <div class="cs-hero-grid">
+    <div>
+      <h1>Red carpet, <em>in real time.</em></h1>
+      <p class="deck">
+        Two red-carpet products at E! / NBCUniversal. The <strong>Arrivals Gallery</strong>:
+        a real-time photo gallery on eonline.com that's still running on E!'s biggest events
+        today. <strong>E! Live 360</strong>: an Emmy-nominated 360 livestream platform inside
+        the E! News iOS and Android apps, sponsored by AT&amp;T. I designed both during the
+        2018 award season.
+      </p>
+    </div>
+
+    <div class="cs-facts">
+      <div class="fact"><span class="k">Role</span><span class="v">Digital Product Designer</span></div>
+      <div class="fact"><span class="k">Company</span><span class="v">NBCUniversal · E!</span></div>
+      <div class="fact"><span class="k">Platform</span><span class="v">Web · iOS · Android</span></div>
+      <div class="fact"><span class="k">Status</span><span class="v"><span class="accent">●</span> Shipped · 2018 · Emmy nom</span></div>
+    </div>
+  </div>
+
+  <!-- Hero banner: E! Live 360 cropped one-sheet visual -->
+  <div class="cs-banner cs-banner-elive">
+    <img src="assets/fig/elive360/e360-banner.png" alt="E! Live 360 — multi-channel 360 livestream platform overview" />
+  </div>
+</section>
+
+<!-- ─────────── BODY ─────────── -->
+<section class="shell" style="padding-bottom:120px">
+  <div class="cs-body">
+
+    <!-- Sticky TOC -->
+    <aside class="cs-toc">
+      <div class="toc-label">In this case</div>
+      <a href="#overview" data-toc="overview"><span class="toc-num">01</span>Red carpet at E!</a>
+      <a href="#live360"  data-toc="live360"><span class="toc-num">02</span>E! Live 360</a>
+      <a href="#arrivals" data-toc="arrivals"><span class="toc-num">03</span>Arrivals Gallery</a>
+      <a href="#live"     data-toc="live"><span class="toc-num">04</span>Still shipping</a>
+    </aside>
+
+    <!-- Content -->
+    <div class="cs-content">
+
+      <!-- 01 OVERVIEW -->
+      <article class="cs-section" id="overview">
+        <span class="num">01 · Red carpet at E!</span>
+        <h2>Two products. <em>One audience.</em></h2>
+        <p class="body">
+          At E!, red carpet coverage was its own product surface. Editorial readers came to
+          eonline.com expecting fresh photos seconds after each arrival. App users wanted in,
+          on the broadcast itself: cameras at the limousine drop, on the runway, in the studio.
+          I worked on both during the 2018 award season.
+        </p>
+        <p class="body">
+          The <strong>Arrivals Gallery</strong> handled the editorial side: a real-time photo
+          gallery on eonline.com with seamless ad integration, designed for the kind of
+          minute-to-minute refreshing that happens during the Oscars or the Met Gala. The
+          <strong>E! Live 360</strong> platform handled the immersive side: branded 360
+          livestreams with multiple cameras, delivered through the E! News mobile apps, with
+          AT&amp;T as the sponsor. The 360 work earned an Interactive Emmy nomination.
+        </p>
+      </article>
+
+      <!-- 02 E! LIVE 360 -->
+      <article class="cs-section" id="live360">
+        <span class="num">02 · E! Live 360</span>
+        <h2>Cameras on the carpet. <em>In your hand.</em></h2>
+        <p class="body">
+          E! Live 360 was a branded, multi-camera 360 livestream platform built into the front
+          door of the E! News iOS and Android apps. For the 2017 Live From The Red Carpet (LRC)
+          event, three feeds ran in parallel: a Hosted Channel from E! Studios, a 360 Fashion
+          Channel at the pose-and-turn, and an Arrivals Channel at the limousine drop. Custom
+          CTAs on desktop and mobile web drove users to download the app and engage with the
+          experience. The interactive layer was sponsored by AT&amp;T and earned an Interactive
+          Emmy nomination.
+        </p>
+
+        <figure class="cs-figure">
+          <img src="assets/fig/elive360/e360-channels.png" alt="E! Live 360 channel switcher showing three live feeds: Hosted, 360 Fashion, and Arrivals" class="cs-figure-img zoomable" />
+          <figcaption>
+            <span class="fig-text">Three channels, one tap. The switcher surfaced the Hosted, Fashion, and Arrivals feeds inside the in-app player.</span>
+          </figcaption>
+        </figure>
+
+        <h3>On the device</h3>
+        <p class="body">
+          Rotating the phone opened the full landscape view, with a button overlay that surfaced
+          the camera options without blocking the live feed. Below, the same player running on
+          the iPhone during a live event.
+        </p>
+        <div class="states-grid" data-lightbox-group="e360-landscape">
+          <figure>
+            <img src="assets/fig/elive360/e360-player-landscape.png" alt="E! Live 360 · landscape player" class="zoomable" />
+            <div class="cap">Landscape · clean view</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/elive360/e360-player-landscape-overlay.png" alt="E! Live 360 · landscape player with camera-switcher overlay" class="zoomable" />
+            <div class="cap">Landscape · camera overlay</div>
+          </figure>
+        </div>
+        <div class="iphone-shots" data-lightbox-group="e360-iphone">
+          <figure>
+            <img src="assets/fig/elive360/e360-iphone-landscape.jpg" alt="E! Live 360 running on iPhone in landscape during a live event" class="zoomable" />
+            <div class="cap">Landscape · live</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/elive360/e360-iphone-portrait.jpg" alt="E! Live 360 running on iPhone in portrait during a live event" class="zoomable" />
+            <div class="cap">Portrait · live</div>
+          </figure>
+        </div>
+      </article>
+
+      <!-- 03 ARRIVALS GALLERY -->
+      <article class="cs-section" id="arrivals">
+        <span class="num">03 · Arrivals Gallery</span>
+        <h2>A photo gallery built for <em>the moment.</em></h2>
+        <p class="body">
+          Red carpet coverage on E! moves fast. Photos land at eonline.com seconds after each
+          arrival, and the audience is refreshing the page every minute or two waiting on the
+          next celebrity. The Arrivals Gallery had to handle that real-time cadence without
+          breaking the flow: new photos slide in as they're published, the layout stays stable,
+          and ad units slot in where they earn the placement instead of interrupting the read.
+        </p>
+
+        <img src="assets/fig/elive360/arrivals-banner.png" alt="Arrivals Gallery overview · interactive photo gallery on eonline.com" class="section-banner zoomable" />
+
+        <p class="body">
+          I built the gallery as a fully interactive prototype, not a stack of mockups. Every
+          state had real animation: how a new arrival enters, how the gallery scrolls, how an
+          ad unit appears. The prototype was the spec, and engineering shipped from it directly.
+        </p>
+
+        <h3>States · same gallery, different beats</h3>
+        <p class="body">
+          The gallery had to do four things at once: present the existing photos cleanly,
+          announce new arrivals as they came in, host ad placements without dropping the
+          editorial feel, and keep all of it readable on a fast-scrolling page.
+        </p>
+
+        <div class="states-grid" data-lightbox-group="states">
+          <figure>
+            <img src="assets/fig/elive360/state-default.jpg" alt="Arrivals Gallery — default state showing existing photos" class="zoomable" />
+            <div class="cap">01 · Default state</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/elive360/state-new-arrival.jpg" alt="Arrivals Gallery — new arrival sliding in" class="zoomable" />
+            <div class="cap">02 · New arrival</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/elive360/state-ad-unit.jpg" alt="Arrivals Gallery — single ad unit placement" class="zoomable" />
+            <div class="cap">03 · Ad unit</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/elive360/state-ad-units.jpg" alt="Arrivals Gallery — multiple ad units across the layout" class="zoomable" />
+            <div class="cap">04 · Ad units across the layout</div>
+          </figure>
+        </div>
+
+        <h3>Mobile</h3>
+        <p class="body">
+          The same patterns adapted to a single-column mobile read.
+        </p>
+        <div class="mobile-fig">
+          <img src="assets/fig/elive360/arrivals-mobile.png" alt="Arrivals Gallery on mobile" class="zoomable" />
+        </div>
+      </article>
+
+      <!-- 04 STILL SHIPPING -->
+      <article class="cs-section" id="live">
+        <span class="num">04 · Still shipping</span>
+        <h2>Eight years in, <em>still on the page.</em></h2>
+        <p class="body">
+          The Arrivals Gallery is the long-runner. Launched on E! in 2018 and still running
+          today: the latest red carpet on eonline.com (the Met Gala, the Oscars, the Golden
+          Globes) uses the same pattern I designed. New photos, new celebrities, same gallery.
+        </p>
+
+        <div class="still-shipping" data-lightbox-group="live">
+          <div class="label">Live · 2026</div>
+          <h3>The Arrivals Gallery on E! today.</h3>
+          <p>
+            Same layout, same beats, same ad slots. See it running on the
+            <a href="https://www.eonline.com/news/met_gala" target="_blank" rel="noopener">Met Gala coverage at eonline.com</a>.
+          </p>
+          <img src="assets/fig/elive360/live-2026.jpg" alt="Arrivals Gallery on eonline.com in 2026, eight years after launch" class="zoomable still-shipping-img" />
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── NEXT CASE STUDY ─────────── -->
+<section class="next-cs shell">
+  <div class="next-grid">
+    <div>
+      <div class="next-label">Next case study</div>
+      <div class="next-num">Storytime · 2015</div>
+      <h2>Skit! Where kids make their own <em>shows.</em></h2>
+      <p class="next-deck">
+        A creative app for kids: pick characters, set scenes, layer in music and animation,
+        share the result. I led design on Skit 2.0 across iOS, Android, and web.
+      </p>
+      <a href="case-skit.html" class="btn btn-primary">Read Skit! <span class="arrow">→</span></a>
+    </div>
+    <a href="case-skit.html" class="next-card tex-skit dark">
+      <div class="nt-labels">
+        <div class="nt-meta">Storytime · 2015</div>
+        <div class="nt-title">Skit! 2.0</div>
+      </div>
+      <div class="next-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+{% include "footer.html" %}
+
+{% include "case-scripts.html" %}
+
+</body>
+</html>

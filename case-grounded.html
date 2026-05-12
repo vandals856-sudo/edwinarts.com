@@ -1,0 +1,455 @@
+---
+currentNav: Work
+permalink: /case-grounded.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grounded — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<link rel="stylesheet" href="styles/case-study.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   Grounded — page-specific accents
+   Echoes the actual Grounded brand: dark surface, accent green.
+   ───────────────────────────────────────────────────────────── */
+
+/* Hero banner: dark surface, mock or screenshot inside */
+.cs-banner.cs-banner-grounded {
+  aspect-ratio: 16/10;
+  background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
+  padding: 48px;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.cs-banner-grounded .placeholder-frame {
+  width: 100%; max-width: 720px;
+  aspect-ratio: 4/3;
+  background: rgba(232,237,242,0.04);
+  border-color: rgba(232,237,242,0.12);
+  color: rgba(232,237,242,0.6);
+}
+.cs-banner-grounded .placeholder-frame .ph-label {
+  background: rgba(232,237,242,0.08);
+  border-color: rgba(232,237,242,0.18);
+  color: rgba(232,237,242,0.85);
+}
+.cs-banner-grounded .placeholder-frame .ph-desc { color: rgba(232,237,242,0.55); }
+.cs-banner-grounded .placeholder-frame .ph-icon { color: rgba(232,237,242,0.4); }
+
+/* Privacy callout — leans on the brand green */
+.privacy-card {
+  margin: 32px 0;
+  padding: 32px 36px;
+  background: #0d1117;
+  color: #e8edf2;
+  border-radius: 12px;
+  border-left: 3px solid #22c47a;
+}
+.privacy-card .label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: #22c47a;
+  margin-bottom: 14px;
+}
+.privacy-card h3 {
+  font-family: var(--serif); font-size: 28px; line-height: 1.15;
+  letter-spacing: -0.01em; color: #e8edf2;
+  margin-bottom: 14px;
+}
+.privacy-card h3 em { font-style: italic; color: #22c47a; }
+.privacy-card p {
+  font-size: 15px; line-height: 1.6; color: rgba(232,237,242,0.78);
+  margin-bottom: 10px;
+}
+.privacy-card p:last-child { margin-bottom: 0; }
+.privacy-card code {
+  font-family: var(--mono); font-size: 13px;
+  background: rgba(34,196,122,0.12);
+  color: #3dd68c;
+  padding: 2px 6px; border-radius: 3px;
+}
+
+/* Feature grid */
+.feature-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+}
+.feature {
+  padding: 24px 26px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.feature .icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: rgba(34,196,122,0.12);
+  color: #1a9e62;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.feature h4 {
+  font-family: var(--serif); font-size: 20px;
+  line-height: 1.15; color: var(--ink); letter-spacing: -0.01em;
+}
+.feature p {
+  font-size: 14px; line-height: 1.55; color: var(--ink-2);
+}
+@media (max-width: 800px) {
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .feature-grid { grid-template-columns: 1fr; }
+}
+
+/* Stack pill row */
+.stack-row {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin: 16px 0 32px;
+}
+.stack-row .pill {
+  padding: 6px 12px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+  color: var(--ink-2);
+}
+
+/* Live link bar */
+.live-bar {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 22px;
+  background: #0d1117;
+  color: #e8edf2;
+  border-radius: 10px;
+  margin: 32px 0;
+}
+.live-bar .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #22c47a;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(34,196,122,0.18);
+}
+.live-bar .label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(232,237,242,0.55);
+}
+.live-bar a {
+  font-family: var(--mono); font-size: 14px;
+  color: #e8edf2; text-decoration: none;
+  margin-left: auto;
+  display: inline-flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid rgba(232,237,242,0.25);
+  padding-bottom: 1px;
+  transition: border-color .15s var(--ease);
+}
+.live-bar a:hover { border-bottom-color: #22c47a; }
+</style>
+</head>
+<body>
+
+<div class="read-progress"><div class="bar"></div></div>
+
+{% include "lightbox.html" %}
+
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="cs-hero shell" data-screen-label="Case · Grounded · Hero">
+  <div class="cs-hero-meta">
+    <span class="crumb"><a href="/">Work</a> / Grounded</span>
+  </div>
+
+  <div class="cs-hero-grid">
+    <div>
+      <h1>Financial clarity. <em>Your data stays yours.</em></h1>
+      <p class="deck">
+        Grounded is a free, private net worth tracker that I designed and built solo. Every
+        dollar a customer enters lives inside a Google Sheet in their own Drive, not on a
+        Grounded server. I'm a designer, not a software engineer. Claude was my engineering
+        partner. Live at <strong>usegrounded.app</strong>.
+      </p>
+    </div>
+
+    <div class="cs-facts">
+      <div class="fact"><span class="k">Role</span><span class="v">Solo · Designer + builder</span></div>
+      <div class="fact"><span class="k">Type</span><span class="v">Self-initiated · 2025–26</span></div>
+      <div class="fact"><span class="k">Platform</span><span class="v">Web · GitHub Pages</span></div>
+      <div class="fact"><span class="k">Status</span><span class="v"><span class="accent">●</span> Live, in Google OAuth verification</span></div>
+    </div>
+  </div>
+
+  <!-- Hero banner placeholder -->
+  <div class="cs-banner cs-banner-grounded">
+    <div class="placeholder-frame">
+      <div class="ph-icon">▲</div>
+      <div class="ph-label">Placeholder · Grounded dashboard</div>
+      <div class="ph-desc">Drop a screenshot of the live Grounded dashboard from usegrounded.app: net worth headline, history chart, and the account rows underneath.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── BODY ─────────── -->
+<section class="shell" style="padding-bottom:120px">
+  <div class="cs-body">
+
+    <!-- Sticky TOC -->
+    <aside class="cs-toc">
+      <div class="toc-label">In this case</div>
+      <a href="#why"      data-toc="why"><span class="toc-num">01</span>Why I built it</a>
+      <a href="#privacy"  data-toc="privacy"><span class="toc-num">02</span>Privacy by default</a>
+      <a href="#features" data-toc="features"><span class="toc-num">03</span>What it does</a>
+      <a href="#claude"   data-toc="claude"><span class="toc-num">04</span>Built with Claude</a>
+      <a href="#reflection" data-toc="reflection"><span class="toc-num">05</span>Reflection</a>
+    </aside>
+
+    <!-- Content -->
+    <div class="cs-content">
+
+      <!-- 01 WHY -->
+      <article class="cs-section" id="why">
+        <span class="num">01 · Why I built it</span>
+        <h2>I used Mint for years. <em>Then I had to find something else.</em></h2>
+        <p class="body">
+          When Mint shut down I tried going back to a spreadsheet. It was clunky enough that I
+          gave up on it after a few weeks. The obvious move was one of the other tools
+          (Empower, YNAB, Monarch), but every one of them wanted me to connect my actual
+          accounts to their servers, and most wanted a monthly subscription on top of that.
+          After enough headlines about companies leaking customer data, paying every month to
+          hand my numbers over to a new vendor wasn't a tradeoff I wanted to make for a tool
+          I was only going to open once a week.
+        </p>
+        <p class="body">
+          What I wanted sat in between. A spreadsheet I controlled, with manual entry kept
+          honest, plus the few things that don't need to be manual (live crypto prices today,
+          maybe stock tickers later if users ask for them). And on top of that, a real
+          dashboard. Insights laid out cleanly, plain-English feedback on how I was doing, a
+          few best-practice nudges, and the data-entry UX of an actual product instead of the
+          tab-and-click dance of a spreadsheet.
+        </p>
+        <p class="body">
+          At some point the thought turned into: <em>why not build it myself?</em> So I did.
+        </p>
+        <p class="body">
+          It's mainly a tool for me. I haven't advertised it, posted about it, or pitched it.
+          A few friends know it exists. If it grows into something more, that's good. The
+          architecture doesn't need it to.
+        </p>
+
+        <div class="live-bar">
+          <span class="dot"></span>
+          <span class="label">Live</span>
+          <a href="https://usegrounded.app" target="_blank" rel="noopener">usegrounded.app <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- 02 PRIVACY -->
+      <article class="cs-section" id="privacy">
+        <span class="num">02 · Privacy by default</span>
+        <h2>Your data stays in <em>your Drive.</em></h2>
+        <p class="body">
+          The privacy model came first; the product was built around it. Grounded uses Google
+          OAuth with the <code>drive.file</code> scope, the most restrictive Drive permission
+          available. That means Grounded can only read and write files it created itself.
+          Nothing else in the user's Drive is visible to it. Ever.
+        </p>
+        <p class="body">
+          On first sign-in, Grounded creates one private Google Sheet inside the user's own
+          Drive: Accounts, History, Events, Meta. Every snapshot, every value, every change
+          lives there. There's no Grounded database. No user table. No "we have your data"
+          waiting to be breached. If a customer ever wanted to leave, they'd open Drive, see
+          the file, and decide what to do with it. It's already theirs.
+        </p>
+
+        <div class="privacy-card">
+          <div class="label">The architecture decision</div>
+          <h3>No backend. <em>No data storage.</em> No subscription.</h3>
+          <p>
+            Grounded runs as a single static HTML file hosted on GitHub Pages. Every read and
+            write goes directly between the user's browser and Google's APIs. The only thing on
+            "my side" is a small Cloudflare Worker that proxies one specific call (the weekly
+            AI insights) so my Claude API key never lives in the browser. The worker verifies a
+            Google ID token on every request and rate-limits per user, so the AI endpoint
+            can't be abused by anyone who isn't already signed into Grounded.
+          </p>
+          <p>
+            No cookies on the dashboard, no analytics on the dashboard, no account I keep on
+            the user's behalf. Google Analytics runs on the marketing pages only. The dashboard
+            sees financial data, so it stays untracked.
+          </p>
+        </div>
+      </article>
+
+      <!-- 03 FEATURES -->
+      <article class="cs-section" id="features">
+        <span class="num">03 · What it does</span>
+        <h2>Track everything in one place. <em>Without giving anything up.</em></h2>
+        <p class="body">
+          The product itself is straightforward. Five account types. A net worth headline with
+          a chart underneath. Time filters. A milestone system that nudges you from your first
+          tracked dollar to a million. And one small AI moment each week. On desktop the dashboard
+          splits two columns, assets on the left and debt on the right, then collapses to a single
+          column under 900px.
+        </p>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="icon">$</div>
+            <h4>Cash + investments + crypto + property + debt</h4>
+            <p>Five account categories cover most personal balance sheets. Add as many accounts inside each as you need.</p>
+          </div>
+          <div class="feature">
+            <div class="icon">₿</div>
+            <h4>Live crypto prices</h4>
+            <p>CoinGecko hits the API directly from the browser. Current prices stay current without Grounded touching the data.</p>
+          </div>
+          <div class="feature">
+            <div class="icon">↗</div>
+            <h4>Net worth history</h4>
+            <p>Every snapshot you save plots on the history chart. Filter by 1M, 3M, 6M, YTD, 1Y, or All. The line tells the story.</p>
+          </div>
+          <div class="feature">
+            <div class="icon">★</div>
+            <h4>Milestones</h4>
+            <p>$1K, $5K, $10K, $25K, $50K, $100K, all the way to $1M. Small celebrations as you cross each one. Optional, dismissible.</p>
+          </div>
+          <div class="feature">
+            <div class="icon">AI</div>
+            <h4>Weekly insights</h4>
+            <p>Once a week, Claude reads your recent history (through the worker proxy) and writes a short, personalized read on what's moving. Pure observation. No financial advice.</p>
+          </div>
+          <div class="feature">
+            <div class="icon">◧</div>
+            <h4>At a glance</h4>
+            <p>YTD growth, average monthly growth, percent invested, all-time high. Computed live from the same Sheet. A row of context above the chart.</p>
+          </div>
+        </div>
+
+        <figure class="cs-figure">
+          <div class="placeholder-frame">
+            <div class="ph-icon">▣ ▣ ▣</div>
+            <div class="ph-label">Placeholder · key screens</div>
+            <div class="ph-desc">Drop screenshots of the main screens (dashboard, account detail, milestone celebration, weekly insight) so the visual story lands.</div>
+          </div>
+          <figcaption>
+            <span class="fig-text">Selected screens. Same Sheet underneath, different views over it.</span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- 04 BUILT WITH CLAUDE -->
+      <article class="cs-section" id="claude">
+        <span class="num">04 · Built with Claude</span>
+        <h2>I designed every screen. <em>Claude wrote the code.</em></h2>
+        <p class="body">
+          The honest version: I'm a designer. I can read code, I can edit a stylesheet, but I'm
+          not a software engineer. Grounded exists because Claude is good enough now that a
+          designer with a clear brief can ship a real product solo. The work split looked like
+          this:
+        </p>
+
+        <ul class="cs-list">
+          <li><strong>I designed every screen, copy line, and interaction.</strong> Brand, typography, layout, the milestone vocabulary, the privacy framing. That's the designer side of the job, and it didn't change.</li>
+          <li><strong>I wrote the requirements like a brief.</strong> "Here's what the user sees when they sign in. Here's what the Google Sheet needs to look like. Here's the milestone trigger logic." Specific enough to implement, loose enough to let the implementation breathe.</li>
+          <li><strong>Claude implemented.</strong> The OAuth handshake, the Sheets API calls, the chart rendering, the worker that proxies the Claude API call without exposing my key. I reviewed everything, ran it, broke it, asked questions, refined.</li>
+        </ul>
+
+        <p class="body">
+          The build is intentionally simple. One static HTML file, a tiny worker for the AI
+          proxy, and a CDN-friendly stack of vanilla JavaScript and CSS. No build step. No
+          framework. Easy to read, easy to host for free.
+        </p>
+
+        <div class="stack-row">
+          <span class="pill">Claude API</span>
+          <span class="pill">Google Drive API · drive.file scope</span>
+          <span class="pill">CoinGecko API</span>
+          <span class="pill">Cloudflare Worker (AI proxy)</span>
+          <span class="pill">GitHub Pages</span>
+          <span class="pill">Vanilla HTML / CSS / JS</span>
+          <span class="pill">Plus Jakarta Sans + Fira Code</span>
+        </div>
+
+        <div class="callout">
+          <span class="label">The meta-observation</span>
+          <div class="content">
+            What an AI partner like Claude actually unlocks for a designer isn't shortcuts. It's
+            scope. I could not have shipped Grounded solo five years ago. I could have specced
+            it, mocked it, pitched it, but I couldn't have built it. The shift isn't that
+            engineering is easier. It's that a designer can ship something real on their own
+            time, with their own ideas, without recruiting an engineer who has their own
+            backlog. That changes what side projects can be.
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 REFLECTION -->
+      <article class="cs-section" id="reflection">
+        <span class="num">05 · Reflection</span>
+        <h2>What Grounded taught me.</h2>
+
+        <div class="reflect-grid">
+          <div class="reflect-card">
+            <div class="reflect-label">What worked</div>
+            <h4>Privacy as the architecture, not the marketing.</h4>
+            <p>Choosing the strictest Google Drive scope before drawing a single screen meant the product couldn't accidentally drift into surveillance territory later. Every later decision had to clear that bar. The constraint kept the product honest.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What I'd change</div>
+            <h4>Onboarding the spreadsheet, not just the app.</h4>
+            <p>Customers who haven't lived in a Google Sheet view of their finances need more handholding than I currently give them. The current onboarding signs you in, creates the sheet, and drops you on the dashboard. Worth investing in a clearer "here's what just happened in your Drive" moment.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">Open question</div>
+            <h4>How much AI is the right amount of AI?</h4>
+            <p>Weekly insights feel right. Daily would be noise. Monthly might be too sparse. The current cadence is a guess, not a tested answer. Once I have a meaningful number of weekly users, I'll have a real read on whether the AI moment earns its place or fades into the background.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What's next</div>
+            <h4>Recurring contributions, sharper milestones, maybe an export.</h4>
+            <p>The next round of work is about respecting how customers actually use the tool. Recurring contributions (so you don't have to enter your paycheck every two weeks). Sharper milestone messaging. And probably a clean export to PDF or a printable annual summary for the people who want one.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── NEXT CASE STUDY ─────────── -->
+<section class="next-cs shell">
+  <div class="next-grid">
+    <div>
+      <div class="next-label">Next case study</div>
+      <div class="next-num">Ruggable · 2024 · AI</div>
+      <h2>Designable. <em>Started as a chatbot.</em></h2>
+      <p class="next-deck">
+        Ruggable's AI rug recommender. Started as a chatbot, then a form. Shipped as a single
+        photo upload that returns curated picks in seconds.
+      </p>
+      <a href="case-designable.html" class="btn btn-primary">Read Designable <span class="arrow">→</span></a>
+    </div>
+    <a href="case-designable.html" class="next-card case-tile-designable">
+      <div class="dsg-stage">
+        <div class="dsg-screen dsg-screen-1"><img src="assets/fig/designable-screen-1.png" alt="" /></div>
+        <div class="dsg-screen dsg-screen-2"><img src="assets/fig/designable-screen-2.png" alt="" /></div>
+        <div class="dsg-screen dsg-screen-3"><img src="assets/fig/designable-screen-3.png" alt="" /></div>
+      </div>
+      <div class="next-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+{% include "footer.html" %}
+
+{% include "case-scripts.html" %}
+
+</body>
+</html>

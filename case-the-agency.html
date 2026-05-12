@@ -1,0 +1,379 @@
+---
+currentNav: Work
+permalink: /case-the-agency.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Agency — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<link rel="stylesheet" href="styles/case-study.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   The Agency — page-specific accents
+   ───────────────────────────────────────────────────────────── */
+
+/* Hero banner: hold a full-width product screenshot, soft shadow */
+.cs-banner.cs-banner-agency {
+  aspect-ratio: auto;
+  background: linear-gradient(180deg, #ebe5d7 0%, #d8c9b0 100%);
+  padding: 40px;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.cs-banner-agency img {
+  width: 100%; max-width: 1100px; height: auto;
+  border-radius: 6px;
+  box-shadow: 0 28px 60px -20px rgba(26,24,20,0.28), 0 12px 24px -10px rgba(26,24,20,0.16);
+}
+
+/* Salesforce context strip — a thin platform-overview image early on */
+.sf-context {
+  margin: 32px 0 8px;
+  padding: 24px 28px;
+  background: var(--paper-2);
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+}
+.sf-context img {
+  display: block;
+  width: 100%; max-width: 880px; height: auto;
+  margin: 0 auto;
+}
+.sf-context .cap {
+  margin-top: 14px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink-3); text-align: center;
+}
+
+/* Nav before/after pairing: old wide screenshot + new portrait + animation */
+.nav-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+  align-items: start;
+  margin: 32px 0;
+}
+.nav-grid figure { margin: 0; }
+.nav-grid img {
+  display: block; width: 100%; height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+}
+.nav-grid .cap {
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+@media (max-width: 800px) {
+  .nav-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* Tables: stacked detail figures with mono caption */
+.tables-stack { display: flex; flex-direction: column; gap: 32px; margin: 32px 0; }
+.tables-stack figure { margin: 0; }
+.tables-stack img {
+  display: block; width: 100%; height: auto;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+}
+.tables-stack .cap {
+  margin-top: 12px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+</style>
+</head>
+<body>
+
+<!-- reading progress bar -->
+<div class="read-progress"><div class="bar"></div></div>
+
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="cs-hero shell" data-screen-label="Case · The Agency · Hero">
+  <div class="cs-hero-meta">
+    <span class="crumb"><a href="index.html">Work</a> / The Agency</span>
+  </div>
+
+  <div class="cs-hero-grid">
+    <div>
+      <h1>Less of an eyesore. <em>By design.</em></h1>
+      <p class="deck">
+        The Agency was building a custom Salesforce CRM from scratch. Only the tools they needed,
+        only the data they used. My job was to make it usable for the people staring at it eight
+        hours a day. Cleaner navigation, unified tables, calmer hierarchy.
+      </p>
+    </div>
+
+    <div class="cs-facts">
+      <div class="fact"><span class="k">Role</span><span class="v">UX / UI Designer</span></div>
+      <div class="fact"><span class="k">Company</span><span class="v">The Agency</span></div>
+      <div class="fact"><span class="k">Platform</span><span class="v">Web (custom Salesforce CRM)</span></div>
+      <div class="fact"><span class="k">Status</span><span class="v"><span class="accent">●</span> Shipped · 2018</span></div>
+    </div>
+  </div>
+
+  <!-- Hero banner: overall after screenshot -->
+  <div class="cs-banner cs-banner-agency">
+    <img src="assets/fig/agency/overall-after.png" alt="The Agency — redesigned Salesforce CRM homepage" />
+  </div>
+</section>
+
+<!-- ─────────── BODY (TOC + content) ─────────── -->
+<section class="shell" style="padding-bottom:120px">
+  <div class="cs-body">
+
+    <!-- Sticky TOC -->
+    <aside class="cs-toc">
+      <div class="toc-label">In this case</div>
+      <a href="#problem" data-toc="problem"><span class="toc-num">01</span>The problem</a>
+      <a href="#approach" data-toc="approach"><span class="toc-num">02</span>Approach</a>
+      <a href="#nav" data-toc="nav"><span class="toc-num">03</span>Navigation</a>
+      <a href="#tables" data-toc="tables"><span class="toc-num">04</span>Tables</a>
+      <a href="#look" data-toc="look"><span class="toc-num">05</span>Overall look</a>
+      <a href="#reflection" data-toc="reflection"><span class="toc-num">06</span>Reflection</a>
+    </aside>
+
+    <!-- Content -->
+    <div class="cs-content">
+
+      <!-- 01 PROBLEM -->
+      <article class="cs-section" id="problem">
+        <span class="num">01 · The problem</span>
+        <h2>Built to be used. <em>Not built to be looked at.</em></h2>
+        <p class="body">
+          The Agency was assembling a custom Salesforce build to handle their day-to-day: leads,
+          accounts, opportunities, the usual CRM surface, but trimmed to only the tools and data
+          they actually used. Salesforce was customizable, and the team had taken full advantage.
+          Every page got its own table. Every section its own nav model. Every screen a fresh stack
+          of CTAs at varied sizes.
+        </p>
+        <p class="body">
+          Usable in a sprint, painful over months. People spent their whole day in this tool. Eye
+          strain, lost clicks, and "where's the button I clicked yesterday?" were the daily friction.
+        </p>
+
+        <div class="sf-context">
+          <img src="assets/fig/agency/salesforce-context.jpg" alt="Salesforce platform overview — CRM, marketplace, community, analytics" />
+          <div class="cap">For context · Salesforce platform — CRM, marketplace, community, analytics</div>
+        </div>
+
+        <figure class="cs-figure">
+          <img src="assets/fig/agency/overall-before.webp" alt="Original Agency homepage — cluttered tables, dense nav, contrast-heavy palette" class="cs-figure-img" />
+          <figcaption>
+            <span class="fig-text">The starting point. High-contrast palette, inconsistent table styles, CTAs of varied sizes throughout.</span>
+          </figcaption>
+        </figure>
+
+        <div class="callout">
+          <span class="label">From the page itself</span>
+          <div class="content">
+            Text was hard to see. Sections weren't well defined. CTAs of varied sizes everywhere,
+            no consistent hierarchy. Comfortable for ten minutes, brutal for eight hours.
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 APPROACH -->
+      <article class="cs-section" id="approach">
+        <span class="num">02 · Approach</span>
+        <h2>Three things to fix. <em>In order.</em></h2>
+        <p class="body">
+          We agreed on the three biggest sources of friction: the navigation (slow, disorienting),
+          the tables (no consistent pattern across the screens that did the same job), and the
+          overall visual hierarchy (everything equally loud, so nothing read as important).
+        </p>
+        <p class="body">
+          I worked through them in that order. Nav first, because everything else lives behind it.
+          Tables next, since most of the data on every page sat inside one. Overall look last, so
+          the type, color, and spacing decisions could lock in once the components had settled.
+        </p>
+      </article>
+
+      <!-- 03 NAVIGATION -->
+      <article class="cs-section" id="nav">
+        <span class="num">03 · Navigation</span>
+        <h2>From accordion to <em>static.</em></h2>
+        <p class="body">
+          The old navigation was an accordion. Open one section, push everything else down and out
+          of view. To get to the main page of any category, you had to click into the sub-menu first
+          and back out. Sub-menus stayed open across selections, so you had to manage the state
+          manually. Animations were sluggish.
+        </p>
+
+        <figure class="cs-figure">
+          <img src="assets/fig/agency/nav-old.png" alt="Original accordion navigation — sub-menu pushed everything down on open" class="cs-figure-img" />
+          <figcaption>
+            <span class="fig-text">Original accordion. Open one section, the rest slides down. No icon system separated main items from sub-items.</span>
+          </figcaption>
+        </figure>
+
+        <p class="body">
+          I made the main nav static and surfaced the sub-menu in its own panel beside it, on hover.
+          Main pages became a single click. I tightened animation timing so the menu felt snappy
+          rather than sluggish, and unified the icon set so main and sub items read as a system.
+        </p>
+
+        <div class="nav-grid">
+          <figure>
+            <img src="assets/fig/agency/nav-new.png" alt="New navigation — static main nav with sub-menu in its own panel beside it" />
+            <div class="cap">New nav · static main, hover panel for sub-menu</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/agency/nav-anim.gif" alt="New navigation animation — sub-menu appears in adjacent panel on hover" />
+            <div class="cap">In motion · sub-menu opens beside, main pages stay one click away</div>
+          </figure>
+        </div>
+
+        <div class="callout">
+          <span class="label">The single click</span>
+          <div class="content">
+            The old accordion forced two clicks to reach a section's main page (open, then click in
+            again). The new pattern made main pages a single click, and the hover panel kept the
+            sub-menu accessible without taking real estate when it wasn't needed.
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 TABLES -->
+      <article class="cs-section" id="tables">
+        <span class="num">04 · Tables</span>
+        <h2>One table pattern. <em>Not twelve.</em></h2>
+        <p class="body">
+          Most data on the platform lived in tables, and every screen had its own variation. Different
+          sizing, different action placement, different refresh, filter, sort, pagination behavior.
+          I built one reusable table that worked across the screens doing the same job.
+        </p>
+
+        <figure class="cs-figure">
+          <img src="assets/fig/agency/tables-old.png" alt="Original tables — multiple variations across the platform" class="cs-figure-img" />
+          <figcaption>
+            <span class="fig-text">A sample of the original tables on the homepage. Each one different in spacing, action style, and pagination behavior.</span>
+          </figcaption>
+        </figure>
+
+        <p class="body">Five things changed:</p>
+        <ul class="cs-list">
+          <li><strong>Type and contrast.</strong> Bumped font size and adjusted weight for readability, especially for older users on the team.</li>
+          <li><strong>Actions consolidated to the left.</strong> Multi-select edits worked from one corner of the table, instead of hunting for an action menu per row.</li>
+          <li><strong>Calmer zebra striping.</strong> Reduced the row separation so it grouped without competing with the content.</li>
+          <li><strong>Iconography held steady.</strong> Kept icons close to the existing set users were already trained on, with accent color reserved for confirming actions.</li>
+          <li><strong>Pagination simplified.</strong> Checked the data first: roughly 99% of tables held under 100 entries, so a 10-page cap with single-click jumps to any page covered the real use without overbuilding.</li>
+        </ul>
+
+        <div class="tables-stack">
+          <figure>
+            <img src="assets/fig/agency/tables-new.png" alt="New table pattern — unified across screens, actions left-aligned, simplified pagination" />
+            <div class="cap">New table · unified across screens, actions left, simplified pagination</div>
+          </figure>
+          <figure>
+            <img src="assets/fig/agency/tables-detail.png" alt="Table detail — type hierarchy, hover affordances, action grouping" />
+            <div class="cap">Detail · hierarchy, hover affordances, action grouping</div>
+          </figure>
+        </div>
+      </article>
+
+      <!-- 05 OVERALL LOOK -->
+      <article class="cs-section" id="look">
+        <span class="num">05 · Overall look</span>
+        <h2>Less contrast. <em>More hierarchy.</em></h2>
+        <p class="body">
+          The old palette was high-contrast black-on-white that fatigued eyes by mid-afternoon. I
+          kept the brand colors and used a range of grays for body copy. Softer, with enough
+          difference between shades to pull sections apart visually. Larger text, more spacing,
+          simpler labels. "Create Chatter Post" became "New Post" because the post lived inside a
+          section that already named what it was.
+        </p>
+        <p class="body">
+          The result is a surface that holds up over a full workday, with hierarchy doing the work
+          that loud color contrast used to.
+        </p>
+
+        <figure class="cs-figure full cs-figure-twoup">
+          <div class="cs-twoup-grid">
+            <div class="cs-twoup-item">
+              <img src="assets/fig/agency/overall-before.webp" alt="Before — original homepage with high-contrast palette and inconsistent components" />
+              <div class="cs-twoup-cap">
+                <span class="cap-num">01</span>
+                <span class="cap-name">Before</span>
+                <span class="cap-sub">high contrast, mixed components</span>
+              </div>
+            </div>
+            <div class="cs-twoup-item">
+              <img src="assets/fig/agency/overall-after.png" alt="After — redesigned homepage with calmer palette, unified tables, and clearer hierarchy" />
+              <div class="cs-twoup-cap">
+                <span class="cap-num">02</span>
+                <span class="cap-name">After</span>
+                <span class="cap-sub">calmer palette, unified system</span>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <span class="fig-text">Same data, calmer surface. Hierarchy carried by spacing and type rather than contrast.</span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- 06 REFLECTION -->
+      <article class="cs-section" id="reflection">
+        <span class="num">06 · Reflection</span>
+        <h2>What I'd do differently.</h2>
+
+        <div class="reflect-grid">
+          <div class="reflect-card">
+            <div class="reflect-label">What worked</div>
+            <h4>Tackled the system, not the screens.</h4>
+            <p>Building one reusable table beat redesigning every screen one at a time. The nav fix paid back on every other page. Working component-first kept scope manageable in a project where every screen needed something.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What I'd change</div>
+            <h4>Validate sooner, not after.</h4>
+            <p>I confirmed the pagination cap with data after sketching the redesign. Today I'd front-load that kind of check on each big call (table density, default sort, action placement) before committing to a direction.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">Open question</div>
+            <h4>How much personality to fight for.</h4>
+            <p>The CRM was internal, so I leaned conservative on type and color to keep productivity high. Worth knowing: would a touch more personality have helped the team feel ownership of the tool, or hurt focus? An A/B test for whoever picks this up next.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What I'd love to know</div>
+            <h4>Adoption I never got to measure.</h4>
+            <p>I left The Agency before the new build had been in use long enough to measure. Did people work faster, click less, complain less? Open question. The right metrics existed in the platform; someone just had to look.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── NEXT CASE STUDY ─────────── -->
+<section class="next-cs shell">
+  <div class="next-grid">
+    <div>
+      <div class="next-label">Next case study</div>
+      <div class="next-num">Ruggable · 2025 · Service</div>
+      <h2>Order Tracker — consolidating two pages into <em>one card-based system.</em></h2>
+      <p class="next-deck">
+        WISMO was the largest single category of CX tickets at Ruggable. I led the redesign and
+        helped cut volume by nearly a third.
+      </p>
+      <a href="case-order-tracker.html" class="btn btn-primary">Read Order Tracker <span class="arrow">→</span></a>
+    </div>
+    <a href="case-order-tracker.html" class="next-card case-tile-ot">
+      <img src="assets/fig/ot-tile-desktop.png" alt="Order Tracker — desktop tracking view" class="ot-desktop" />
+      <img src="assets/fig/ot-tile-mobile.png" alt="Order Tracker — mobile shipped widget" class="ot-mobile" />
+      <div class="next-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+{% include "footer.html" %}
+
+{% include "case-scripts.html" %}
+
+</body>
+</html>

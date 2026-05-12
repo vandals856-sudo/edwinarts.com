@@ -1,0 +1,194 @@
+---
+currentNav: Work
+permalink: /case-ikon.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>IKON — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<link rel="stylesheet" href="styles/case-study.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   IKON — page-specific layout
+   The artifact (long deck image) carries the story.
+   The HTML wraps it in site chrome and gives quick context.
+   ───────────────────────────────────────────────────────────── */
+
+/* Generic section block */
+.ikon-section {
+  padding-block: 80px;
+  border-bottom: 1px solid var(--rule);
+}
+.ikon-section .eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 14px;
+}
+.ikon-section h2 {
+  font-size: clamp(36px, 4.5vw, 60px);
+  letter-spacing: -0.02em; line-height: 1.05;
+  margin-bottom: 16px;
+  max-width: 880px;
+}
+.ikon-section h2 em { font-style: italic; color: var(--accent); }
+.ikon-section .section-deck {
+  font-family: var(--serif); font-size: 18px; line-height: 1.5;
+  color: var(--ink-2); max-width: 640px;
+  margin-bottom: 48px;
+}
+
+/* Contents list — what's inside the deck */
+.contents-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column;
+  border-top: 1px solid var(--rule);
+}
+.contents-list li {
+  display: grid;
+  grid-template-columns: 64px minmax(180px, 1fr) 2fr;
+  gap: 32px;
+  align-items: baseline;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.contents-list .n {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.contents-list .name {
+  font-family: var(--serif); font-size: 24px;
+  line-height: 1.15; color: var(--ink); letter-spacing: -0.01em;
+}
+.contents-list .desc {
+  font-size: 15px; line-height: 1.55; color: var(--ink-2);
+}
+@media (max-width: 800px) {
+  .contents-list li {
+    grid-template-columns: 48px 1fr;
+    gap: 16px;
+    padding: 22px 0;
+  }
+  .contents-list .desc {
+    grid-column: 1 / -1;
+    padding-left: 64px;
+    margin-top: 4px;
+  }
+}
+
+/* Full deck image · bare, no chrome */
+.ikon-deck {
+  padding-block: 32px 80px;
+}
+.ikon-deck img {
+  display: block; width: 100%; height: auto;
+}
+</style>
+</head>
+<body>
+
+<!-- reading progress bar -->
+<div class="read-progress"><div class="bar"></div></div>
+
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="cs-hero shell" data-screen-label="Case · IKON · Hero">
+  <div class="cs-hero-meta">
+    <span class="crumb"><a href="index.html">Work</a> / IKON</span>
+  </div>
+
+  <div class="cs-hero-grid">
+    <div>
+      <h1>Three surfaces. <em>One brand activation.</em></h1>
+      <p class="deck">
+        IKON is a gaming challenge platform. The Alienware Community Showdown was a six-week
+        activation built on it. I designed the full flow end to end: a co-branded landing page, a
+        dedicated desktop application, and a Twitch extension that lived alongside the broadcasts.
+      </p>
+    </div>
+
+    <div class="cs-facts">
+      <div class="fact"><span class="k">Role</span><span class="v">UX / UI Designer</span></div>
+      <div class="fact"><span class="k">Company</span><span class="v">Quarterback (Ikon)</span></div>
+      <div class="fact"><span class="k">Platform</span><span class="v">Web · Desktop · Twitch Extension</span></div>
+      <div class="fact"><span class="k">Status</span><span class="v"><span class="accent">●</span> Shipped · 2019</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── WHAT'S INSIDE ─────────── -->
+<section class="ikon-section shell">
+  <div class="eyebrow">In this piece</div>
+  <h2>What's inside the deck.</h2>
+  <p class="section-deck">
+    The portfolio piece below walks through the brand and visual system, the three product surfaces
+    I designed, and the campaign results.
+  </p>
+
+  <ol class="contents-list">
+    <li>
+      <span class="n">01</span>
+      <span class="name">Brand &amp; visual system</span>
+      <span class="desc">Typography (Montserrat across four weights) and the working color palette.</span>
+    </li>
+    <li>
+      <span class="n">02</span>
+      <span class="name">Landing Page</span>
+      <span class="desc">Co-branded hero, prize structure, four-step join flow, streamer roster, and partner closing.</span>
+    </li>
+    <li>
+      <span class="n">03</span>
+      <span class="name">Desktop Application</span>
+      <span class="desc">Home, Twitch sign-up, account verification, streamer selection, and the leaderboard climb.</span>
+    </li>
+    <li>
+      <span class="n">04</span>
+      <span class="name">Twitch Extension</span>
+      <span class="desc">Docked side panel with prize callouts and highlight states, shown live in-stream.</span>
+    </li>
+    <li>
+      <span class="n">05</span>
+      <span class="name">Results</span>
+      <span class="desc">Games played, hours logged, matches under campaign, and audience reach across social and video.</span>
+    </li>
+  </ol>
+</section>
+
+<!-- ─────────── THE DECK ─────────── -->
+<section class="shell ikon-deck">
+  <img src="assets/fig/ikon/ikon-onepage.jpg" alt="IKON Alienware Community Showdown — full portfolio piece including brand system, landing page, desktop application, Twitch extension, and results" loading="lazy" />
+</section>
+
+<!-- ─────────── NEXT CASE STUDY ─────────── -->
+<section class="next-cs shell">
+  <div class="next-grid">
+    <div>
+      <div class="next-label">Next case study</div>
+      <div class="next-num">Salesforce · The Agency · 2018</div>
+      <h2>The Agency CRM, <em>less of an eyesore.</em></h2>
+      <p class="next-deck">
+        Custom Salesforce build, redesigned for the people staring at it eight hours a day.
+        Cleaner navigation, unified tables, calmer hierarchy.
+      </p>
+      <a href="case-the-agency.html" class="btn btn-primary">Read The Agency <span class="arrow">→</span></a>
+    </div>
+    <a href="case-the-agency.html" class="next-card tex-agency dark">
+      <div class="nt-labels">
+        <div class="nt-meta">Salesforce · The Agency · 2018</div>
+        <div class="nt-title">The Agency CRM. Less of an eyesore.</div>
+      </div>
+      <div class="next-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+{% include "footer.html" %}
+
+{% include "case-scripts.html" %}
+
+</body>
+</html>

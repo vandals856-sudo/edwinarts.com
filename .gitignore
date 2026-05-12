@@ -1,0 +1,15 @@
+node_modules/
+_site/
+.DS_Store
+
+# Machine-local Claude Code permissions (contains full local paths)
+.claude/settings.local.json
+
+# Project guidance for Claude, kept local
+CLAUDE.md
+
+# Personal documents not intended for public source
+assets/Edwin_Rodriguez_Resume.docx
+
+# Legacy logo, SVG version is the one in use
+assets/erod-logo.png

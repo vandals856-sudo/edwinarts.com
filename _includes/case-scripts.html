@@ -1,0 +1,127 @@
+<!-- Shared scripts for case-study pages: progress bar, TOC highlighter, lightbox -->
+<script>
+  // Reading progress bar
+  (function() {
+    const bar = document.querySelector('.read-progress > .bar');
+    if (!bar) return;
+    function tick() {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+      bar.style.width = pct + '%';
+    }
+    window.addEventListener('scroll', tick, { passive: true });
+    tick();
+  })();
+
+  // TOC active-section highlighter
+  (function() {
+    const tocLinks = document.querySelectorAll('.cs-toc a[data-toc]');
+    if (!tocLinks.length) return;
+    const sections = Array.from(tocLinks).map(a => ({
+      link: a,
+      el: document.getElementById(a.dataset.toc)
+    })).filter(s => s.el);
+    function tick() {
+      const y = window.scrollY + 200;
+      let active = null;
+      for (const s of sections) {
+        if (s.el.offsetTop <= y) active = s;
+      }
+      tocLinks.forEach(a => a.classList.remove('active'));
+      if (active) active.link.classList.add('active');
+    }
+    window.addEventListener('scroll', tick, { passive: true });
+    tick();
+  })();
+
+  // Lite YouTube: click thumbnail → swap in real iframe with autoplay.
+  // Params: autoplay, hide controls, loop (requires playlist=ID), mute (silent demos),
+  // hide related videos, hide annotations, modest branding, inline playback.
+  (function() {
+    document.querySelectorAll('.lite-yt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        if (!id) return;
+        const params = [
+          'autoplay=1',
+          'loop=1',
+          'playlist=' + id,
+          'mute=1',
+          'rel=0',
+          'modestbranding=1',
+          'playsinline=1',
+          'iv_load_policy=3'
+        ].join('&');
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${id}?${params}`;
+        iframe.title = btn.getAttribute('aria-label') || 'YouTube video';
+        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+        iframe.setAttribute('allowfullscreen', '');
+        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:inherit;';
+        btn.replaceWith(iframe);
+      });
+    });
+  })();
+
+  // Lightbox: click any .zoomable image to view full size
+  (function() {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox) return;
+    const lbImg    = lightbox.querySelector('.lightbox-img');
+    const lbCap    = lightbox.querySelector('.lightbox-caption');
+    const lbCount  = lightbox.querySelector('.lightbox-counter');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+    const prevBtn  = lightbox.querySelector('.lightbox-prev');
+    const nextBtn  = lightbox.querySelector('.lightbox-next');
+    let group = [];
+    let idx   = 0;
+
+    const show = () => {
+      const img = group[idx];
+      lbImg.src = img.src;
+      lbImg.alt = img.alt || '';
+      lbCap.textContent = img.alt || '';
+      lbCount.textContent = (idx + 1) + ' / ' + group.length;
+      const multi = group.length > 1;
+      prevBtn.style.display = multi ? '' : 'none';
+      nextBtn.style.display = multi ? '' : 'none';
+      lbCount.style.display = multi ? '' : 'none';
+    };
+    const open = (img) => {
+      const groupEl = img.closest('[data-lightbox-group]');
+      group = groupEl
+        ? Array.from(groupEl.querySelectorAll('.zoomable'))
+        : [img];
+      idx = group.indexOf(img);
+      if (idx < 0) idx = 0;
+      show();
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    };
+    const close = () => {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+    const next = () => { idx = (idx + 1) % group.length; show(); };
+    const prev = () => { idx = (idx - 1 + group.length) % group.length; show(); };
+
+    document.querySelectorAll('.zoomable').forEach(img => {
+      img.addEventListener('click', () => open(img));
+    });
+    closeBtn.addEventListener('click', close);
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowRight') next();
+      else if (e.key === 'ArrowLeft')  prev();
+    });
+  })();
+</script>

@@ -1,0 +1,175 @@
+---
+currentNav: About
+permalink: /About.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>About — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<style>
+  .about-hero { padding-block: 80px 60px; }
+  .about-hero-grid {
+    display: grid; grid-template-columns: 1.1fr 1fr;
+    gap: 80px; align-items: end;
+  }
+  .about-hero h1 { font-size: clamp(56px, 7vw, 96px); margin-bottom: 28px; }
+  .about-hero h1 em { font-style: italic; color: var(--accent); }
+  .about-hero .lede { max-width: 460px; }
+
+  .about-photo-large {
+    aspect-ratio: 4/5;
+    background: #1a1814 url('assets/fig/about-photo.jpg') center/cover no-repeat;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .about-body {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px;
+    padding: 80px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .about-body h3 { margin-bottom: 24px; max-width: 720px; }
+  .about-body p { margin-bottom: 18px; max-width: 640px; line-height: 1.7; color: var(--ink-2); font-size: 17px; }
+  .about-body p strong { color: var(--ink); font-weight: 500; }
+
+  .principles {
+    padding: 80px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .principles-header { display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center; margin-bottom: 64px; }
+  .principles-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 56px;
+  }
+  .principle-num {
+    font-family: var(--serif); font-size: 48px;
+    color: var(--accent); font-style: italic;
+    margin-bottom: 18px;
+  }
+  .principle h4 { margin-bottom: 14px; }
+  .principle p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+
+  .offhours {
+    display: grid; grid-template-columns: 1fr 2fr; gap: 80px;
+    padding: 80px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .offhours-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;
+  }
+  .offhours-card {
+    padding: 32px 28px;
+    background: var(--paper-2);
+    border-radius: 4px;
+  }
+  .offhours-card .num {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+    color: var(--ink-3); text-transform: uppercase; margin-bottom: 14px;
+  }
+  .offhours-card h4 { margin-bottom: 8px; font-family: var(--serif); font-size: 24px; }
+  .offhours-card p { color: var(--ink-2); font-size: 14px; line-height: 1.5; }
+
+</style>
+</head>
+<body data-screen-label="About">
+
+<!-- ─────────── NAV ─────────── -->
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="about-hero shell">
+  <div class="about-hero-grid">
+    <div>
+      <div class="eyebrow" style="margin-bottom:24px">About · Edwin Rodriguez</div>
+      <h1>I'm a tinkerer. I like figuring things out, <em>like a puzzle.</em></h1>
+      <p class="lede">Senior product designer. Most recently leading at Ruggable. Born and raised in Southern California.</p>
+    </div>
+    <div class="about-photo-large"></div>
+  </div>
+</section>
+
+<!-- ─────────── BODY ─────────── -->
+<section class="shell">
+  <div class="about-body">
+    <div>
+      <div class="eyebrow">The longer story</div>
+    </div>
+    <div>
+      <h3>Most of what I do is take an ambiguous problem and turn it into something shipped.</h3>
+      <p>I started in video games. First design role was at <strong>Electronic Arts</strong> on Medal of Honor: Airborne, then years at <strong>Trilogy Studios</strong> working across Kung Fu Panda World for DreamWorks, MTV's Virtual Lower East Side, and the Trilogy Touch interactive storybooks. Then a stretch at Marquee on Project P, and Storytime where I shipped <strong>Skit! 2.0</strong> on iOS and Android.</p>
+      <p>The pivot to product happened at <strong>NBCUniversal</strong>, designing E! News across web, mobile, and the Emmy-nominated E! Live 360 experience for AT&amp;T. From there I went deeper into product. <strong>The Agency</strong> for the daily-use Salesforce CRM problem. <strong>Quarterback (Ikon)</strong> for streamer tools and the Alienware Community Showdown. The last several years at <strong>Ruggable</strong>, leading design across the order experience, the PDP, the design system, and an AI-powered rug recommendation tool we built from scratch.</p>
+      <p>The thread is the same: software people <em>actually</em> use. Not demoware. Not a portfolio shot. The real version, with the real data, in the real flow, after research told us what was actually wrong.</p>
+      <p>I lead by doing. Sketching, prototyping in Figma for quick checks and with AI tools when a flow needs more depth, pairing with engineers and PMs from week one. Hands-on by default, coach when the team needs it. I like writing things down. I like deleting drafts. I like the version after the third one, when the problem finally looks small.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── PRINCIPLES ─────────── -->
+<section class="shell">
+  <div class="principles">
+    <div class="principles-header">
+      <div class="eyebrow">How I work</div>
+      <h2 style="margin:0;line-height:1.05">Three principles, no slogans.</h2>
+    </div>
+    <div class="principles-grid">
+      <div class="principle">
+        <div class="principle-num">i.</div>
+        <h4>Research the actual job.</h4>
+        <p>I don't trust the brief. I read tickets, ride along on calls, and watch real sessions before I sketch. The brief is what someone <em>thinks</em> the problem is. The work is finding out what it actually is.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-num">ii.</div>
+        <h4>Ship the smallest real thing.</h4>
+        <p>One real-data screen in production beats six pixel-perfect mocks. I prototype in code when I can, A/B-test when the team has the muscle, and resist the urge to design the whole thing before validating the first move.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-num">iii.</div>
+        <h4>Leave the system better.</h4>
+        <p>Every project I've led has fed back into a design system, a component, a doc, a pattern. The work outlasts the project, or it should. If I leave and the team can't keep going, I designed wrong.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── OFF HOURS ─────────── -->
+<section class="shell">
+  <div class="offhours">
+    <div>
+      <div class="eyebrow" style="margin-bottom:14px">Off the clock</div>
+      <h3 style="font-size:32px">Stuff I do when I'm not designing.</h3>
+    </div>
+    <div class="offhours-grid">
+      <div class="offhours-card">
+        <div class="num">01</div>
+        <h4>Video games</h4>
+        <p>All sorts of games, all sorts of genres. I try them all. Just beat Crimson Desert (highly recommended if you like open-world fantasy). Resident Evil Requiem before that.</p>
+      </div>
+      <div class="offhours-card">
+        <div class="num">02</div>
+        <h4>Drawing</h4>
+        <p>Pencil and ink. Random subjects, just for fun. My son draws alongside me lately.</p>
+      </div>
+      <div class="offhours-card">
+        <div class="num">03</div>
+        <h4>Hanging with my son</h4>
+        <p>He's at the age where everything is a question. Best UX research training there is.</p>
+      </div>
+      <div class="offhours-card">
+        <div class="num">04</div>
+        <h4>Building from directions</h4>
+        <p>Furniture mostly. Lately a Mostarle desk lamp kit. There's something honest about following the directions until the thing exists.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+{% include "footer.html" %}
+
+</body>
+</html>

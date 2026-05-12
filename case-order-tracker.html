@@ -1,0 +1,1139 @@
+---
+currentNav: Work
+permalink: /case-order-tracker.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Order Tracker — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<link rel="stylesheet" href="styles/case-study.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   Order Tracker — page-specific accents
+   ───────────────────────────────────────────────────────────── */
+
+/* Hero banner: stylized timeline product shot */
+.ot-banner {
+  background: linear-gradient(180deg, #ebe5d7 0%, #d8c9b0 100%);
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  padding: 48px;
+}
+.ot-banner-inner {
+  width: min(720px, 92%);
+  background: var(--paper);
+  border-radius: 14px;
+  border: 1px solid var(--rule);
+  box-shadow: 0 30px 60px -20px rgba(26,24,20,0.25), 0 14px 28px -10px rgba(26,24,20,0.15);
+  overflow: hidden;
+}
+.ot-banner-bar {
+  display: flex; gap: 6px; align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-2);
+}
+.ot-banner-bar .d { width: 9px; height: 9px; border-radius: 50%; background: var(--rule); }
+.ot-banner-bar .url {
+  margin-left: 16px;
+  font-family: var(--mono); font-size: 11px; color: var(--ink-3);
+  letter-spacing: 0.05em;
+}
+.ot-banner-body {
+  padding: 32px 40px 40px;
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px;
+}
+.ot-banner-body .ot-headline {
+  font-family: var(--serif);
+  font-size: 32px; line-height: 1.1; letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.ot-banner-body .ot-sub { color: var(--ink-2); font-size: 13px; margin-bottom: 24px; }
+.ot-timeline-mini { display: flex; flex-direction: column; gap: 0; }
+.ot-mini-step {
+  display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start;
+  padding: 10px 0;
+  position: relative;
+}
+.ot-mini-step + .ot-mini-step::before {
+  content: ""; position: absolute; left: 11px; top: -6px; bottom: 50%;
+  width: 1px; background: var(--accent);
+}
+.ot-mini-step:nth-child(4)::before, .ot-mini-step:nth-child(4)::after { background: var(--rule) !important; }
+.ot-mini-step .dot {
+  width: 16px; height: 16px; border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--paper);
+  margin-top: 3px;
+}
+.ot-mini-step .dot.done { background: var(--accent); }
+.ot-mini-step.pending .dot { border-color: var(--ink-3); }
+.ot-mini-step .label { font-size: 13px; color: var(--ink); font-weight: 500; }
+.ot-mini-step.pending .label { color: var(--ink-3); }
+.ot-mini-step .when { font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.05em; margin-top: 2px; }
+
+.ot-rug-card {
+  background: var(--paper-2);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.ot-rug-img {
+  aspect-ratio: 5/4;
+  background:
+    repeating-linear-gradient(45deg, rgba(26,24,20,0.05) 0 6px, transparent 6px 12px),
+    linear-gradient(135deg, #c4471c 0%, #8a3214 100%);
+  border-radius: 4px;
+}
+.ot-rug-card .name { font-family: var(--serif); font-size: 14px; line-height: 1.3; }
+.ot-rug-card .meta { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; color: var(--ink-3); text-transform: uppercase; }
+
+/* Email-vs-tracker comparison block (figure 1) */
+.email-compare {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 32px;
+  background: var(--paper-2);
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  position: relative;
+}
+.email-card {
+  background: var(--paper);
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  padding: 20px;
+  position: relative;
+  min-height: 280px;
+}
+.email-card .ec-label {
+  position: absolute; top: 12px; right: 12px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3);
+  background: var(--paper-2);
+  padding: 3px 7px; border-radius: 2px;
+}
+.email-card .ec-from {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em;
+  color: var(--ink-3); margin-bottom: 8px;
+}
+.email-card .ec-subject {
+  font-family: var(--serif); font-size: 15px; line-height: 1.3;
+  font-weight: 500; margin-bottom: 16px;
+  color: var(--ink);
+}
+.email-card .ec-row {
+  display: flex; justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-size: 12px;
+}
+.email-card .ec-row:last-child { border: none; }
+.email-card .ec-row .k { color: var(--ink-3); font-family: var(--mono); font-size: 10px; }
+.email-card .ec-row .v { color: var(--ink); }
+.email-card.tracker {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.email-compare .vs {
+  position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--ink); color: var(--paper);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-style: italic; font-size: 14px;
+  z-index: 2;
+}
+
+/* Research artifacts: WISMO ticket samples */
+.research-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 32px 0;
+}
+.ticket-card {
+  padding: 20px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  display: flex; flex-direction: column; gap: 12px;
+  position: relative;
+}
+.ticket-card .ticket-meta {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.15em;
+  color: var(--ink-3); text-transform: uppercase;
+  display: flex; justify-content: space-between;
+}
+.ticket-card .ticket-q {
+  font-family: var(--serif); font-style: italic;
+  font-size: 16px; line-height: 1.4;
+  color: var(--ink);
+}
+.ticket-card .ticket-tag {
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+  color: var(--accent); text-transform: uppercase;
+  padding-top: 8px; border-top: 1px dashed var(--rule);
+}
+
+/* User journey strip (before state) */
+.journey-before {
+  margin: 32px 0;
+  padding: 32px;
+  background: var(--paper-2);
+  border-radius: 10px;
+  position: relative;
+}
+.journey-before .jb-title {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3);
+  margin-bottom: 24px;
+}
+.journey-before .jb-steps {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  position: relative;
+}
+.journey-before .jb-steps::before {
+  content: ""; position: absolute;
+  left: 0; right: 0; top: 22px; height: 1px;
+  background: var(--rule);
+}
+.jb-step {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  position: relative;
+  padding: 0 8px;
+}
+.jb-step .icon {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--paper);
+  border: 1.5px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 14px;
+  color: var(--ink-2);
+  position: relative; z-index: 1;
+}
+.jb-step.problem .icon {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--paper);
+}
+.jb-step .label {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-2);
+  text-align: center;
+}
+.jb-step.problem .label { color: var(--accent); }
+.jb-step .note {
+  font-size: 11px; line-height: 1.4;
+  color: var(--ink-3); text-align: center;
+  max-width: 130px;
+}
+
+/* Wireframe sketches grid */
+.sketch-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 32px 0;
+}
+.sketch {
+  aspect-ratio: 3/4;
+  background: var(--paper);
+  border: 1px dashed var(--rule);
+  border-radius: 4px;
+  padding: 16px;
+  display: flex; flex-direction: column; gap: 8px;
+  position: relative;
+}
+.sketch .sketch-label {
+  position: absolute; bottom: 8px; right: 10px;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.12em;
+  color: var(--ink-3); text-transform: uppercase;
+}
+.sketch .sk-line { height: 6px; background: var(--rule); border-radius: 1px; }
+.sketch .sk-line.sh { width: 60%; }
+.sketch .sk-line.tall { height: 10px; }
+.sketch .sk-block {
+  background: var(--paper-2);
+  border: 1px dashed var(--ink-3);
+  border-radius: 3px;
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 9px; color: var(--ink-3);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.sketch .sk-pill {
+  display: inline-block; padding: 3px 8px;
+  border: 1px solid var(--rule); border-radius: 999px;
+  font-family: var(--mono); font-size: 8px; color: var(--ink-3);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+
+/* Final tracker — large detailed mock */
+.final-mock {
+  background: linear-gradient(180deg, #ebe5d7 0%, #d8c9b0 100%);
+  padding: 48px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.final-screen {
+  width: 100%;
+  max-width: 720px;
+  background: var(--paper);
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  box-shadow: 0 30px 60px -20px rgba(26,24,20,0.25), 0 14px 28px -10px rgba(26,24,20,0.15);
+}
+.fs-bar {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper-2);
+  display: flex; gap: 10px; align-items: center;
+}
+.fs-bar .b-dots { display: flex; gap: 5px; }
+.fs-bar .b-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--rule); }
+.fs-bar .b-url {
+  margin-left: 14px;
+  font-family: var(--mono); font-size: 11px; color: var(--ink-3);
+}
+.fs-body {
+  padding: 40px 48px 48px;
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px;
+}
+.fs-status-eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
+  color: var(--accent); text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.fs-headline {
+  font-family: var(--serif);
+  font-size: 32px; line-height: 1.05; letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.fs-eta {
+  font-size: 13px; color: var(--ink-2);
+  margin-bottom: 28px;
+}
+.fs-eta .accent { color: var(--accent); font-weight: 500; }
+.fs-timeline { display: flex; flex-direction: column; gap: 0; }
+.fs-step {
+  display: grid; grid-template-columns: 32px 1fr auto; gap: 14px;
+  padding: 12px 0;
+  position: relative;
+  align-items: start;
+}
+.fs-step + .fs-step::before {
+  content: ""; position: absolute;
+  left: 15px; top: -6px; height: 18px;
+  width: 1.5px;
+  background: var(--accent);
+}
+.fs-step.pending + .fs-step::before { background: var(--rule); }
+.fs-step.pending::before { background: var(--rule); }
+.fs-step .step-dot {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--accent); background: var(--paper);
+  margin-top: 2px; position: relative;
+}
+.fs-step .step-dot.done { background: var(--accent); }
+.fs-step .step-dot.done::after {
+  content: "✓"; position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--paper); font-size: 9px; font-weight: 700;
+}
+.fs-step.pending .step-dot { border-color: var(--ink-3); background: var(--paper-2); }
+.fs-step .step-info {
+  display: flex; flex-direction: column; gap: 4px;
+}
+.fs-step .step-title { font-size: 14px; font-weight: 500; color: var(--ink); }
+.fs-step.pending .step-title { color: var(--ink-3); }
+.fs-step .step-desc { font-size: 12px; color: var(--ink-2); line-height: 1.5; }
+.fs-step .step-when {
+  font-family: var(--mono); font-size: 10px;
+  letter-spacing: 0.05em; color: var(--ink-3);
+  white-space: nowrap;
+  margin-top: 4px;
+}
+
+.fs-aside { display: flex; flex-direction: column; gap: 16px; }
+.fs-product-card {
+  background: var(--paper-2);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex; gap: 14px; align-items: center;
+}
+.fs-product-card .img {
+  width: 56px; height: 56px;
+  background:
+    repeating-linear-gradient(45deg, rgba(26,24,20,0.05) 0 4px, transparent 4px 8px),
+    linear-gradient(135deg, #c4471c, #8a3214);
+  border-radius: 4px;
+  flex: 0 0 auto;
+}
+.fs-product-card .pname { font-family: var(--serif); font-size: 14px; line-height: 1.3; }
+.fs-product-card .pmeta { font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
+
+.fs-info-row {
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 14px 0;
+  border-top: 1px solid var(--rule);
+}
+.fs-info-row .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--ink-3); text-transform: uppercase; }
+.fs-info-row .v { font-size: 13px; color: var(--ink); }
+
+.fs-help-row {
+  display: flex; gap: 8px; padding-top: 16px; border-top: 1px solid var(--rule);
+}
+.fs-help-row .help-pill {
+  flex: 1;
+  font-family: var(--sans); font-size: 11px;
+  padding: 10px 12px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  text-align: center;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+/* Mobile mocks — vertical phone stack */
+.phone-strip {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: end;
+  padding: 64px 32px;
+  background: linear-gradient(180deg, #ebe5d7 0%, #d8c9b0 100%);
+  border-radius: 10px;
+}
+.phone-shot {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 18px;
+}
+.phone-shot img {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow:
+    0 24px 48px -16px rgba(26, 24, 20, 0.28),
+    0 8px 16px -6px rgba(26, 24, 20, 0.14);
+}
+.phone-shot .ph-caption {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+.phone-shot .ph-caption .cap-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  font-weight: 500;
+}
+.phone-shot .ph-caption .cap-name {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.phone {
+  aspect-ratio: 9/19;
+  background: var(--ink);
+  border-radius: 28px;
+  padding: 8px;
+  position: relative;
+  box-shadow: 0 20px 40px -15px rgba(26,24,20,0.3);
+}
+.phone .screen {
+  background: var(--paper);
+  border-radius: 22px;
+  height: 100%; width: 100%;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+}
+.phone .ph-status {
+  height: 22px;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0 14px;
+  font-family: var(--mono); font-size: 9px; color: var(--ink);
+}
+.phone .ph-content {
+  flex: 1;
+  padding: 14px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.phone .ph-eyebrow {
+  font-family: var(--mono); font-size: 7px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--accent);
+}
+.phone .ph-title {
+  font-family: var(--serif); font-size: 14px; line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.phone .ph-eta {
+  font-size: 9px; color: var(--ink-2);
+  margin-top: -2px;
+}
+.phone .ph-step {
+  display: grid; grid-template-columns: 12px 1fr; gap: 6px; align-items: start;
+  margin-top: 4px;
+}
+.phone .ph-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  background: var(--paper);
+  margin-top: 1px;
+}
+.phone .ph-dot.done { background: var(--accent); }
+.phone .ph-dot.pending { border-color: var(--ink-3); background: var(--paper-2); }
+.phone .ph-step .label { font-size: 8px; color: var(--ink); font-weight: 500; }
+.phone .ph-step.pending .label { color: var(--ink-3); }
+.phone .ph-step .when { font-family: var(--mono); font-size: 6px; color: var(--ink-3); letter-spacing: 0.05em; margin-top: 1px; }
+.phone .ph-card {
+  margin-top: auto;
+  padding: 8px;
+  background: var(--paper-2);
+  border-radius: 6px;
+  display: flex; gap: 6px; align-items: center;
+}
+.phone .ph-card .img {
+  width: 22px; height: 22px;
+  background: linear-gradient(135deg, #c4471c, #8a3214);
+  border-radius: 2px;
+}
+.phone .ph-card .name { font-family: var(--serif); font-size: 8px; line-height: 1.2; }
+.phone .ph-help {
+  display: flex; gap: 4px; margin-top: 8px;
+}
+.phone .ph-help span {
+  flex: 1; padding: 5px 0;
+  font-family: var(--sans); font-size: 7px;
+  text-align: center;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--ink);
+}
+.phone .ph-caption {
+  position: absolute;
+  bottom: -32px; left: 0; right: 0;
+  text-align: center;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* Outcome poster */
+.outcome-poster {
+  display: grid; grid-template-columns: 1.5fr 1fr; gap: 16px;
+  margin: 56px 0 40px;
+}
+.oc-hero {
+  background: var(--ink); color: var(--paper);
+  border-radius: 12px;
+  padding: 48px 44px 40px;
+  display: flex; flex-direction: column; gap: 28px;
+  min-height: 380px;
+}
+.oc-hero .oc-eyebrow {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: rgba(244,240,232,0.55);
+}
+.oc-hero .oc-num {
+  font-family: var(--serif);
+  font-size: clamp(120px, 13vw, 200px);
+  line-height: 0.85;
+  color: var(--accent-soft);
+  letter-spacing: -0.04em;
+  font-weight: 400;
+}
+.oc-hero .oc-num .arrow { font-size: 0.45em; vertical-align: 0.45em; margin-left: 6px; }
+.oc-hero .oc-desc {
+  font-family: var(--serif); font-size: 22px; line-height: 1.35;
+  color: var(--paper); max-width: 420px;
+}
+.oc-hero .oc-meta {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: rgba(244,240,232,0.45);
+  margin-top: auto;
+}
+
+.oc-side { display: flex; flex-direction: column; gap: 16px; }
+.oc-stat {
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 28px 28px;
+  flex: 1;
+  display: flex; flex-direction: column; gap: 14px; justify-content: center;
+}
+.oc-stat .label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3);
+}
+.oc-stat .num {
+  font-family: var(--serif); font-size: clamp(40px, 4.5vw, 56px);
+  color: var(--ink); line-height: 1; letter-spacing: -0.02em;
+}
+
+@media (max-width: 900px) {
+  .outcome-poster { grid-template-columns: 1fr; }
+  .oc-hero { min-height: 0; padding: 40px 32px 36px; }
+  .oc-side { flex-direction: row; }
+  .oc-stat { padding: 22px 24px; }
+}
+@media (max-width: 600px) {
+  .oc-side { flex-direction: column; }
+}
+
+/* Concept galleries · section 03 */
+.cs-figure-concepts { margin: 32px 0 56px; }
+.concept-grid { display: grid; gap: 18px; }
+.concept-grid-mobile { grid-template-columns: repeat(3, 1fr); max-width: 760px; }
+.concept-grid-mobile .ph-mobile {
+  aspect-ratio: 9/19;
+  padding: 20px;
+}
+.concept-grid-desktop { grid-template-columns: repeat(3, 1fr); }
+.concept-grid-desktop .ph-desktop {
+  aspect-ratio: 4/3;
+  padding: 20px;
+}
+.concept-grid-mobile img {
+  display: block; width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--rule); border-radius: 6px;
+}
+.concept-grid-desktop img,
+.concept-grid-resolved img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--rule); border-radius: 6px;
+}
+.concept-grid-resolved {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.concept-grid-resolved .ph-resolved {
+  aspect-ratio: 4/3;
+  padding: 20px;
+}
+@media (max-width: 800px) {
+  .concept-grid-mobile, .concept-grid-desktop, .concept-grid-resolved { grid-template-columns: 1fr; }
+  .concept-grid-mobile { max-width: 360px; margin: 0 auto; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- reading progress bar -->
+<div class="read-progress"><div class="bar"></div></div>
+
+{% include "lightbox.html" %}
+
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="cs-hero shell" data-screen-label="Case · Order Tracker · Hero">
+  <div class="cs-hero-meta">
+    <span class="crumb"><a href="index.html">Work</a> / Order Tracker</span>
+  </div>
+
+  <div class="cs-hero-grid">
+    <div>
+      <h1>Where's my <em>rug?</em></h1>
+      <p class="deck">
+        WISMO ("where is my order?") was the largest single category of inbound CX tickets at Ruggable.
+        The data was there, just spread across two pages. CX brought the issue to UX. I led the
+        redesign, consolidating the Order Tracker and Product Tracker into a single
+        <em>card-based system</em> with state-aware copy, and helped cut WISMO ticket volume by nearly a third.
+      </p>
+    </div>
+
+    <div class="cs-facts">
+      <div class="fact"><span class="k">Role</span><span class="v">Principal UX Designer · Lead</span></div>
+      <div class="fact"><span class="k">Company</span><span class="v">Ruggable</span></div>
+      <div class="fact"><span class="k">Platform</span><span class="v">Web · Mobile web</span></div>
+      <div class="fact"><span class="k">Status</span><span class="v"><span class="accent">●</span> Shipped · 2025</span></div>
+    </div>
+  </div>
+
+  <!-- Hero banner: desktop screenshot with mobile overlay (out for delivery) -->
+  <div class="cs-banner cs-banner-ot">
+    <img src="assets/fig/ot/banner-desktop.png" alt="Order Tracker — desktop, Out for Delivery state" class="banner-desktop" />
+    <img src="assets/fig/ot/banner-mobile.png" alt="Order Tracker — mobile, Out for Delivery state" class="banner-mobile" />
+  </div>
+
+  <!-- Headline metrics -->
+  <div class="cs-impact">
+    <div class="stat">
+      <span class="num">28<span class="unit">%↓</span></span>
+      <span class="label">WISMO ticket volume<br>(post-launch · 90d)</span>
+    </div>
+    <div class="stat">
+      <span class="num">100<span class="unit">%↓</span></span>
+      <span class="label">Post-ship "where is it"<br>email inquiries</span>
+    </div>
+    <div class="stat muted">
+      <span class="num">3.2<span class="unit">×</span></span>
+      <span class="label">Self-service<br>resolution rate</span>
+    </div>
+    <div class="stat muted">
+      <span class="num">+11<span class="unit">pts</span></span>
+      <span class="label">Post-purchase NPS<br>vs. baseline</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── BODY (TOC + content) ─────────── -->
+<section class="shell" style="padding-bottom:120px">
+  <div class="cs-body">
+
+    <!-- Sticky TOC -->
+    <aside class="cs-toc">
+      <div class="toc-label">In this case</div>
+      <a href="#problem" data-toc="problem"><span class="toc-num">01</span>The problem</a>
+      <a href="#research" data-toc="research"><span class="toc-num">02</span>Brief &amp; process</a>
+      <a href="#insight" data-toc="insight"><span class="toc-num">03</span>Concepts</a>
+      <a href="#design" data-toc="design"><span class="toc-num">04</span>Building the cards</a>
+      <a href="#solution" data-toc="solution"><span class="toc-num">05</span>The solution</a>
+      <a href="#mobile" data-toc="mobile"><span class="toc-num">06</span>Mobile</a>
+      <a href="#outcomes" data-toc="outcomes"><span class="toc-num">07</span>Outcomes</a>
+      <a href="#reflection" data-toc="reflection"><span class="toc-num">08</span>Reflection</a>
+    </aside>
+
+    <!-- Content -->
+    <div class="cs-content">
+
+      <!-- 01 PROBLEM -->
+      <article class="cs-section" id="problem">
+        <span class="num">01 · The problem</span>
+        <h2>The data was there. <em>Just not where customers expected it.</em></h2>
+        <p class="body">
+          Ruggable had two post-purchase pages: an <strong>Order Details</strong> page (where customers landed)
+          and an <strong>Order Status</strong> page that lived behind a "Track Item" link inside Order Details.
+          The status data customers actually wanted (shipping state, tracking, delivery estimate) was on the
+          status page, one click further than most people went.
+        </p>
+        <p class="body">
+          <strong>WISMO ("where is my order?") was 10% of inbound CX tickets</strong>, the largest single
+          category by volume. CX brought the issue to UX with a clear ask: consolidate the two pages into one,
+          redesign around what customers actually need on the page, and deprecate the Order Status page.
+        </p>
+
+        <figure class="cs-figure full cs-figure-twoup">
+          <div class="cs-twoup-grid" data-lightbox-group="problem">
+            <div class="cs-twoup-item">
+              <img src="assets/fig/ot/old-order-details.png" alt="Old Order Details page — where customers landed" class="zoomable" />
+              <div class="cs-twoup-cap">
+                <span class="cap-num">01</span>
+                <span class="cap-name">Order Details</span>
+                <span class="cap-sub">where customers landed</span>
+              </div>
+            </div>
+            <div class="cs-twoup-item">
+              <img src="assets/fig/ot/old-order-status.png" alt="Old Order Status page — behind a Track Item click" class="zoomable" />
+              <div class="cs-twoup-cap">
+                <span class="cap-num">02</span>
+                <span class="cap-name">Order Status</span>
+                <span class="cap-sub">one click further</span>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <span class="fig-text">The two-page split that caused the WISMO load. Customers had to click "Track Item" inside Order Details to reach the actual status. Most didn't.</span>
+          </figcaption>
+        </figure>
+
+        <div class="callout">
+          <span class="label">From the brief</span>
+          <div class="content">
+            "Key details on status are on the Order Status page, which requires an additional click to get to.
+            We think many customers are missing this, expecting instead that the status/key details should be on
+            our Order Details page. To offset CX tickets, we want to consolidate &amp; redesign our Order Tracker
+            (deprecating the standalone status page)."
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 BRIEF & PROCESS -->
+      <article class="cs-section" id="research">
+        <span class="num">02 · Brief &amp; process</span>
+        <h2>How a project moves at Ruggable.</h2>
+        <p class="body">
+          Tickets at Ruggable start with a PM, who scopes the problem and writes the brief. UX takes it from there.
+          Research, references, ideation, then rough directions back for review. We loop with PM and the rest of
+          UX first, then bring CX in. Engineering builds in continuous feedback rounds with us so what ships looks
+          and reads right.
+        </p>
+        <p class="body">
+          For this one, CX had pulled both the volume picture and the qualitative. My job wasn't to gather raw
+          research. It was to turn the brief into design directions.
+        </p>
+
+        <h3>Reference work first</h3>
+        <p class="body">
+          Before opening an artboard, I built a reference board in Figma. Post-purchase tracking patterns from
+          peer DTC brands, carrier-side experiences, app and email order updates, and the existing Ruggable pages
+          annotated with what was working and what wasn't. The reference board became the team's vocabulary, so
+          when we discussed concepts later, we could point at it.
+        </p>
+
+        <figure class="cs-figure">
+          <img src="assets/fig/ot/ref-board.png" alt="Reference board collage of post-purchase tracking patterns from various brands and apps" class="cs-figure-img" />
+          <figcaption>
+            <span class="fig-text">Reference board · post-purchase tracking patterns gathered from peer brands, apps, emails, and carrier sites. Built first, designed second.</span>
+          </figcaption>
+        </figure>
+
+        <div class="callout">
+          <span class="label">Insight from the references</span>
+          <div class="content">
+            The trackers that worked best treated each piece of order info as a modular unit (status, ETA,
+            tracking, line items, address), not a fixed page layout. That framing pointed straight at a
+            <em>card-based</em> system: composable, state-aware, easier to evolve.
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 CONCEPTS -->
+      <article class="cs-section" id="insight">
+        <span class="num">03 · Concepts</span>
+        <h2>The configuration space, <em>not the directions.</em></h2>
+        <p class="body">
+          The reference board pointed at a card system early, so the interesting question wasn't
+          <em>which approach</em>. It was <em>which configuration</em>: what goes where, in what order, at what
+          hierarchy. I worked through that exploration on both surfaces, with the same cards composed
+          differently each time.
+        </p>
+
+        <h3>Mobile · top-area variants</h3>
+        <p class="body">
+          On mobile, the variation lived almost entirely in the top section. The answer to "where's my
+          rug?" had to come first, but how to compose ETA, status, and the product itself was open.
+          Below the fold the content was identical across variants.
+        </p>
+
+        <figure class="cs-figure cs-figure-concepts">
+          <div class="concept-grid concept-grid-mobile" data-lightbox-group="mobile">
+            <img src="assets/fig/ot/concept-mobile-1.png" alt="Mobile concept · expandable variant" class="zoomable" />
+            <img src="assets/fig/ot/concept-mobile-2.png" alt="Mobile concept · swiper variant" class="zoomable" />
+            <img src="assets/fig/ot/concept-mobile-3.png" alt="Mobile concept · third explored variant" class="zoomable" />
+          </div>
+          <figcaption>
+            <span class="fig-text">Three mobile top-area variants. Same content, three ways to weight ETA, status, and product against each other.</span>
+          </figcaption>
+        </figure>
+
+        <h3>Desktop · full-page variants</h3>
+        <p class="body">
+          Desktop opened up at the page level. The variation moved to multi-item orders, where to slot
+          promotional touts, and how to surface the latest update without burying the timeline. Each
+          variant tested a different balance.
+        </p>
+
+        <figure class="cs-figure cs-figure-concepts">
+          <div class="concept-grid concept-grid-desktop" data-lightbox-group="desktop">
+            <img src="assets/fig/ot/concept-desktop-1.png" alt="Desktop concept variant 1 — stacked estimated-delivery blocks for different states" class="zoomable" />
+            <img src="assets/fig/ot/concept-desktop-2.png" alt="Desktop concept variant 2 — latest-update card and status timeline with sidebar tout" class="zoomable" />
+            <img src="assets/fig/ot/concept-desktop-3.png" alt="Desktop concept variant 3 — multi-item layout where each line item carries its own status and tracking" class="zoomable" />
+          </div>
+          <figcaption>
+            <span class="fig-text">Three desktop variants. The third (multi-item) became the direction. The information flow inside it kept evolving from there.</span>
+          </figcaption>
+        </figure>
+
+        <h3>The resolved direction</h3>
+        <p class="body">
+          We landed on the expand-and-collapse pattern. Each item card minimizes to a compact row by
+          default and expands for the full tracking detail. It handled the multi-item case cleanly,
+          kept simple single-item orders from feeling sparse, and gave touts and updates a stable
+          home that didn't shift between states.
+        </p>
+
+        <figure class="cs-figure">
+          <img src="assets/fig/ot/concept-final.png" alt="Resolved direction — multi-item order shown in both collapsed and expanded states" class="cs-figure-img zoomable" />
+          <figcaption>
+            <span class="fig-text">Same page, two states. The expand-and-collapse mechanic is what made the system handle every order shape with the same vocabulary.</span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- 04 BUILDING THE CARDS -->
+      <article class="cs-section" id="design">
+        <span class="num">04 · Building the cards</span>
+        <h2>Listed every card before <em>building one.</em></h2>
+        <p class="body">
+          Before drawing any UI, I listed every card the system would need: order status, ETA, tracking number,
+          line items, payment summary, customer service link, delivery address, exception messages, line-item
+          drilldown, shoppable upsell. The list kept me organized as I worked. I could see what each
+          configuration was missing, drop in new cards when ideas came up, and decide which earned a spot in the
+          final set. MVP scoping became a content decision rather than a layout one.
+        </p>
+        <p class="body">
+          I designed each card individually (default, empty, edge cases), then assembled layouts from them.
+          Each state got its own configuration: order received, label created, shipped, out for delivery,
+          delivered, delayed, returned, plus the logged-in / logged-out variants and a handful of error states.
+          Some cards earned a permanent slot. Others got pulled into <em>MVP-deferred</em> (line-item drilldown,
+          shoppable elements, how-to LP links) so we could ship the most important cards first and add the rest
+          later without redesigning the page.
+        </p>
+
+        <figure class="cs-figure">
+          <img src="assets/fig/ot/card-library.png" alt="Card library — every card type grouped by purpose (card states, timeline states, multi-item imagery, logged-out, any product type)" class="cs-figure-img zoomable" />
+          <figcaption>
+            <span class="fig-text">Card library. Every card type grouped by purpose, with MVP-shipped and deferred variants both visible so scoping was a content conversation rather than a layout fight.</span>
+          </figcaption>
+        </figure>
+
+        <h3>Team review &amp; CX feedback</h3>
+        <p class="body">
+          Two or three solid configurations went to the team, PM and my UX lead first, then CX. CX feedback
+          was mostly content-level: phrasing, hierarchy, copy that read like a person rather than a system.
+          Because CX had been in the loop as observers from the early rounds, the formal review was a tightening
+          pass rather than a reset.
+        </p>
+
+        <div class="callout">
+          <span class="label">Cross-team note</span>
+          <div class="content">
+            One non-design challenge: the new states needed a unified source of truth for order data, which
+            engineering had to wire up across internal systems. They led that integration; my job was to design
+            the surface that would consume it cleanly.
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 SOLUTION -->
+      <article class="cs-section" id="solution">
+        <span class="num">05 · The solution</span>
+        <h2>One screen, <em>three states</em>, every question answered.</h2>
+        <p class="body">
+          The redesigned tracker leads with a plain-language headline that answers the customer's actual question,
+          followed by the timeline they already trusted. Each state (placed, shipped, in transit, out for delivery,
+          delivered, exception) has its own headline copy and supporting affordances tuned to the question that
+          state typically generates.
+        </p>
+
+        <figure class="cs-figure full">
+          <div class="final-mock">
+            <div class="final-screen">
+              <div class="fs-bar">
+                <div class="b-dots"><span></span><span></span><span></span></div>
+                <span class="b-url">ruggable.com/orders/RG-44820</span>
+              </div>
+              <div class="fs-body">
+                <div>
+                  <div class="fs-status-eyebrow">Out for delivery</div>
+                  <div class="fs-headline">Arriving today<br>by 8 PM</div>
+                  <div class="fs-eta">UPS truck is in your area · <span class="accent">Apr 22, 2024</span></div>
+
+                  <div class="fs-timeline">
+                    <div class="fs-step"><div class="step-dot done"></div><div class="step-info"><span class="step-title">Order placed</span><span class="step-desc">Payment confirmed, prepping your rug.</span></div><span class="step-when">Apr 18<br>10:42 AM</span></div>
+                    <div class="fs-step"><div class="step-dot done"></div><div class="step-info"><span class="step-title">Shipped from Los Angeles</span><span class="step-desc">Handed off to UPS Ground · 1Z999AA1...</span></div><span class="step-when">Apr 19<br>9:14 PM</span></div>
+                    <div class="fs-step"><div class="step-dot done"></div><div class="step-info"><span class="step-title">Out for delivery</span><span class="step-desc">On the truck. We'll text when it's close.</span></div><span class="step-when">Apr 22<br>6:30 AM</span></div>
+                    <div class="fs-step pending"><div class="step-dot"></div><div class="step-info"><span class="step-title">Delivered</span><span class="step-desc">No signature required · safe drop OK.</span></div><span class="step-when">By 8 PM</span></div>
+                  </div>
+                </div>
+                <div class="fs-aside">
+                  <div class="fs-product-card">
+                    <div class="img"></div>
+                    <div>
+                      <div class="pname">Marrakesh Terracotta</div>
+                      <div class="pmeta">8'×10' · Plush · $349</div>
+                    </div>
+                  </div>
+                  <div class="fs-info-row">
+                    <span class="k">Delivering to</span>
+                    <span class="v">Sarah K. · 2104 Brentwood Ave</span>
+                  </div>
+                  <div class="fs-info-row">
+                    <span class="k">Carrier</span>
+                    <span class="v">UPS Ground · 1Z999AA10123456784</span>
+                  </div>
+                  <div class="fs-help-row">
+                    <span class="help-pill">Track on UPS</span>
+                    <span class="help-pill">Get help</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption>
+            <span class="fig-text">Final order status page · "Out for delivery" state. Headline answers the question; timeline confirms it; sidebar pre-empts the next one.</span>
+          </figcaption>
+        </figure>
+
+        <h3>Language that calms the wait</h3>
+        <p class="body">
+          The biggest copy work happened in the <em>in-between</em> states, the days after a customer submits
+          their order but before the package physically ships. That gap is where anxiety builds: "is my order
+          actually being made? did anyone see it? when does this turn into a tracking number?" The old page just
+          said <em>"Order Received"</em> and went quiet.
+        </p>
+        <p class="body">
+          The new copy answers the unasked question. Each state surfaces an expectation the customer would
+          otherwise email about, things like "<strong>typically ships within 1 week</strong>" or
+          "<strong>scheduled to ship by Jan 8</strong>", paired with the status itself. Same data the system
+          always had; we just decided to say it out loud instead of leaving it implied.
+        </p>
+
+        <figure class="cs-figure cs-figure-mobile">
+          <img src="assets/fig/ot/order-received.png" alt="Order Received state — copy detail showing typical ship-by date and scheduled ship date" class="cs-figure-img zoomable" />
+          <figcaption>
+            <span class="fig-text">Pre-ship "Order Received" state · the language layer that did most of the WISMO work. Customer knows what to expect before they think to ask.</span>
+          </figcaption>
+        </figure>
+      </article>
+
+      <!-- 06 MOBILE -->
+      <article class="cs-section" id="mobile">
+        <span class="num">06 · Mobile</span>
+        <h2>A true mobile experience, not a port.</h2>
+        <p class="body">
+          Per the data team's analytics, a significant share of order-tracker traffic was mobile. I didn't design
+          mobile first, but I treated it as a real surface. Single-column, generous tap targets, one primary
+          action per state, and content prioritized for the smaller view. Mobile got the same care as desktop, not
+          a shrunk-down version of it.
+        </p>
+
+        <figure class="cs-figure full">
+          <div class="phone-strip">
+            <div class="phone-shot">
+              <img src="assets/fig/ot/mobile-label-created.png" alt="Mobile · Order Received state with typical ship-by date" />
+              <div class="ph-caption"><span class="cap-num">01</span><span class="cap-name">Order received</span></div>
+            </div>
+            <div class="phone-shot">
+              <img src="assets/fig/ot/mobile-out-for-delivery.png" alt="Mobile · Out for Delivery compact state" />
+              <div class="ph-caption"><span class="cap-num">02</span><span class="cap-name">Out for delivery</span></div>
+            </div>
+            <div class="phone-shot">
+              <img src="assets/fig/ot/mobile-out-for-delivery-expanded.png" alt="Mobile · Out for Delivery with drawer expanded showing tracking, address, and order details" />
+              <div class="ph-caption"><span class="cap-num">03</span><span class="cap-name">Drawer expanded</span></div>
+            </div>
+          </div>
+          <figcaption>
+            <span class="fig-text">Three mobile states. The compact view (1, 2) shows status and the answer to "where is my order?" first; tapping the order item raises a drawer (3) with the supporting detail that lives in the desktop sidebar.</span>
+          </figcaption>
+        </figure>
+
+        <div class="callout">
+          <span class="label">Mobile pattern</span>
+          <div class="content">
+            On desktop, supporting detail (tracking number, address, line items) sits in a sidebar next to the
+            timeline. On mobile, that content lives in a drawer that slides up when the customer taps the order
+            item. Same information, surfaced only when needed. The default screen stays focused on the answer
+            to the question that brought them here.
+          </div>
+        </div>
+      </article>
+
+      <!-- 07 OUTCOMES -->
+      <article class="cs-section" id="outcomes">
+        <span class="num">07 · Outcomes</span>
+        <h2>The ticket pile shrunk.</h2>
+        <p class="body">
+          After ship, our PM tracked WISMO ticket volume and ticket types against the old experience.
+          Within 90 days, the result was clear.
+        </p>
+
+        <div class="outcome-poster">
+          <div class="oc-hero">
+            <div class="oc-eyebrow">Headline result</div>
+            <div class="oc-num">28%<span class="arrow">↓</span></div>
+            <div class="oc-desc">Drop in WISMO ticket volume against the old experience.</div>
+            <div class="oc-meta">90 days post-launch</div>
+          </div>
+          <div class="oc-side">
+            <div class="oc-stat">
+              <div class="label">Self-service resolution</div>
+              <div class="num">3.2×</div>
+            </div>
+            <div class="oc-stat">
+              <div class="label">Post-ship "where is it" emails</div>
+              <div class="num">100%↓</div>
+            </div>
+            <div class="oc-stat">
+              <div class="label">Post-purchase NPS</div>
+              <div class="num">+11 pts</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="body">
+          Post-ship "where is my package" inquiries were effectively eliminated; the remaining ones are edge
+          cases the page deliberately escalates. CX redirected the saved hours into proactive damage-claim
+          outreach.
+        </p>
+      </article>
+
+      <!-- 08 REFLECTION -->
+      <article class="cs-section" id="reflection">
+        <span class="num">08 · Reflection</span>
+        <h2>What I'd do differently.</h2>
+
+        <div class="reflect-grid">
+          <div class="reflect-card">
+            <div class="reflect-label">What worked</div>
+            <h4>Listing the cards before composing.</h4>
+            <p>Building the card library as a complete set first (including ones we knew wouldn't ship in MVP) made composition fast and made scoping a content conversation rather than a layout fight. Adding a deferred card later doesn't redesign the page; it slots in.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What I'd change</div>
+            <h4>Push for more than MVP.</h4>
+            <p>I'd advocate harder for the deferred cards in the first ship. In my experience, "we'll ship that next sprint" often becomes "we'll get to that eventually." Priorities shift, new tickets land, and the deferred work quietly goes dormant. Holding the line on a slightly bigger v1 sometimes saves you from never shipping v2.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">Open question</div>
+            <h4>How much should the page be proactive?</h4>
+            <p>We held back optional "we're watching it" notifications on stale states. The tradeoff is notification fatigue vs. reassurance. Worth A/B testing whoever picks this up next.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What's next</div>
+            <h4>The card system has reach.</h4>
+            <p>Returns and damage claims have the same problem: lots of data, no story. The same card pattern, with different content, is the obvious next application. It doesn't have to be redesigned, just composed differently.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── NEXT CASE STUDY ─────────── -->
+<section class="next-cs shell">
+  <div class="next-grid">
+    <div>
+      <div class="next-label">Next case study</div>
+      <div class="next-num">Ruggable · 2024 · AI</div>
+      <h2>Designable. <em>Started as a chatbot.</em></h2>
+      <p class="next-deck">
+        Ruggable's AI rug recommender. Started as a chatbot, then a form. Shipped as a single
+        photo upload that returns curated picks in seconds.
+      </p>
+      <a href="case-designable.html" class="btn btn-primary">Read Designable <span class="arrow">→</span></a>
+    </div>
+    <a href="case-designable.html" class="next-card case-tile-designable">
+      <div class="dsg-stage">
+        <div class="dsg-screen dsg-screen-1"><img src="assets/fig/designable-screen-1.png" alt="" /></div>
+        <div class="dsg-screen dsg-screen-2"><img src="assets/fig/designable-screen-2.png" alt="" /></div>
+        <div class="dsg-screen dsg-screen-3"><img src="assets/fig/designable-screen-3.png" alt="" /></div>
+      </div>
+      <div class="next-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- ─────────── FOOTER ─────────── -->
+{% include "footer.html" %}
+
+{% include "case-scripts.html" %}
+
+</body>
+</html>
