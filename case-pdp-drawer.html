@@ -17,11 +17,16 @@ permalink: /case-pdp-drawer.html
 
 /* Hero banner: full-bleed product visual (placeholder for now) */
 .cs-banner.cs-banner-pdp {
-  aspect-ratio: 16/9;
+  aspect-ratio: 3428 / 1256;
   background: linear-gradient(180deg, #ebe5d7 0%, #d8c9b0 100%);
   padding: 0;
   overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.cs-banner-pdp img {
+  display: block;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
 }
 
 /* Variants grid — clean vs. images for size, plus same for system */
@@ -51,10 +56,47 @@ permalink: /case-pdp-drawer.html
   text-transform: uppercase; color: var(--ink-3);
 }
 .variant h4 {
-  font-family: var(--serif); font-size: 18px; line-height: 1.2;
+  font-family: var(--sans); font-weight: 600; font-size: 18px; line-height: 1.2;
   letter-spacing: -0.01em; margin: 0;
 }
 .variant .desc { font-size: 13px; color: var(--ink-2); line-height: 1.55; }
+
+/* Room Size Guide — buried vs. surfaced comparison */
+.rsg-compare {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 2fr;
+  gap: 24px;
+  align-items: start;
+  margin: 32px 0;
+}
+.rsg-compare .rsg-col {
+  display: flex; flex-direction: column;
+  gap: 12px;
+}
+.rsg-compare .rsg-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.rsg-compare .rsg-before .rsg-label { color: var(--ink-3); }
+.rsg-compare .rsg-after .rsg-label { color: var(--accent); }
+.rsg-compare img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--paper-2);
+}
+@media (max-width: 760px) {
+  .rsg-compare { grid-template-columns: 1fr; }
+}
+.variant .variant-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--paper-2);
+  margin-top: auto;
+}
 
 /* Rug-type expansion grid */
 .rugtype-grid {
@@ -144,13 +186,9 @@ permalink: /case-pdp-drawer.html
     </div>
   </div>
 
-  <!-- Hero banner placeholder -->
+  <!-- Hero banner -->
   <div class="cs-banner cs-banner-pdp">
-    <div class="placeholder-frame" style="aspect-ratio:auto;width:100%;height:100%;border:0;border-radius:0;">
-      <div class="ph-icon">▢ │ ▢</div>
-      <div class="ph-label">Placeholder · before/after PDP</div>
-      <div class="ph-desc">Drop the side-by-side hero comparison: original PDP (size + 4 system buttons inline) vs. drawer pattern (single size + system button, drawer revealed).</div>
-    </div>
+    <img src="assets/fig/pdp/banner-desktop.png" alt="PDP Drawer redesign, desktop hero" class="zoomable" />
   </div>
 
   <!-- Headline metrics from '24 EOY review (Flatwoven/Tufted post-rollout) -->
@@ -212,11 +250,7 @@ permalink: /case-pdp-drawer.html
         </p>
 
         <figure class="cs-figure">
-          <div class="placeholder-frame">
-            <div class="ph-icon">▢▢▢▢▢</div>
-            <div class="ph-label">Placeholder · original PDP above-the-fold</div>
-            <div class="ph-desc">Drop a screenshot of the original PDP showing the inline size dropdown plus the four system buttons competing for space.</div>
-          </div>
+          <img src="assets/fig/pdp/original-pdp-atf.png" alt="Original PDP above the fold: inline size dropdown plus four system buttons competing for space" class="zoomable" style="display:block;width:100%;border:1px solid var(--rule);border-radius:8px;background:var(--paper-2)" />
           <figcaption>
             <span class="fig-text">Five inline decisions stacked above the fold. Visually correct, cognitively heavy.</span>
           </figcaption>
@@ -236,11 +270,13 @@ permalink: /case-pdp-drawer.html
         </p>
 
         <figure class="cs-figure">
-          <div class="placeholder-frame">
-            <div class="ph-icon">▢ ▶</div>
-            <div class="ph-label">Placeholder · drawer mechanic</div>
-            <div class="ph-desc">Drop a mockup or short animation of the drawer mechanic: button click, panel slides in from the right, options visible inside with images and copy.</div>
-          </div>
+          <video
+            src="assets/fig/pdp/drawer-mechanic-720.mp4"
+            autoplay muted loop playsinline
+            preload="metadata"
+            style="display:block;width:100%;border:1px solid var(--rule);border-radius:8px;background:var(--paper-2)"
+            aria-label="Drawer mechanic in action: size button opens a right-anchored drawer, closes, then system button opens its own drawer"
+          ></video>
           <figcaption>
             <span class="fig-text">Same data, different envelope. The drawer kept the PDP quiet until the customer decided to engage with size or system.</span>
           </figcaption>
@@ -268,42 +304,34 @@ permalink: /case-pdp-drawer.html
         </p>
 
         <h3>Size drawer</h3>
-        <div class="variants-grid">
+        <div class="variants-grid" data-lightbox-group="pdp-size">
           <div class="variant">
             <span class="v-label">Variant A · Clean</span>
             <h4>Dimensions, listed.</h4>
             <p class="desc">No images. Each size as a tappable row with dimension and use-case label. Lower visual cost, faster to scan.</p>
-            <div class="placeholder-frame" style="aspect-ratio:9/14;">
-              <div class="ph-label">Mockup · clean size drawer</div>
-            </div>
+            <img src="assets/fig/pdp/size-drawer-clean.png" alt="PDP size drawer, clean variant: dimensions listed as tappable rows" class="zoomable variant-img" />
           </div>
           <div class="variant">
             <span class="v-label">Variant B · Images</span>
             <h4>Each size, illustrated.</h4>
             <p class="desc">A visual paired with each option. More guidance for customers who couldn't translate dimensions on their own.</p>
-            <div class="placeholder-frame" style="aspect-ratio:9/14;">
-              <div class="ph-label">Mockup · image size drawer</div>
-            </div>
+            <img src="assets/fig/pdp/size-drawer-illustrated.png" alt="PDP size drawer, illustrated variant: each size paired with a visual" class="zoomable variant-img" />
           </div>
         </div>
 
         <h3>System drawer</h3>
-        <div class="variants-grid">
+        <div class="variants-grid" data-lightbox-group="pdp-system">
           <div class="variant">
             <span class="v-label">Variant A · Clean</span>
             <h4>Same options, just collapsed.</h4>
             <p class="desc">Same four system options, surfaced from a single button. Removed inline clutter without changing the underlying choice.</p>
-            <div class="placeholder-frame" style="aspect-ratio:9/14;">
-              <div class="ph-label">Mockup · clean system drawer</div>
-            </div>
+            <img src="assets/fig/pdp/system-drawer-clean.png" alt="PDP system drawer, clean variant: four pad-system options as a list" class="zoomable variant-img" />
           </div>
           <div class="variant">
             <span class="v-label">Variant B · Images</span>
             <h4>Each system, illustrated.</h4>
             <p class="desc">Visuals paired with each pad system to make the differences scannable at a glance.</p>
-            <div class="placeholder-frame" style="aspect-ratio:9/14;">
-              <div class="ph-label">Mockup · image system drawer</div>
-            </div>
+            <img src="assets/fig/pdp/system-drawer-illustrated.png" alt="PDP system drawer, illustrated variant: each pad system paired with a visual" class="zoomable variant-img" />
           </div>
         </div>
 
@@ -386,23 +414,28 @@ permalink: /case-pdp-drawer.html
           </div>
         </div>
 
-        <h3>Room Size Guide · CX collaboration</h3>
+        <h3>Room Size Guide, moved up.</h3>
         <p class="body">
-          Around the same time, our CX lead Emily was running a broader Size project. The team
-          had built a Room Size Guide pattern that customers could use to translate dimensions
-          into "will this fit my room." We brought it into two places: the Size Guide section
-          inside the new PDP Drawer, and the Size Guide Modal on the International PDP.
-          Stopgap, but it closed an obvious loop the drawer had opened up real estate to support.
+          A Room Size Guide already lived on the PDP, just farther down the page. Behavior
+          data showed customers scrolling specifically to reach it, which is the kind of
+          signal you can act on: people were doing the work to find context that mattered to
+          the size decision. The drawer had opened real estate at the exact moment that
+          decision was being made, so we moved the Size Guide there. Same content, surfaced
+          where customers needed it instead of where they had to go find it.
         </p>
-
         <figure class="cs-figure">
-          <div class="placeholder-frame">
-            <div class="ph-icon">⊡</div>
-            <div class="ph-label">Placeholder · Room Size Guide in drawer</div>
-            <div class="ph-desc">Drop the mockup of the Room Size Guide as it appears inside the PDP Drawer Size Guide section.</div>
+          <div class="rsg-compare" data-lightbox-group="rsg">
+            <div class="rsg-col rsg-before">
+              <span class="rsg-label">Before · Original PDP</span>
+              <img src="assets/fig/pdp/pdp-original-scroll.png" alt="Original PDP, full scroll length, with the Room Size Guide near the bottom of the page" class="zoomable" />
+            </div>
+            <div class="rsg-col rsg-after">
+              <span class="rsg-label">After · PDP Drawer</span>
+              <img src="assets/fig/pdp/room-size-guide.png" alt="Room Size Guide inside the PDP Drawer's Size Guide section" class="zoomable" />
+            </div>
           </div>
           <figcaption>
-            <span class="fig-text">Room Size Guide, surfaced inside the drawer. The drawer made room for what the inline control couldn't.</span>
+            <span class="fig-text">From below the fold (left) to inside the drawer (right). Same content, surfaced where the size decision was actually being made.</span>
           </figcaption>
         </figure>
       </article>

@@ -16,28 +16,19 @@ permalink: /case-grounded.html
    Echoes the actual Grounded brand: dark surface, accent green.
    ───────────────────────────────────────────────────────────── */
 
-/* Hero banner: dark surface, mock or screenshot inside */
+/* Hero banner: light + dark mode comparison from the live Grounded dashboard */
 .cs-banner.cs-banner-grounded {
-  aspect-ratio: 16/10;
+  aspect-ratio: 3148 / 1743;
   background: linear-gradient(180deg, #161b22 0%, #0d1117 100%);
-  padding: 48px;
+  padding: 0;
   overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
+  position: relative;
 }
-.cs-banner-grounded .placeholder-frame {
-  width: 100%; max-width: 720px;
-  aspect-ratio: 4/3;
-  background: rgba(232,237,242,0.04);
-  border-color: rgba(232,237,242,0.12);
-  color: rgba(232,237,242,0.6);
+.cs-banner-grounded img {
+  display: block;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
 }
-.cs-banner-grounded .placeholder-frame .ph-label {
-  background: rgba(232,237,242,0.08);
-  border-color: rgba(232,237,242,0.18);
-  color: rgba(232,237,242,0.85);
-}
-.cs-banner-grounded .placeholder-frame .ph-desc { color: rgba(232,237,242,0.55); }
-.cs-banner-grounded .placeholder-frame .ph-icon { color: rgba(232,237,242,0.4); }
 
 /* Privacy callout — leans on the brand green */
 .privacy-card {
@@ -54,8 +45,9 @@ permalink: /case-grounded.html
   margin-bottom: 14px;
 }
 .privacy-card h3 {
-  font-family: var(--serif); font-size: 28px; line-height: 1.15;
-  letter-spacing: -0.01em; color: #e8edf2;
+  font-family: var(--sans); font-weight: 600;
+  font-size: 28px; line-height: 1.15;
+  letter-spacing: -0.015em; color: #e8edf2;
   margin-bottom: 14px;
 }
 .privacy-card h3 em { font-style: italic; color: #22c47a; }
@@ -95,8 +87,8 @@ permalink: /case-grounded.html
   margin-bottom: 6px;
 }
 .feature h4 {
-  font-family: var(--serif); font-size: 20px;
-  line-height: 1.15; color: var(--ink); letter-spacing: -0.01em;
+  font-family: var(--sans); font-weight: 600; font-size: 20px;
+  line-height: 1.15; color: var(--ink); letter-spacing: -0.015em;
 }
 .feature p {
   font-size: 14px; line-height: 1.55; color: var(--ink-2);
@@ -186,13 +178,9 @@ permalink: /case-grounded.html
     </div>
   </div>
 
-  <!-- Hero banner placeholder -->
+  <!-- Hero banner: Grounded dashboard, light + dark mode side-by-side -->
   <div class="cs-banner cs-banner-grounded">
-    <div class="placeholder-frame">
-      <div class="ph-icon">▲</div>
-      <div class="ph-label">Placeholder · Grounded dashboard</div>
-      <div class="ph-desc">Drop a screenshot of the live Grounded dashboard from usegrounded.app: net worth headline, history chart, and the account rows underneath.</div>
-    </div>
+    <img src="assets/fig/grounded/banner-light-dark.jpg" alt="Grounded dashboard shown side by side in light mode and dark mode" class="zoomable" />
   </div>
 </section>
 

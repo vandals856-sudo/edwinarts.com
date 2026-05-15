@@ -557,10 +557,11 @@
   margin-bottom: 14px;
 }
 .reflect-card h4 {
-  font-family: var(--serif);
+  font-family: var(--sans);
+  font-weight: 600;
   font-size: 22px; line-height: 1.3;
   margin-bottom: 14px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   color: var(--ink);
 }
 .reflect-card p {
@@ -829,7 +830,6 @@
   /* Stack mockup grids so they fit narrow viewports */
   /* !important needed because page-specific inline styles load after this file */
   .ot-banner-body,
-  .fs-body,
   .email-compare,
   .outcome-chart,
   .research-grid,
@@ -857,7 +857,6 @@
   .ot-banner { padding: 16px !important; position: relative !important; }
   .ot-banner-inner { width: 100% !important; }
   .ot-banner-body { padding: 20px !important; }
-  .fs-body { padding: 24px 20px 28px !important; }
 
   /* Banner aspect-ratio breaks on mobile when content stacks — let it grow */
   .cs-banner { aspect-ratio: auto !important; min-height: 320px; }

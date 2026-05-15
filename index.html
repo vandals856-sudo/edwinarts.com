@@ -11,25 +11,121 @@ permalink: /index.html
 <link rel="stylesheet" href="styles/portfolio.css">
 <style>
 /* page-specific layout */
-.hero { padding-block: 80px 100px; }
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 80px;
-  align-items: center;
+/* Transparent nav over the dark hero, transitions to solid on scroll.
+   Only applies to pages with body.has-hero-bg (currently just home). */
+body.has-hero-bg .nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+  transition:
+    background .25s var(--ease),
+    backdrop-filter .25s var(--ease),
+    border-color .25s var(--ease);
 }
-.hero-eyebrow { margin-bottom: 28px; }
+/* Anchor jumps (#work) shouldn't land under the fixed nav. */
+body.has-hero-bg { scroll-padding-top: 80px; }
+body.has-hero-bg .nav .nav-mark,
+body.has-hero-bg .nav .nav-links a { color: var(--paper); }
+body.has-hero-bg .nav .nav-mark:hover { color: var(--accent); }
+/* Keep the logo SVG in its natural colors at all times; only the wordmark flips. */
+body.has-hero-bg .nav .nav-links a::after { background: var(--paper); }
+
+body.has-hero-bg.scrolled .nav {
+  background: color-mix(in oklab, var(--paper) 92%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom-color: color-mix(in oklab, var(--rule) 60%, transparent);
+}
+body.has-hero-bg.scrolled .nav .nav-mark,
+body.has-hero-bg.scrolled .nav .nav-links a { color: var(--ink); }
+body.has-hero-bg.scrolled .nav .nav-mark:hover { color: var(--accent); }
+body.has-hero-bg.scrolled .nav .nav-links a::after { background: var(--ink); }
+
+
+/* Mobile hamburger color flip (when nav is over the dark hero, pre-scroll) */
+body.has-hero-bg .nav .nav-burger span { background: var(--paper); }
+body.has-hero-bg.scrolled .nav .nav-burger span { background: var(--ink); }
+
+/* Full-bleed photo hero */
+.hero {
+  position: relative;
+  min-height: 82vh;
+  display: flex; align-items: center;
+  overflow: hidden;
+  color: var(--paper);
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: url('assets/fig/my-hero-img.png') center top/cover no-repeat;
+  z-index: 0;
+}
+.hero-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg,
+    rgba(15,12,10,0.88) 0%,
+    rgba(15,12,10,0.66) 38%,
+    rgba(15,12,10,0.25) 72%,
+    rgba(15,12,10,0.12) 100%);
+  z-index: 1;
+}
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  /* Padding scales with viewport width so the gap between nav and headline
+     grows alongside the clamped h1 font-size (which uses 5.2vw). */
+  padding-block: clamp(140px, 11vw, 260px);
+}
+.hero-inner-grid {
+  max-width: 720px;
+}
+.hero-eyebrow {
+  margin-bottom: 28px;
+  color: rgba(244,240,232,0.7);
+}
 .hero h1 {
-  font-size: clamp(50px, 5.5vw, 95px);
+  font-size: clamp(48px, 5.2vw, 88px);
   margin-bottom: 36px;
+  color: var(--paper);
 }
 .hero h1 em { font-style: italic; color: var(--accent); }
 .hero-support {
-  max-width: 460px;
-  color: var(--ink-2);
+  max-width: 520px;
+  color: rgba(244,240,232,0.88);
   margin-bottom: 40px;
 }
 .hero-cta { display: flex; gap: 14px; align-items: center; }
+.hero-cta .btn-primary {
+  background: var(--paper);
+  color: var(--ink);
+}
+.hero-cta .btn-primary:hover {
+  background: var(--accent);
+  color: var(--paper);
+}
+.hero-cta .btn-ghost {
+  color: var(--paper);
+  border-color: rgba(244,240,232,0.55);
+}
+.hero-cta .btn-ghost:hover {
+  background: rgba(244,240,232,0.08);
+  border-color: var(--paper);
+}
+
+/* On narrower viewports, shift focus toward Edwin (left of image) and darken further for legibility */
+@media (max-width: 900px) {
+  .hero { min-height: 70vh; }
+  .hero-bg { background-position: 70% center; }
+  .hero-scrim {
+    background: linear-gradient(180deg,
+      rgba(15,12,10,0.55) 0%,
+      rgba(15,12,10,0.85) 100%);
+  }
+  .hero-inner { padding-block: 80px; }
+}
 
 /* Designable hero placeholder card */
 .designable-card {
@@ -357,9 +453,7 @@ permalink: /index.html
 /* Career row */
 .career-row {
   background: var(--paper-2);
-  padding: 56px var(--gutter);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
+  padding: 72px var(--gutter);
 }
 .career-inner {
   display: flex; align-items: center; justify-content: center;
@@ -370,7 +464,7 @@ permalink: /index.html
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 0;
+  row-gap: 32px;
 }
 .career-list .logo { display: inline-flex; align-items: center; line-height: 1; }
 .career-list .logo img { display: block; width: auto; }
@@ -382,7 +476,7 @@ permalink: /index.html
 .career-list .logo-kfpw    img { height: 46px; }
 .career-list .sep {
   color: var(--accent);
-  margin: 0 28px;
+  margin: 0 40px;
   font-family: var(--serif);
   font-size: 22px;
   line-height: 1;
@@ -464,6 +558,18 @@ permalink: /index.html
 .tex-brandlp   { --bg: linear-gradient(135deg, #2a2520 0%, #1a1814 100%); }
 .tex-system    { --bg: linear-gradient(135deg, #1a2845 0%, #0d1525 100%); }
 .tex-grounded  { --bg: linear-gradient(135deg, #4a5c3a 0%, #2c3623 100%); }
+.tex-grounded .gt-img { object-position: right center; }
+.tex-grounded::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 65%;
+  background: linear-gradient(180deg,
+    rgba(26,24,20,0) 0%,
+    rgba(26,24,20,0.70) 50%,
+    rgba(26,24,20,0.95) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
 .tex-sitemap   { --bg: linear-gradient(135deg, #e8dfd0 0%, #c9bfa8 100%); }
 .tex-filters   { --bg: linear-gradient(135deg, #c4471c 0%, #8a3214 100%); }
 .tex-agency    { --bg: linear-gradient(135deg, #1a1814 0%, #0a0805 100%); }
@@ -655,12 +761,14 @@ permalink: /index.html
   .grid-9 { grid-template-columns: repeat(2, 1fr); }
   .grid-tile.span-3, .grid-tile.span-2 { grid-column: span 2; }
   .selected-header { gap: 18px; }
-  .career-list .sep { margin: 0 14px; }
+  .career-list .sep { margin: 0 22px; }
+  .career-list { row-gap: 36px; }
 }
 @media (max-width: 600px) {
   .grid-9 { grid-template-columns: 1fr; }
   .grid-tile.span-3, .grid-tile.span-2 { grid-column: span 1; }
-  .career-list .sep { margin: 0 10px; }
+  .career-list .sep { margin: 0 16px; }
+  .career-list { row-gap: 40px; }
   .hero-cta { flex-direction: column; align-items: stretch; }
   .hero-cta .btn { justify-content: center; }
   .about-preview { gap: 32px; }
@@ -757,108 +865,113 @@ permalink: /index.html
     0 16px 28px -10px rgba(26, 24, 20, 0.22);
 }
 
-/* Designable — staggered 3-screen tile */
+/* Designable — minimalism statement tile.
+   Default: empty LP with dashed drop zone.
+   Hover sequence (~2.2s total):
+     1. Room photo arcs in from the left (curved with combined translate + rotate + scale),
+        fades into the dashed drop zone
+     2. Scene crossfades from empty to the full results state
+     3. Product tile slides up over the full state */
 .case-tile-designable {
-  background: linear-gradient(135deg, var(--paper-2) 0%, var(--paper-3) 100%);
-  padding: 40px 36px 36px;
-  display: flex; flex-direction: column;
+  aspect-ratio: 16/9;
+  background: var(--paper-2);
+  padding: 0;
 }
-.dsg-flow {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  position: relative;
-  z-index: 5;
-  margin-bottom: 28px;
+.case-tile-designable .dsg-empty,
+.case-tile-designable .dsg-full {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: top center;
 }
-.dsg-step {
-  flex: 0 0 152px;
-  position: relative;
-  padding-left: 36px;
-}
-.dsg-step .dsg-icon {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1.5px solid var(--ink-3);
-  background: var(--paper);
-}
-.dsg-connector {
-  flex: 1 1 auto;
-  height: 0;
-  margin-top: 9px;
-  border-top: 1.5px dashed var(--ink-3);
-  position: relative;
-}
-.dsg-connector::after {
-  content: "";
-  position: absolute;
-  top: -4px;
-  right: 0;
-  width: 0;
-  height: 0;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-left: 6px solid var(--ink-3);
-}
-.dsg-step .dsg-num {
-  font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em;
-  color: var(--ink); margin-bottom: 6px; font-weight: 500;
-}
-.dsg-step .dsg-label {
-  font-family: var(--mono); font-size: 9px; letter-spacing: 0.04em;
-  color: var(--ink-2); line-height: 1.5;
-}
-.dsg-stage {
-  position: relative;
-  flex: 1;
-  width: 100%;
-}
-.dsg-screen {
-  position: absolute;
-  border-radius: 6px;
-  overflow: hidden;
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  box-shadow:
-    0 1px 0 rgba(255,255,255,0.4) inset,
-    0 22px 44px -14px rgba(26,24,20,0.22),
-    0 8px 16px -6px rgba(26,24,20,0.12);
-  transition: transform 0.4s cubic-bezier(.2,.7,.3,1);
-}
-.dsg-screen img { display: block; width: 100%; height: auto; }
-.dsg-screen-1 { width: 42%; top: 4%; left: -2%; transform: rotate(-3deg); z-index: 1; }
-.dsg-screen-2 { width: 42%; top: 30%; left: 29%; z-index: 2; }
-.dsg-screen-3 { width: 52%; top: 12%; right: -2%; transform: rotate(3deg); z-index: 3; }
-.case-tile-designable .dsg-screen { transition: transform .7s var(--ease); }
-.case-tile-designable:hover .dsg-screen-1 { transform: rotate(-7deg) translate(-30px, -14px); }
-.case-tile-designable:hover .dsg-screen-2 { transform: translateY(-16px); }
-.case-tile-designable:hover .dsg-screen-3 { transform: rotate(7deg) translate(30px, -14px); }
 
-/* PDP — single edge-to-edge before/after image */
-.case-tile-pdp { background: var(--paper-2); padding: 0; }
-.case-tile-pdp .pdp-tile-img {
+/* Room photo: drops in, settles, then expands to fill the dashed zone.
+   The expansion overlaps with the scene fade for a layered transition. */
+.case-tile-designable .dsg-room {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
+  top: 24%; left: 54%; width: 35%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 10px 22px -8px rgba(26,24,20,0.28);
+  opacity: 0;
+  transform: translateY(-80%) scale(1);
+  transform-origin: center center;
+  transition:
+    opacity 0.3s var(--ease),
+    transform 0.35s var(--ease);
+  pointer-events: none;
+}
+@keyframes dsg-room-drop-expand {
+  0%   { opacity: 0; transform: translate(0, -80%) scale(0.75); }    /* above, slightly small */
+  30%  { opacity: 1; transform: translate(0, 0) scale(1.25); }       /* landed, peaked in size */
+  100% { opacity: 1; transform: translate(-85%, -28%) scale(1.10); } /* drifts to upper-left and up, smaller as it settles */
+}
+.case-tile-designable:hover .dsg-room {
+  animation: dsg-room-drop-expand 1.4s var(--ease) 0.1s forwards;
+}
+
+/* Scene change: full state crossfades in as the photo begins its drift to final position */
+.case-tile-designable .dsg-full {
+  opacity: 0;
+  transition: opacity 0.85s var(--ease);
+}
+.case-tile-designable:hover .dsg-full {
+  opacity: 1;
+  transition-delay: 0.5s;
+}
+
+/* Product tile slides up edge-to-edge, fading in alongside the slide */
+.case-tile-designable .dsg-products {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  width: 100%; height: auto;
+  opacity: 0;
+  transform: translateY(100%);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.65s var(--ease);
+}
+.case-tile-designable:hover .dsg-products {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.7s var(--ease) 0.5s,
+    transform 0.65s var(--ease) 0.5s;
+}
+
+/* PDP — closed PDP base + drawer that slides in from the right on hover */
+.case-tile-pdp {
+  aspect-ratio: 892/550;
+  background: var(--paper-2); padding: 0;
+}
+.case-tile-pdp .pdp-base {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+}
+.case-tile-pdp .pdp-drawer {
+  position: absolute; top: 0; right: 0;
+  height: 100%; width: auto;
+  transform: translateX(102%);
+  transition: transform 0.55s var(--ease);
+  filter: drop-shadow(-12px 0 24px rgba(26,24,20,0.18));
+  pointer-events: none;
+}
+.case-tile-pdp:hover .pdp-drawer {
+  transform: translateX(0);
 }
 </style>
 </head>
-<body data-cc-id="cc-1" style="cursor: crosshair;">
+<body class="has-hero-bg">
 
 <!-- ─────────── NAV ─────────── -->
 {% include "nav.html" %}
 
 <!-- ─────────── HERO ─────────── -->
-<section class="hero shell">
-  <div class="hero-grid">
-    <div>
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="shell hero-inner">
+    <div class="hero-inner-grid">
       <div class="eyebrow hero-eyebrow">Senior UX Designer · 10+ yrs</div>
       <h1 style="font-weight: 500">Designing software people actually <em>want</em> to use.</h1>
       <p class="lede hero-support">
@@ -866,33 +979,7 @@ permalink: /index.html
       </p>
       <div class="hero-cta">
         <a href="#work" class="btn btn-primary">See Selected Work <span class="arrow">→</span></a>
-        <a href="Resume.html" class="btn btn-ghost">Download Resume</a>
-      </div>
-    </div>
-
-    <!-- Featured hero image: Order Tracker desktop view -->
-    <div class="hero-feature">
-      <img src="assets/fig/order-tracker-hero.png" alt="Order Tracker — desktop out-for-delivery view" class="hero-feature-img" />
-    </div>
-
-    <!-- Designable hero card -->
-    <div style="position:relative;display:none">
-      <div class="designable-caption">Live preview · Designable</div>
-      <div class="designable-card">
-        <div class="designable-frame">
-          <div class="designable-bar">
-            <span class="d"></span><span class="d"></span><span class="d"></span>
-            <span class="label">designable.ruggable.com</span>
-          </div>
-          <div class="designable-room">
-            <div class="designable-rug"></div>
-          </div>
-          <div class="designable-prompt">
-            <div class="ai"></div>
-            <div class="text">generating · terracotta moroccan, 8×10<span class="typing">&nbsp;</span></div>
-          </div>
-        </div>
-        <div class="designable-tag"><span class="live"></span>AI Tool · 14% CVR</div>
+        <a href="assets/Edwin-Rodriguez-Resume.pdf" class="btn btn-ghost" target="_blank" rel="noopener">View Resume</a>
       </div>
     </div>
   </div>
@@ -950,18 +1037,10 @@ AI · Product Recommendations</div>
         <a href="case-designable.html" class="read-link">Read case study <span class="arrow">→</span></a>
       </div>
       <div class="case-tile case-tile-designable">
-        <div class="dsg-flow">
-          <div class="dsg-step"><div class="dsg-icon"></div><div class="dsg-num">01 Upload</div><div class="dsg-label">Upload a photo of your space.</div></div>
-          <div class="dsg-connector"></div>
-          <div class="dsg-step"><div class="dsg-icon"></div><div class="dsg-num">02 Analyze</div><div class="dsg-label">Our AI analyzes your space, style and preferences.</div></div>
-          <div class="dsg-connector"></div>
-          <div class="dsg-step"><div class="dsg-icon"></div><div class="dsg-num">03 Results</div><div class="dsg-label">Get personalized rug recommendations.</div></div>
-        </div>
-        <div class="dsg-stage">
-          <div class="dsg-screen dsg-screen-1"><img src="assets/fig/designable-screen-1.png" alt="" /></div>
-          <div class="dsg-screen dsg-screen-2"><img src="assets/fig/designable-screen-2.png" alt="" /></div>
-          <div class="dsg-screen dsg-screen-3"><img src="assets/fig/designable-screen-3.png" alt="" /></div>
-        </div>
+        <img src="assets/fig/designable/designable-tile-empty.png" alt="Designable landing page, empty upload state" class="dsg-empty" />
+        <img src="assets/fig/designable/designable-picture-room.png" alt="" class="dsg-room" aria-hidden="true" />
+        <img src="assets/fig/designable/designable-tile-full.png" alt="" class="dsg-full" aria-hidden="true" />
+        <img src="assets/fig/designable/designable-product-tile.png" alt="" class="dsg-products" aria-hidden="true" />
       </div>
     </article>
 
@@ -970,7 +1049,7 @@ AI · Product Recommendations</div>
       <div>
         <div class="eyebrow" style="margin-bottom:14px;white-space:pre-line">Ruggable · 2024
 PDP · Size Selection</div>
-        <h3 style="font-weight: 400">PDP Drawer, picking a size shouldn't feel like guessing</h3>
+        <h3>PDP Drawer, picking a size shouldn't feel like guessing</h3>
         <p class="lede">Moved size and system selection into a right-side drawer to clear above-the-fold clutter and open room for richer guidance. Shipped on Flatwoven and Tufted desktop in August 2024, then expanded across the catalog.</p>
         <div style="display:flex;gap:48px;align-items:baseline;margin-bottom:32px">
           <div>
@@ -985,7 +1064,8 @@ PDP · Size Selection</div>
         <a href="case-pdp-drawer.html" class="read-link">Read case study <span class="arrow">→</span></a>
       </div>
       <div class="case-tile case-tile-pdp">
-        <img src="assets/fig/pdp-tile.png" alt="PDP Drawer — text-only versus illustrated size selector" class="pdp-tile-img" />
+        <img src="assets/fig/pdp/pdp-tile-closed.png" alt="Redesigned PDP, drawer closed" class="pdp-base" />
+        <img src="assets/fig/pdp/pdp-tile-drawer.png" alt="" class="pdp-drawer" aria-hidden="true" />
       </div>
     </article>
 
@@ -1033,6 +1113,7 @@ PDP · Size Selection</div>
 
     <!-- Row 2 — 3 cards -->
     <a href="case-grounded.html" class="grid-tile span-2 tex-grounded dark">
+      <img src="assets/fig/grounded/grid-tile.png" alt="" class="gt-img" />
       <div class="gt-meta">Self-Initiated · Design + Build · 2025–26</div>
       <div class="gt-title">Grounded</div>
     </a>
@@ -1093,5 +1174,19 @@ PDP · Size Selection</div>
 
 <!-- ─────────── FOOTER ─────────── -->
 {% include "footer.html" %}
+
+<script>
+  // Toggle solid-nav state once user scrolls past the hero edge.
+  (function () {
+    var body = document.body;
+    if (!body.classList.contains('has-hero-bg')) return;
+    var threshold = 60;
+    function onScroll() {
+      body.classList.toggle('scrolled', window.scrollY > threshold);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>
 
 </body></html>

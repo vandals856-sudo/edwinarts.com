@@ -8,8 +8,8 @@ _site/
 # Project guidance for Claude, kept local
 CLAUDE.md
 
-# Personal documents not intended for public source
-assets/Edwin_Rodriguez_Resume.docx
+# Working source for the resume (PDF export is the published artifact)
+assets/Edwin-Rodriguez-Resume.docx
 
 # Legacy logo, SVG version is the one in use
 assets/erod-logo.png

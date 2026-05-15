@@ -273,131 +273,13 @@ permalink: /case-order-tracker.html
   letter-spacing: 0.1em; text-transform: uppercase;
 }
 
-/* Final tracker — large detailed mock */
-.final-mock {
-  background: linear-gradient(180deg, #ebe5d7 0%, #d8c9b0 100%);
-  padding: 48px;
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-}
-.final-screen {
+/* Final tracker — split-shipment screenshot */
+.final-shot {
+  display: block;
   width: 100%;
-  max-width: 720px;
-  background: var(--paper);
-  border-radius: 14px;
-  overflow: hidden;
   border: 1px solid var(--rule);
-  box-shadow: 0 30px 60px -20px rgba(26,24,20,0.25), 0 14px 28px -10px rgba(26,24,20,0.15);
-}
-.fs-bar {
-  padding: 14px 20px;
-  border-bottom: 1px solid var(--rule);
+  border-radius: 10px;
   background: var(--paper-2);
-  display: flex; gap: 10px; align-items: center;
-}
-.fs-bar .b-dots { display: flex; gap: 5px; }
-.fs-bar .b-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--rule); }
-.fs-bar .b-url {
-  margin-left: 14px;
-  font-family: var(--mono); font-size: 11px; color: var(--ink-3);
-}
-.fs-body {
-  padding: 40px 48px 48px;
-  display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px;
-}
-.fs-status-eyebrow {
-  font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em;
-  color: var(--accent); text-transform: uppercase;
-  margin-bottom: 12px;
-}
-.fs-headline {
-  font-family: var(--serif);
-  font-size: 32px; line-height: 1.05; letter-spacing: -0.02em;
-  margin-bottom: 8px;
-}
-.fs-eta {
-  font-size: 13px; color: var(--ink-2);
-  margin-bottom: 28px;
-}
-.fs-eta .accent { color: var(--accent); font-weight: 500; }
-.fs-timeline { display: flex; flex-direction: column; gap: 0; }
-.fs-step {
-  display: grid; grid-template-columns: 32px 1fr auto; gap: 14px;
-  padding: 12px 0;
-  position: relative;
-  align-items: start;
-}
-.fs-step + .fs-step::before {
-  content: ""; position: absolute;
-  left: 15px; top: -6px; height: 18px;
-  width: 1.5px;
-  background: var(--accent);
-}
-.fs-step.pending + .fs-step::before { background: var(--rule); }
-.fs-step.pending::before { background: var(--rule); }
-.fs-step .step-dot {
-  width: 18px; height: 18px; border-radius: 50%;
-  border: 2px solid var(--accent); background: var(--paper);
-  margin-top: 2px; position: relative;
-}
-.fs-step .step-dot.done { background: var(--accent); }
-.fs-step .step-dot.done::after {
-  content: "✓"; position: absolute; inset: 0;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--paper); font-size: 9px; font-weight: 700;
-}
-.fs-step.pending .step-dot { border-color: var(--ink-3); background: var(--paper-2); }
-.fs-step .step-info {
-  display: flex; flex-direction: column; gap: 4px;
-}
-.fs-step .step-title { font-size: 14px; font-weight: 500; color: var(--ink); }
-.fs-step.pending .step-title { color: var(--ink-3); }
-.fs-step .step-desc { font-size: 12px; color: var(--ink-2); line-height: 1.5; }
-.fs-step .step-when {
-  font-family: var(--mono); font-size: 10px;
-  letter-spacing: 0.05em; color: var(--ink-3);
-  white-space: nowrap;
-  margin-top: 4px;
-}
-
-.fs-aside { display: flex; flex-direction: column; gap: 16px; }
-.fs-product-card {
-  background: var(--paper-2);
-  border-radius: 8px;
-  padding: 16px;
-  display: flex; gap: 14px; align-items: center;
-}
-.fs-product-card .img {
-  width: 56px; height: 56px;
-  background:
-    repeating-linear-gradient(45deg, rgba(26,24,20,0.05) 0 4px, transparent 4px 8px),
-    linear-gradient(135deg, #c4471c, #8a3214);
-  border-radius: 4px;
-  flex: 0 0 auto;
-}
-.fs-product-card .pname { font-family: var(--serif); font-size: 14px; line-height: 1.3; }
-.fs-product-card .pmeta { font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 4px; }
-
-.fs-info-row {
-  display: flex; flex-direction: column; gap: 8px;
-  padding: 14px 0;
-  border-top: 1px solid var(--rule);
-}
-.fs-info-row .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em; color: var(--ink-3); text-transform: uppercase; }
-.fs-info-row .v { font-size: 13px; color: var(--ink); }
-
-.fs-help-row {
-  display: flex; gap: 8px; padding-top: 16px; border-top: 1px solid var(--rule);
-}
-.fs-help-row .help-pill {
-  flex: 1;
-  font-family: var(--sans); font-size: 11px;
-  padding: 10px 12px;
-  border: 1px solid var(--rule);
-  border-radius: 6px;
-  text-align: center;
-  color: var(--ink);
-  background: var(--paper);
 }
 
 /* Mobile mocks — vertical phone stack */
@@ -913,60 +795,26 @@ permalink: /case-order-tracker.html
       <!-- 05 SOLUTION -->
       <article class="cs-section" id="solution">
         <span class="num">05 · The solution</span>
-        <h2>One screen, <em>three states</em>, every question answered.</h2>
+        <h2>One order can be <em>many shipments.</em></h2>
         <p class="body">
-          The redesigned tracker leads with a plain-language headline that answers the customer's actual question,
-          followed by the timeline they already trusted. Each state (placed, shipped, in transit, out for delivery,
-          delivered, exception) has its own headline copy and supporting affordances tuned to the question that
-          state typically generates.
+          A Ruggable order isn't always one box. Items get grouped onto shipping labels and
+          bundled into the parcels they actually travel in, so a customer who ordered several
+          rugs can end up with three or four shipments, each one moving on its own schedule.
+          The redesigned tracker stacks each shipment as its own card: a plain-language status
+          up top, expandable to the full timeline and the items inside it when the customer
+          wants the detail.
+        </p>
+        <p class="body">
+          We designed for the worst case on purpose. The old tracker assumed the simple order,
+          one box, one timeline, and fell apart the moment a customer ordered a lot. Building
+          the stacked, expandable pattern around the messy order first meant the simple order
+          was just the one-card version of the same system, not a separate design.
         </p>
 
         <figure class="cs-figure full">
-          <div class="final-mock">
-            <div class="final-screen">
-              <div class="fs-bar">
-                <div class="b-dots"><span></span><span></span><span></span></div>
-                <span class="b-url">ruggable.com/orders/RG-44820</span>
-              </div>
-              <div class="fs-body">
-                <div>
-                  <div class="fs-status-eyebrow">Out for delivery</div>
-                  <div class="fs-headline">Arriving today<br>by 8 PM</div>
-                  <div class="fs-eta">UPS truck is in your area · <span class="accent">Apr 22, 2024</span></div>
-
-                  <div class="fs-timeline">
-                    <div class="fs-step"><div class="step-dot done"></div><div class="step-info"><span class="step-title">Order placed</span><span class="step-desc">Payment confirmed, prepping your rug.</span></div><span class="step-when">Apr 18<br>10:42 AM</span></div>
-                    <div class="fs-step"><div class="step-dot done"></div><div class="step-info"><span class="step-title">Shipped from Los Angeles</span><span class="step-desc">Handed off to UPS Ground · 1Z999AA1...</span></div><span class="step-when">Apr 19<br>9:14 PM</span></div>
-                    <div class="fs-step"><div class="step-dot done"></div><div class="step-info"><span class="step-title">Out for delivery</span><span class="step-desc">On the truck. We'll text when it's close.</span></div><span class="step-when">Apr 22<br>6:30 AM</span></div>
-                    <div class="fs-step pending"><div class="step-dot"></div><div class="step-info"><span class="step-title">Delivered</span><span class="step-desc">No signature required · safe drop OK.</span></div><span class="step-when">By 8 PM</span></div>
-                  </div>
-                </div>
-                <div class="fs-aside">
-                  <div class="fs-product-card">
-                    <div class="img"></div>
-                    <div>
-                      <div class="pname">Marrakesh Terracotta</div>
-                      <div class="pmeta">8'×10' · Plush · $349</div>
-                    </div>
-                  </div>
-                  <div class="fs-info-row">
-                    <span class="k">Delivering to</span>
-                    <span class="v">Sarah K. · 2104 Brentwood Ave</span>
-                  </div>
-                  <div class="fs-info-row">
-                    <span class="k">Carrier</span>
-                    <span class="v">UPS Ground · 1Z999AA10123456784</span>
-                  </div>
-                  <div class="fs-help-row">
-                    <span class="help-pill">Track on UPS</span>
-                    <span class="help-pill">Get help</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <img src="assets/fig/ot/final-split-order.png" alt="Redesigned order tracker showing one order split into multiple shipments, each stacked as its own expandable card with its own status" class="final-shot zoomable" />
           <figcaption>
-            <span class="fig-text">Final order status page · "Out for delivery" state. Headline answers the question; timeline confirms it; sidebar pre-empts the next one.</span>
+            <span class="fig-text">One order, three shipments. Each label stacks as its own card with its own status, expandable to the full timeline and the items inside.</span>
           </figcaption>
         </figure>
 
