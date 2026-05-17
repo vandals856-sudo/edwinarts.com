@@ -1,0 +1,453 @@
+---
+currentNav: Work
+permalink: /case-brand-lp.html
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Brand LP Framework — Edwin Rodriguez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles/portfolio.css">
+<link rel="stylesheet" href="styles/case-study.css">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   Brand LP Framework — page-specific accents
+   ───────────────────────────────────────────────────────────── */
+
+/* Hero banner: three brand photos in a tight band */
+.cs-banner.cs-banner-blp {
+  aspect-ratio: 16/7;
+  background: var(--paper-2);
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 1px;
+}
+.cs-banner-blp .blp-band {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+.cs-banner-blp .blp-band.starwars { background-image: url('assets/fig/brandlp-starwars.jpg'); }
+.cs-banner-blp .blp-band.marvel   { background-image: url('assets/fig/brandlp-marvel.jpg'); }
+.cs-banner-blp .blp-band.morris   { background-image: url('assets/fig/brandlp-morris.jpg'); }
+.cs-banner-blp .blp-band .blp-label {
+  position: absolute;
+  bottom: 18px; left: 18px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--paper);
+  background: rgba(15,12,10,0.55);
+  padding: 6px 10px; border-radius: 999px;
+}
+
+/* Pull quote: Edwin's own 2022 self-review words */
+.blp-quote {
+  margin: 40px 0;
+  padding: 32px 36px 32px 40px;
+  background: var(--paper-2);
+  border-left: 3px solid var(--accent);
+  border-radius: 8px;
+}
+.blp-quote .label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3);
+  margin-bottom: 14px;
+}
+.blp-quote p {
+  font-family: var(--serif); font-style: italic;
+  font-size: 22px; line-height: 1.4;
+  color: var(--ink); letter-spacing: -0.005em;
+  margin: 0 0 14px 0;
+}
+.blp-quote p:last-of-type { margin-bottom: 0; }
+.blp-quote .attrib {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--ink-3); font-style: normal;
+  margin-top: 16px;
+}
+
+/* The "what's in the framework" grid */
+.blp-pieces {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 32px 0;
+}
+.blp-piece {
+  padding: 24px 26px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+}
+.blp-piece .icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--mono); font-size: 11px; font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+}
+.blp-piece h4 {
+  font-family: var(--sans); font-weight: 600;
+  font-size: 18px; line-height: 1.2;
+  color: var(--ink); letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+.blp-piece p {
+  font-size: 14px; line-height: 1.55; color: var(--ink-2);
+}
+@media (max-width: 800px) {
+  .blp-pieces { grid-template-columns: 1fr; }
+  .cs-banner.cs-banner-blp { aspect-ratio: 4/3; }
+}
+
+/* Collab grid — placeholders for LP screenshots + one text-only card */
+.blp-collab-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 32px 0;
+}
+.blp-collab-grid .collab {
+  aspect-ratio: 4/3;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  text-align: center;
+}
+.blp-collab-grid .collab-placeholder {
+  background:
+    repeating-linear-gradient(45deg,
+      rgba(196,71,28,0.05) 0 10px,
+      transparent 10px 20px),
+    var(--paper-2);
+}
+.blp-collab-grid .collab-text {
+  background: linear-gradient(135deg, var(--paper-2), var(--paper-3));
+}
+.blp-collab-grid .ph-inner { max-width: 320px; }
+.blp-collab-grid .ph-eyebrow {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--ink-3);
+  margin-bottom: 10px;
+}
+.blp-collab-grid .ph-desc {
+  font-family: var(--sans); font-size: 14px; line-height: 1.5;
+  color: var(--ink-2);
+}
+.blp-collab-grid .collab-placeholder .ph-desc code {
+  font-family: var(--mono); font-size: 11px;
+  color: var(--ink);
+  background: rgba(26,24,20,0.06);
+  padding: 1px 6px; border-radius: 3px;
+}
+@media (max-width: 700px) {
+  .blp-collab-grid { grid-template-columns: 1fr; }
+}
+
+/* Personal aside — subtle, italic, recessed */
+.blp-personal-note {
+  margin: 24px 0 0;
+  padding: 4px 0 4px 18px;
+  border-left: 2px solid var(--rule);
+  font-size: 14px; line-height: 1.6;
+  color: var(--ink-2);
+  max-width: 640px;
+}
+</style>
+</head>
+<body>
+
+<div class="read-progress"><div class="bar"></div></div>
+
+{% include "lightbox.html" %}
+
+{% include "nav.html" %}
+
+<!-- ─────────── HERO ─────────── -->
+<section class="cs-hero shell" data-screen-label="Case · Brand LP Framework · Hero">
+  <div class="cs-hero-meta">
+    <span class="crumb"><a href="/">Work</a> / Brand LP Framework</span>
+  </div>
+
+  <div class="cs-hero-grid">
+    <div>
+      <h1>Pages in hours. <em>No dev needed.</em></h1>
+      <p class="deck">
+        A modular system for Ruggable's brand collaboration launches. An atomic component
+        library in Figma, a page template with a fixed top and swappable middle, and a
+        Figma-to-Contentful workflow that lets anyone at Ruggable ship a new collab page
+        in a few hours without design or dev. Built across 2022–2024, starting from the
+        Marvel and Star Wars launches and maturing through Morris &amp; Co.
+      </p>
+    </div>
+
+    <div class="cs-facts">
+      <div class="fact"><span class="k">Role</span><span class="v">Senior UX Designer · Lead</span></div>
+      <div class="fact"><span class="k">Company</span><span class="v">Ruggable</span></div>
+      <div class="fact"><span class="k">Platform</span><span class="v">Web · Figma · Contentful</span></div>
+      <div class="fact"><span class="k">Status</span><span class="v"><span class="accent">●</span> Shipped · 2022–24, in continued use</span></div>
+    </div>
+  </div>
+
+  <!-- Hero banner: three brand collaborations -->
+  <div class="cs-banner cs-banner-blp">
+    <div class="blp-band starwars"><span class="blp-label">Star Wars · 2021</span></div>
+    <div class="blp-band marvel"><span class="blp-label">Marvel · 2022</span></div>
+    <div class="blp-band morris"><span class="blp-label">Morris &amp; Co · 2023</span></div>
+  </div>
+</section>
+
+<!-- ─────────── BODY ─────────── -->
+<section class="shell" style="padding-bottom:120px">
+  <div class="cs-body">
+
+    <!-- Sticky TOC -->
+    <aside class="cs-toc">
+      <div class="toc-label">In this case</div>
+      <a href="#problem"     data-toc="problem"><span class="toc-num">01</span>The problem</a>
+      <a href="#system"      data-toc="system"><span class="toc-num">02</span>The atomic system</a>
+      <a href="#template"    data-toc="template"><span class="toc-num">03</span>The template</a>
+      <a href="#handoff"     data-toc="handoff"><span class="toc-num">04</span>The handoff</a>
+      <a href="#reflection"  data-toc="reflection"><span class="toc-num">05</span>Reflection</a>
+    </aside>
+
+    <!-- Content -->
+    <div class="cs-content">
+
+      <!-- 01 PROBLEM -->
+      <article class="cs-section" id="problem">
+        <span class="num">01 · The problem</span>
+        <h2>Every collab launch <em>started from zero.</em></h2>
+        <p class="body">
+          Through 2021, every brand collaboration Ruggable launched was a custom build.
+          Marvel, Star Wars Mandalorian, and the other licensed launches that year had me
+          designing each landing page from scratch: research, wireframes, several rounds
+          of module iterations, then sending the file to engineering to build from
+          custom code. The pages were good, but the path to get there was expensive.
+          Every collab was a small wholesale rebuild.
+        </p>
+        <p class="body">
+          The photo team was running mostly for social back then, not for web. We'd get
+          a handful of wide shots that worked for a hero banner and made the rest fit
+          with what we had. Engineering rebuilt similar-but-not-quite-the-same modules
+          for each launch. Stakeholders re-reviewed the same kinds of decisions on every
+          page. The pattern was clear before the system was: we were going to keep
+          shipping collabs, and the next one shouldn't cost what the last one did.
+        </p>
+      </article>
+
+      <!-- 02 THE ATOMIC SYSTEM -->
+      <article class="cs-section" id="system">
+        <span class="num">02 · The atomic system</span>
+        <h2>Components first. <em>Naming, variants, and a Contentful bridge.</em></h2>
+        <p class="body">
+          The work I did across Marvel and Star Wars left me with a pile of components
+          that almost-but-didn't-quite belong to a system. In 2022, I made the system
+          deliberate. I established an atomic component library in Figma: naming
+          conventions, UI variants, and a shape for each module that matched how our
+          CMS, Contentful, actually expected content to come in. Components designed to
+          be assembled, not just admired.
+        </p>
+        <p class="body">
+          The bridge to Contentful is the part that earned the framework its place. The
+          component types in Figma matched the content types in Contentful one-to-one.
+          A designer or marketer could compose a page in Figma, configure the same
+          modules in Contentful, drop the right assets in, and ship without an
+          engineering ticket.
+        </p>
+
+        <div class="blp-quote">
+          <div class="label">From my 2022 end-of-year review</div>
+          <p>
+            "I was responsible for establishing the foundation and leading the atomic
+            system from beginning to end. I contributed to the team's cohesiveness by
+            helping to clarify and unify the naming conventions, UI, UI variants, and
+            functionality of our component types with our CMS (Contentful). As a result
+            of all of this, in just a few hours we are able to quickly build pages in
+            Figma, set them up in Contentful, and upload assets without the need of any
+            dev for a great-looking page."
+          </p>
+          <div class="attrib">Edwin Rodriguez · '22 EOY self-review · Lattice, Dec 2022</div>
+        </div>
+
+        <h3>What the system included</h3>
+        <div class="blp-pieces">
+          <div class="blp-piece">
+            <div class="icon">▢▢</div>
+            <h4>Atomic components</h4>
+            <p>A library of reusable modules with consistent naming, variants, and behavior. Built to be assembled, not customized.</p>
+          </div>
+          <div class="blp-piece">
+            <div class="icon">↔</div>
+            <h4>One-to-one with the CMS</h4>
+            <p>Each Figma component matched a Contentful content type exactly. No translation layer between design and production.</p>
+          </div>
+          <div class="blp-piece">
+            <div class="icon">⊞</div>
+            <h4>Photo dimensions</h4>
+            <p>Standardized image specs baked into the components so the photo team could pre-plan shoots instead of briefing each launch ad hoc.</p>
+          </div>
+        </div>
+
+        <p class="body">
+          That last piece changed how the photo team worked with us, too. Once they had
+          specs to plan against — module aspect ratios, the kinds of shots each LP would
+          call for, what patterns would need to be photographed differently — collab
+          shoots became coordinated work, not leftovers from the social shoot. The
+          system extended past Figma.
+        </p>
+      </article>
+
+      <!-- 03 THE TEMPLATE -->
+      <article class="cs-section" id="template">
+        <span class="num">03 · The template</span>
+        <h2>A fixed top. <em>A swappable middle.</em></h2>
+        <p class="body">
+          The component library let us build pages fast. The next step was making the
+          pages themselves predictable. In 2023 I worked closely with my manager to
+          shape a page template: a fixed top structure that every collaboration would
+          share, and a middle and bottom that could be composed from the component
+          library to fit each brand. The constraint became the frame; the brand
+          expression lived inside it.
+        </p>
+        <p class="body">
+          Morris &amp; Co. shipped on the new template for the 2023 holiday season, with
+          me composing the page in Figma from existing modules. At the time of launch,
+          it was the most successful collaboration in Ruggable's history. Every collab
+          since has run on the same template, and the design team's hands-on involvement
+          has gotten a little lighter with each launch as the system did more of the work.
+        </p>
+
+        <div class="blp-collab-grid">
+          <div class="collab collab-placeholder" data-target="brandlp-starwars-lp">
+            <div class="ph-inner">
+              <div class="ph-eyebrow">Star Wars Mandalorian · 2021</div>
+              <div class="ph-desc">Drop the LP screenshot at<br><code>assets/fig/brandlp-starwars-lp.jpg</code></div>
+            </div>
+          </div>
+          <div class="collab collab-placeholder" data-target="brandlp-marvel-lp">
+            <div class="ph-inner">
+              <div class="ph-eyebrow">Marvel · 2022</div>
+              <div class="ph-desc">Drop the LP screenshot at<br><code>assets/fig/brandlp-marvel-lp.jpg</code></div>
+            </div>
+          </div>
+          <div class="collab collab-placeholder" data-target="brandlp-morris-lp">
+            <div class="ph-inner">
+              <div class="ph-eyebrow">Morris &amp; Co · 2023, on the template</div>
+              <div class="ph-desc">Drop the LP screenshot at<br><code>assets/fig/brandlp-morris-lp.jpg</code></div>
+            </div>
+          </div>
+          <div class="collab collab-text">
+            <div class="ph-inner">
+              <div class="ph-eyebrow">Every collab since</div>
+              <div class="ph-desc">Each launch ran on the template with a little less design involvement than the last. The system doing more of the work each time, by design.</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="blp-personal-note">
+          <em>Small personal note on the Star Wars shoot: my son and I were the feature
+          in the lifestyle photography. We ended up running across the broader Star Wars
+          campaign and the commercials that year.</em>
+        </p>
+      </article>
+
+      <!-- 04 THE HANDOFF -->
+      <article class="cs-section" id="handoff">
+        <span class="num">04 · The handoff</span>
+        <h2>The system <em>was supposed to outlive us.</em></h2>
+        <p class="body">
+          The frame the framework gives the team is the part I'm most proud of. From
+          the start, the goal wasn't to make myself the indispensable designer for every
+          collab. It was the opposite: every component, every Contentful integration,
+          every photo spec we standardized was a small bet that the next launch
+          shouldn't need a designer or a developer to ship.
+        </p>
+        <p class="body">
+          By 2024 that bet was paying out. New collab launches were running on the
+          template, often without me. My manager confirmed the broader pattern in the
+          2023 mid-year review: <em>"taken the lead on developing our Design System within
+          Figma."</em> The same template-and-handoff pattern we'd built for brand LPs got
+          picked up later for our DSM-to-Contentful documentation, which I built using
+          the same approach: a solid template, modules tested in the destination tool,
+          a resource other teams could run with.
+        </p>
+
+        <div class="callout">
+          <span class="label">The success metric I cared about</span>
+          <div class="content">
+            Not number of pages shipped, or hours saved per launch, though both went the
+            right direction. The metric I cared about was whether the next collab could
+            launch without me in the room. Each launch, that got more true. The framework
+            was doing its job.
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 REFLECTION -->
+      <article class="cs-section" id="reflection">
+        <span class="num">05 · Reflection</span>
+        <h2>What the framework taught me.</h2>
+
+        <div class="reflect-grid">
+          <div class="reflect-card">
+            <div class="reflect-label">What worked</div>
+            <h4>Build two, then templatize.</h4>
+            <p>The system emerged from doing the work, not from sitting down to "design a system." Marvel and Star Wars were custom builds that produced the components. Only after using them on real launches did the template become obvious. Build-it-then-name-it tends to ship more durable systems than name-it-then-design-it does.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What I'd change</div>
+            <h4>Bring CMS in earlier.</h4>
+            <p>The Figma-to-Contentful bridge was the framework's most useful feature, and it came late. If I were doing it again, I'd treat the CMS shape as a design constraint from the first component, not a translation step at the end. The team that builds the design system should be in the same room as the team that builds the CMS schema from week one.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">Open question</div>
+            <h4>How much should a framework constrain a brand?</h4>
+            <p>The strongest brand expressions in our collab work pushed against the template. The frame existed to enforce consistency, but every great launch wanted to feel a little not-quite-Ruggable. That tension is the productive part of the work. How much give the system has — and where — is still being figured out.</p>
+          </div>
+          <div class="reflect-card">
+            <div class="reflect-label">What's next</div>
+            <h4>The handoff is the win.</h4>
+            <p>The success of a design system isn't how good its first launch looks. It's whether the fifth, tenth, and twentieth launch can happen without the designer who built it. Each collab after Morris pulled a little further away from design's hands, which is the proof I'd ask of every system I build going forward.</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── NEXT CASE STUDY ─────────── -->
+<section class="next-cs shell">
+  <div class="next-grid">
+    <div>
+      <div class="next-label">Next case study</div>
+      <div class="next-num">Ruggable · 2024 · PDP</div>
+      <h2>PDP Drawer. <em>Picking a size shouldn't feel like guessing.</em></h2>
+      <p class="next-deck">
+        Moved size and system selection into a right-side drawer to clear above-the-fold
+        clutter and open room for richer guidance. Shipped on Flatwoven and Tufted desktop
+        in August 2024, then expanded across the catalog.
+      </p>
+      <a href="case-pdp-drawer.html" class="btn btn-primary">Read PDP Drawer <span class="arrow">→</span></a>
+    </div>
+    <a href="case-pdp-drawer.html" class="next-card case-tile-pdp">
+      <img src="assets/fig/pdp-tile.png" alt="PDP Drawer — text-only versus illustrated size selector" class="pdp-tile-img" />
+      <div class="next-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+{% include "footer.html" %}
+
+{% include "case-scripts.html" %}
+
+</body>
+</html>

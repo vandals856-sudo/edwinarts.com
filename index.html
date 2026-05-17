@@ -819,6 +819,7 @@ body.has-hero-bg.scrolled .nav .nav-burger span { background: var(--ink); }
 
 /* ─────────── CASE STUDY TILES (artwork side) ─────────── */
 .case-tile {
+  display: block;
   position: relative;
   width: 100%;
   aspect-ratio: 892/600;
@@ -826,6 +827,9 @@ body.has-hero-bg.scrolled .nav .nav-burger span { background: var(--ink); }
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--rule);
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* Order Tracker — desktop screenshot with mobile widget overlay */
@@ -1015,10 +1019,10 @@ Service · Order Experience</div>
         </div>
         <a href="case-order-tracker.html" class="read-link">Read case study <span class="arrow">→</span></a>
       </div>
-      <div class="case-tile case-tile-ot">
+      <a href="case-order-tracker.html" class="case-tile case-tile-ot" aria-label="Read the Order Tracker case study">
         <img src="assets/fig/ot-tile-desktop.png" alt="Order Tracker — desktop tracking view" class="ot-desktop" />
         <img src="assets/fig/ot-tile-mobile.png" alt="Order Tracker — mobile shipped widget" class="ot-mobile" />
-      </div>
+      </a>
     </article>
 
     <!-- 02 · Designable — staggered AI tile -->
@@ -1036,12 +1040,12 @@ AI · Product Recommendations</div>
         </div>
         <a href="case-designable.html" class="read-link">Read case study <span class="arrow">→</span></a>
       </div>
-      <div class="case-tile case-tile-designable">
+      <a href="case-designable.html" class="case-tile case-tile-designable" aria-label="Read the Designable case study">
         <img src="assets/fig/designable/designable-tile-empty.png" alt="Designable landing page, empty upload state" class="dsg-empty" />
         <img src="assets/fig/designable/designable-picture-room.png" alt="" class="dsg-room" aria-hidden="true" />
         <img src="assets/fig/designable/designable-tile-full.png" alt="" class="dsg-full" aria-hidden="true" />
         <img src="assets/fig/designable/designable-product-tile.png" alt="" class="dsg-products" aria-hidden="true" />
-      </div>
+      </a>
     </article>
 
     <!-- 03 · PDP Drawer — before/after tile -->
@@ -1063,10 +1067,10 @@ PDP · Size Selection</div>
         </div>
         <a href="case-pdp-drawer.html" class="read-link">Read case study <span class="arrow">→</span></a>
       </div>
-      <div class="case-tile case-tile-pdp">
+      <a href="case-pdp-drawer.html" class="case-tile case-tile-pdp" aria-label="Read the PDP Drawer case study">
         <img src="assets/fig/pdp/pdp-tile-closed.png" alt="Redesigned PDP, drawer closed" class="pdp-base" />
         <img src="assets/fig/pdp/pdp-tile-drawer.png" alt="" class="pdp-drawer" aria-hidden="true" />
-      </div>
+      </a>
     </article>
 
   </div>
@@ -1101,9 +1105,9 @@ PDP · Size Selection</div>
   <div class="grid-9">
 
     <!-- Row 1 — 2 wide -->
-    <a href="#" class="grid-tile span-3 tex-brandlp dark">
+    <a href="case-brand-lp.html" class="grid-tile span-3 tex-brandlp dark">
       <img src="assets/fig/brandLP_tile.png" alt="" class="gt-img" />
-      <div class="gt-meta">Ruggable · 2022</div>
+      <div class="gt-meta">Ruggable · 2022–24</div>
       <div class="gt-title">Brand LP Framework</div>
     </a>
     <a href="#" class="grid-tile span-3 tex-system dark">
